@@ -1,0 +1,52 @@
+
+Starting Nmap 6.40 ( http://nmap.org ) at 2017-04-14 03:30 PDT
+Nmap scan report for 10.127.235.84
+Host is up (0.0011s latency).
+Not shown: 982 closed ports
+PORT     STATE SERVICE          VERSION
+80/tcp   open  http             Microsoft IIS httpd 8.5
+135/tcp  open  msrpc            Microsoft Windows RPC
+139/tcp  open  netbios-ssn
+445/tcp  open  netbios-ssn
+902/tcp  open  ssl/vmware-auth  VMware Authentication Daemon 1.10 (Uses VNC, SOAP)
+912/tcp  open  vmware-auth      VMware Authentication Daemon 1.0 (Uses VNC, SOAP)
+1025/tcp open  msrpc            Microsoft Windows RPC
+1026/tcp open  msrpc            Microsoft Windows RPC
+1027/tcp open  msrpc            Microsoft Windows RPC
+1028/tcp open  msrpc            Microsoft Windows RPC
+3389/tcp open  ms-wbt-server    Microsoft Terminal Service
+5000/tcp open  upnp?
+5432/tcp open  postgresql       PostgreSQL DB
+8008/tcp open  http             Apache httpd 2.4.23 ((Win64))
+8080/tcp open  tcpwrapped
+8081/tcp open  blackice-icecap?
+8888/tcp open  http             Savant httpd 3.1
+9000/tcp open  http             Apache Tomcat/Coyote JSP engine 1.1
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5000-TCP:V=6.40%I=7%D=4/14%Time=58F0A4BF%P=x86_64-redhat-linux-gnu%
+SF:r(GetRequest,17D,&quot;HTTP/1\.0\x20404\x20NOT\x20FOUND\r\nContent-Type:\x20
+SF:text/html\r\nContent-Length:\x20233\r\nServer:\x20Werkzeug/0\.11\.9\x20
+SF:Python/2\.7\.11\r\nDate:\x20Fri,\x2014\x20Apr\x202017\x2010:30:23\x20GM
+SF:T\r\n\r\n&lt;!DOCTYPE\x20HTML\x20PUBLIC\x20\&quot;-//W3C//DTD\x20HTML\x203\.2\x
+SF:20Final//EN\&quot;&gt;\n&lt;title&gt;404\x20Not\x20Found&lt;/title&gt;\n&lt;h1&gt;Not\x20Found&lt;/h
+SF:1&gt;\n&lt;p&gt;The\x20requested\x20URL\x20was\x20not\x20found\x20on\x20the\x20s
+SF:erver\.\x20\x20If\x20you\x20entered\x20the\x20URL\x20manually\x20please
+SF:\x20check\x20your\x20spelling\x20and\x20try\x20again\.&lt;/p&gt;\n&quot;)%r(RTSPRe
+SF:quest,E0,&quot;&lt;head&gt;\n&lt;title&gt;Error\x20response&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n&lt;h
+SF:1&gt;Error\x20response&lt;/h1&gt;\n&lt;p&gt;Error\x20code\x20400\.\n&lt;p&gt;Message:\x20Bad
+SF:\x20request\x20version\x20\('RTSP/1\.0'\)\.\n&lt;p&gt;Error\x20code\x20explan
+SF:ation:\x20400\x20=\x20Bad\x20request\x20syntax\x20or\x20unsupported\x20
+SF:method\.\n&lt;/body&gt;\n&quot;);
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8081-TCP:V=6.40%I=7%D=4/14%Time=58F0A4BF%P=x86_64-redhat-linux-gnu%
+SF:r(GetRequest,55,&quot;HTTP/1\.1\x20403\x20Forbidden\r\nContent-Type:\x20text
+SF:/plain\r\nContent-Length:\x2013\r\n\r\n403\x20Forbidden&quot;)%r(FourOhFourR
+SF:equest,55,&quot;HTTP/1\.1\x20403\x20Forbidden\r\nContent-Type:\x20text/plain
+SF:\r\nContent-Length:\x2013\r\n\r\n403\x20Forbidden&quot;)%r(HTTPOptions,55,&quot;H
+SF:TTP/1\.1\x20404\x20Not\x20Found\r\nContent-Type:\x20text/plain\r\nConte
+SF:nt-Length:\x2013\r\n\r\n404\x20Not\x20Found&quot;);
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 86.63 seconds
