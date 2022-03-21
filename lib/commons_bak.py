@@ -116,21 +116,7 @@ def get_logfile(LOGS):
     if not os.path.exists(logs_dir):
         os.makedirs(logs_dir)   	
     log_file = os.path.join(logs_dir, log_name)
-    return log_file 
-
-
-def get_debugger(LOGS):
-    """
-	Returns current log file name
-	LOGS should be a report_path: output from get_report_path()
-    """
-	
-    log_name  = 'debug.log'
-    logs_dir  = LOGS
-    if not os.path.exists(logs_dir):
-        os.makedirs(logs_dir)   	
-    log_file = os.path.join(logs_dir, log_name)
-    return log_file 
+    return log_file  
 
 
 def get_pst_time(timestamp):
