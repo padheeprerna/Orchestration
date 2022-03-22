@@ -1,0 +1,63 @@
+
+gpython:S1192H"JDefine a constant instead of duplicating this literal '</center>' 6 times.(ì–›ùÿÿÿÿ
+bpython:S1192H"EDefine a constant instead of duplicating this literal '<td>' 6 times.(ì–›ùÿÿÿÿ
+_python:S2208"GImport only needed names or import the module and then use its members.(×ƒ¸Ÿ
+dpython:S2208"GImport only needed names or import the module and then use its members.(çøÜ·şÿÿÿÿ
+opython:S117¬"WRename this local variable "NewDIR" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÉÒ…­
+zpython:S117·"bRename this local variable "cssTargetLocation" to match the regular expression ^[_a-z][a-z0-9_]*$.(æÛ£ï
+opython:S1542"RRename function "generateHtml" to match the regular expression ^[a-z_][a-z0-9_]*$.(É¦¤Øøÿÿÿÿ
+Gpython:S1481E"*Remove the unused local variable "rownum".(ë–Ãıÿÿÿÿ
+Bpython:S1481T"*Remove the unused local variable "rownum".(ÌùÏ
+qpython:S3776"TRefactor this function to reduce its Cognitive Complexity from 54 to the 15 allowed.(É¦¤Øøÿÿÿÿ
+6python:S125	"Remove this commented out code.(´óÔ†
+;python:S125"Remove this commented out code.(É£ÕÅùÿÿÿÿ
+dpython:S5799H"GMerge these implicitly concatenated strings; or did you forget a comma?(ì–›ùÿÿÿÿ
+dpython:S5799H"GMerge these implicitly concatenated strings; or did you forget a comma?(ì–›ùÿÿÿÿ
+dpython:S5799I"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799I"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799J"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799J"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799K"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799K"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+_python:S5799`"GMerge these implicitly concatenated strings; or did you forget a comma?(ÂœÂ²
+_python:S5799`"GMerge these implicitly concatenated strings; or did you forget a comma?(ÂœÂ²
+dpython:S5799d"GMerge these implicitly concatenated strings; or did you forget a comma?(¤®‘úùÿÿÿÿ
+dpython:S5799d"GMerge these implicitly concatenated strings; or did you forget a comma?(¤®‘úùÿÿÿÿ
+<python:S125¤"Remove this commented out code.(²¯Ú¼ùÿÿÿÿ
+7python:S125²"Remove this commented out code.(ã¥
+<python:S125´"Remove this commented out code.(òğğûÿÿÿÿ
+6python:S125¶"Remove this commented out code.(àÒØ5
+7python:S125¸"Remove this commented out code.(ÀËê×
+7python:S125º"Remove this commented out code.(¾Şàñ
+7python:S125Ò"Remove this commented out code.(•Ğ²Í
+gpython:S1192H"JDefine a constant instead of duplicating this literal '</center>' 6 times.(ì–›ùÿÿÿÿ
+bpython:S1192H"EDefine a constant instead of duplicating this literal '<td>' 6 times.(ì–›ùÿÿÿÿ
+_python:S2208"GImport only needed names or import the module and then use its members.(×ƒ¸Ÿ
+dpython:S2208"GImport only needed names or import the module and then use its members.(çøÜ·şÿÿÿÿ
+opython:S117¬"WRename this local variable "NewDIR" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÉÒ…­
+zpython:S117·"bRename this local variable "cssTargetLocation" to match the regular expression ^[_a-z][a-z0-9_]*$.(æÛ£ï
+opython:S1542"RRename function "generateHtml" to match the regular expression ^[a-z_][a-z0-9_]*$.(É¦¤Øøÿÿÿÿ
+Gpython:S1481E"*Remove the unused local variable "rownum".(ë–Ãıÿÿÿÿ
+Bpython:S1481T"*Remove the unused local variable "rownum".(ÌùÏ
+qpython:S3776"TRefactor this function to reduce its Cognitive Complexity from 54 to the 15 allowed.(É¦¤Øøÿÿÿÿ
+6python:S125	"Remove this commented out code.(´óÔ†
+;python:S125"Remove this commented out code.(É£ÕÅùÿÿÿÿ
+dpython:S5799H"GMerge these implicitly concatenated strings; or did you forget a comma?(ì–›ùÿÿÿÿ
+dpython:S5799H"GMerge these implicitly concatenated strings; or did you forget a comma?(ì–›ùÿÿÿÿ
+dpython:S5799I"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799I"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799J"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799J"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799K"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+dpython:S5799K"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ
+_python:S5799`"GMerge these implicitly concatenated strings; or did you forget a comma?(ÂœÂ²
+_python:S5799`"GMerge these implicitly concatenated strings; or did you forget a comma?(ÂœÂ²
+dpython:S5799d"GMerge these implicitly concatenated strings; or did you forget a comma?(¤®‘úùÿÿÿÿ
+dpython:S5799d"GMerge these implicitly concatenated strings; or did you forget a comma?(¤®‘úùÿÿÿÿ
+<python:S125¤"Remove this commented out code.(²¯Ú¼ùÿÿÿÿ
+7python:S125²"Remove this commented out code.(ã¥
+<python:S125´"Remove this commented out code.(òğğûÿÿÿÿ
+6python:S125¶"Remove this commented out code.(àÒØ5
+7python:S125¸"Remove this commented out code.(ÀËê×
+7python:S125º"Remove this commented out code.(¾Şàñ
+7python:S125Ò"Remove this commented out code.(•Ğ²Í

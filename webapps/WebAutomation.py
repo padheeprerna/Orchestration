@@ -1,14 +1,14 @@
 import getopt
-import time
-from HTMLReportGenerator import *
-from CustomReporting import *
-from JiraBugCreation import *
 import stat
-from mail import *
-from lib.commons import get_report_path
-from lib.commons import get_debugger
-from lib.logger import Logger
 
+from CustomReporting import *
+from HTMLReportGenerator import *
+from JiraBugCreation import *
+from lib.commons import get_debugger
+from lib.commons import get_report_path
+from lib.logger import Logger
+# import statcd
+from mail import *
 
 hostname = ''
 xmlreportname = ''
@@ -21,7 +21,7 @@ finalreportpath = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
 
 thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
 
-# customoptions = "--http-request-concurrency=20 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-include-pattern=www-stage.vmware.com --scope-exclude-file-extensions=css,png "
+customoptions = "--http-request-concurrency=20 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-include-pattern=www-stage.vmware.com --scope-exclude-file-extensions=css,png"
 customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-exclude-file-extensions=css,png "
 
 report_path = get_report_path(REPORT_PATH, app_type)
@@ -33,28 +33,29 @@ log.record('debug', "Value of log_path is: " + log_path)
 afrreportname = report_path + "//" + 'Report_' + dir + '.afr'
 logfilename = log_path + dir + '.log'
 
+
 # --------------------------------------------------------------------------
 # Function: Defining Usage
 # --------------------------------------------------------------------------
 
 def usage():
-    print ('\n*************************************************************')
-    print ('\n******* VMware Web Application Security Scanner Usage *******')
-    print ('\n*************************************************************')
-    print ('\nFor Non-Authenticated Scan')
-    print ('--------------------------')
-    print ('\nWebAutomation.py -u <Loginlurl>')
-    print ('\nFor Authenticated Scan')
-    print ('----------------------')
-    print ('\nWebAutomation.py -u <Loginlurl> -n <UserName> -p <Password> -l <Platform>')
-    print ('\n\nMandatory Parameters:')
-    print ('---------')
-    print ('\n-u Application lurl')
-    print ('\n\nOptional Parameters:')
-    print ('--------')
-    print ('\nUsername and Password are optional. But required for authenticated scan.')
-    print ('-n UserName')
-    print ('-p Password')
+    print('\n*************************************************************')
+    print('\n******* VMware Web Application Security Scanner Usage *******')
+    print('\n*************************************************************')
+    print('\nFor Non-Authenticated Scan')
+    print('--------------------------')
+    print('\nWebAutomation.py -u <Loginlurl>')
+    print('\nFor Authenticated Scan')
+    print('----------------------')
+    print('\nWebAutomation.py -u <Loginlurl> -n <UserName> -p <Password> -l <Platform>')
+    print('\n\nMandatory Parameters:')
+    print('---------')
+    print('\n-u Application lurl')
+    print('\n\nOptional Parameters:')
+    print('--------')
+    print('\nUsername and Password are optional. But required for authenticated scan.')
+    print('-n UserName')
+    print('-p Password')
 
 
 # --------------------------------------------------------------------------
@@ -84,7 +85,7 @@ def startscan(argv):
     try:
         opts, args = getopt.getopt(argv, "hu:n:p:l:", ["lurl=", "username=", "password=", "platform="])
         if len(opts) == 0:
-            print ('Please check usage:')
+            print('Please check usage:')
             usage()
 
     except getopt.GetoptError:
@@ -111,17 +112,17 @@ def startscan(argv):
         if lurl != '' and username == '' or password == '':
             normalscan(sys.argv[1:])
         elif lurl != '' and username != '' and password == '':
-            print ('Check Usage:')
+            print('Check Usage:')
             usage()
         elif lurl == '' and username == '' and password != '':
-            print ('Check Usage:')
+            print('Check Usage:')
             usage()
         elif lurl == '' and username != '' and password == '':
-            print ('Check Usage')
+            print('Check Usage')
             usage()
         elif lurl != '' and username != '' and password != '':
             execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
-            # print "Initiating Authenticated Scan"
+            print("Initiating Authenticated Scan")
             log.record('debug', "Initializing Authenticated Scan")
 
             platformoption = "--platform=" + platform
@@ -132,16 +133,20 @@ def startscan(argv):
             csvfilepath = os.path.join(report_path, 'Report_' + dir + '.csv')
             workingdirectory = os.path.join(report_path, 'ThirdParty.txt')
 
-            # print(
-            #     '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb" ' + "--scope-exclude-pattern=logout " + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
+            print(
+                '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb" ' + "--scope-exclude-pattern=logout " + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
 
-            os.system('/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb"' + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 2> ' + logfilename + ' --report-save-path=' + afrreportname)
+            os.system(
+                '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb"' + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 2> ' + logfilename + ' --report-save-path=' + afrreportname)
 
-            log.record('debug', "arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb"' + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 2> ' + logfilename + ' --report-save-path=' + afrreportname)
+            log.record('debug',
+                       "arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb"' + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 2> ' + logfilename + ' --report-save-path=' + afrreportname)
 
             if os.path.isfile(afrreportname):
-                os.system('/opt/arachni/bin/arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
-                os.system('/opt/arachni/bin/arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+                os.system(
+                    '/opt/arachni/bin/arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
+                os.system(
+                    '/opt/arachni/bin/arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
             else:
                 log.record('debug', "APR Report does not exist")
 
@@ -160,7 +165,7 @@ def startscan(argv):
             else:
                 log.record('debug', "HTML report not present")
 
-            print ("PDF_REPORT: NA")
+            print("PDF_REPORT: NA")
 
             if csvfilepath:
                 log.record('debug', csvfilepath)
@@ -227,12 +232,12 @@ def normalscan(argv):
         elif opt in ("-l"):
             platform = arg
         else:
-            print ("Please provide mandatory values")
+            print("Please provide mandatory values")
             usage()
 
     try:
         execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
-        # print "Initiating Non-Authenticated Scan"
+        print("Initiating Non-Authenticated Scan")
         log.record('debug', "Initiating Non-Authenticated Scan")
 
         platformoption = "--platform=" + platform
@@ -249,10 +254,10 @@ def normalscan(argv):
         # os.system(
         #     '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
 
-        log.record('debug', "arachni Command Triggered is: " + 'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
-        os.system('/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
-
-
+        log.record('debug',
+                   "arachni Command Triggered is: " + 'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
+        os.system(
+            '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
 
         os.path.isfile(afrreportname)
         os.system('/opt/arachni/bin/arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
@@ -263,7 +268,6 @@ def normalscan(argv):
             log.record('debug', "Value of csvfilepath: " + csvfilepath)
         else:
             log.record('debug', "XML Report Not Found")
-
 
         if csvfilepath:
             log.record('debug', "CSV_REPORT: " + csvfilepath)
@@ -287,7 +291,6 @@ def normalscan(argv):
             generateHtml(csvfilepath, hostname, lurl)
         else:
             log.record('debug', "CSV Report not Found")
-
 
         if jiraflag:
             createbug(csvfilepath)
@@ -345,6 +348,8 @@ def deleteoldfiles():
 
     except Exception as e:
         log.record('debug', e.message)
+
+
 # -------------------------------------------------------------------------
 # Clearing old Directory
 # -------------------------------------------------------------------------
@@ -366,6 +371,7 @@ def deleteolddirectory():
             log.record('debug', "WebApplicationSecurityResults does not exist")
     except Exception as e:
         log.record('debug', e.message)
+
 
 def copycss():
     try:

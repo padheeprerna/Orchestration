@@ -1,0 +1,6 @@
+2022-03-21 13:02:40,558 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-03-21 13:02:40,559 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-03-21 13:02:40,563 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-03-21 13:02:40,564 - security_automation - DEBUG - Value of report_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\21-03-2022\1647867760
+2022-03-21 13:02:40,565 - security_automation - DEBUG - Value of log_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\21-03-2022\1647867760\Debug
+2022-03-21 13:02:40,605 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

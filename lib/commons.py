@@ -10,6 +10,8 @@
 import os, sys
 import time, datetime
 import traceback
+
+import bencode as bencode
 from jinja2 import Template
 import hashlib
 import json
@@ -67,7 +69,7 @@ def get_timenow():
     """
         Returns current time
     """
-    #return (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    # return (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     return datetime.datetime.now()
 
 
@@ -96,7 +98,7 @@ def get_report_name(report_path, report_ext):
     """
         Returns report name
     """
-    return os.path.join(report_path, 'report.'+report_ext)
+    return os.path.join(report_path, 'report.' + report_ext)
 
 
 def get_log_name(report_path):
@@ -111,12 +113,12 @@ def get_logfile(LOGS):
 	Returns current log file name
     """
     curr_date = get_datenow()
-    log_name  = 'debug_'+str(get_timestamp())+'.log'
-    logs_dir  = os.path.join(LOGS, curr_date)
+    log_name = 'debug_' + str(get_timestamp()) + '.log'
+    logs_dir = os.path.join(LOGS, curr_date)
     if not os.path.exists(logs_dir):
-        os.makedirs(logs_dir)   	
+        os.makedirs(logs_dir)
     log_file = os.path.join(logs_dir, log_name)
-    return log_file 
+    return log_file
 
 
 def get_debugger(LOGS):
@@ -124,13 +126,13 @@ def get_debugger(LOGS):
 	Returns current log file name
 	LOGS should be a report_path: output from get_report_path()
     """
-	
-    log_name  = 'debug.log'
-    logs_dir  = LOGS
+
+    log_name = 'debug.log'
+    logs_dir = LOGS
     if not os.path.exists(logs_dir):
-        os.makedirs(logs_dir)   	
+        os.makedirs(logs_dir)
     log_file = os.path.join(logs_dir, log_name)
-    return log_file 
+    return log_file
 
 
 def get_pst_time(timestamp):
@@ -139,7 +141,7 @@ def get_pst_time(timestamp):
     """
     fmt = "%A %B %d %Y %I:%M:%S %p %Z"
     # Timezone [PST]: America/Los_Angeles
-    pst_timezone = timezone('America/Los_Angeles')
+    pst_timezone = time.timezone('America/Los_Angeles')
     now_time = datetime.datetime.fromtimestamp(timestamp, tz=pst_timezone)
     return now_time.strftime(fmt)
 
@@ -150,7 +152,7 @@ def get_ist_time(timestamp):
     """
     fmt = "%A %B %d %Y %I:%M:%S %p %Z"
     # Timezone [IST]: Asia/Calcutta
-    ist_timezone = timezone('Asia/Calcutta')
+    ist_timezone = time.timezone('Asia/Calcutta')
     now_time = datetime.datetime.fromtimestamp(timestamp, tz=ist_timezone)
     return now_time.strftime(fmt)
 
@@ -175,7 +177,8 @@ def decrypt(txt):
 	Returns decrypted string
     """
     return txt.decode('base64', 'strict')
-	
+
+
 def get_dict_checksum(dict):
     """
 	Returns checksum of dictionary
@@ -190,10 +193,10 @@ def capture_traceback(log):
     """
     exc_type, exc_value, exc_traceback = sys.exc_info()
     formatted_lines = traceback.format_exc().splitlines()
-    log.record('debug', '>'*100)
+    log.record('debug', '>' * 100)
     for line in formatted_lines:
         log.record('debug', line)
-    log.record('debug', '>'*100)
+    log.record('debug', '>' * 100)
 
 
 def send_notification(app_name, rfc, project_name, exec_id, rows):
@@ -203,7 +206,7 @@ def send_notification(app_name, rfc, project_name, exec_id, rows):
     _from = MAIL_CONFIG['FROM']
     to = MAIL_CONFIG['TO']
     cc = MAIL_CONFIG['CC']
-    sub = MAIL_CONFIG['SUB']+' '+app_name
+    sub = MAIL_CONFIG['SUB'] + ' ' + app_name
     header = MAIL_CONFIG['HEADER']
 
     template = Template(NOTIFICATION)
