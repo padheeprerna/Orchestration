@@ -1,0 +1,7 @@
+2022-03-22 09:36:02,466 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-03-22 09:36:02,466 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-03-22 09:36:02,466 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-03-22 09:36:02,466 - security_automation - DEBUG - Value of report_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\22-03-2022\1647941762
+2022-03-22 09:36:02,466 - security_automation - DEBUG - Value of log_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\22-03-2022\1647941762\Debug
+2022-03-22 09:36:02,466 - security_automation - DEBUG - Old zip reports got deleted successfully
+2022-03-22 09:36:02,498 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
