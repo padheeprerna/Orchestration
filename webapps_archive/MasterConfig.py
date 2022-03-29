@@ -3,29 +3,29 @@ sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pard
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir)
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 
-newpath = os.path.join(APP_DIR, 'Reports')
+# newpath = os.path.join(APP_DIR, 'Reports')
 # print newpath
 
 REPORT_PATH = os.path.dirname(APP_DIR)
-# print REPORT_PATH
+print (REPORT_PATH)
 
 REPORT_PATH = os.path.join(REPORT_PATH, 'reports')
-# print REPORT_PATH
+print (REPORT_PATH)
 
 externaltoolpath = os.path.join(APP_DIR, 'ThirdPartyTools.py')
-# print externaltoolpath
+print (externaltoolpath)
 
-username = 'mheda@deloitte.com'
-password = 'Deloitte@123'
-project = 'DevSecOps'
-server = 'https://riskadvisory.atlassian.net'
+username = 'jashutosh'
+password = 'VMJira@0401'
+project = 'CS'
+server = 'https://vmware-it.atlassian.net'
 IssueType = 'Bug'
-
+# JenkinsWorkspace = "D:\WebAppSecurityAutomation"
 CSSFilePath = os.path.join(APP_DIR, 'css')
-# print CSSFilePath
+print (CSSFilePath)
 
-jiraflag = True
-
+jiraflag = False
+JiraMS_URL = "http://10.127.235.84:5000/jiramicroservice"
 from_ = "pankaja@vmware.com"
 to = ["pankaja@vmware.com"]  # coma seperated email list
 subject = "Web Application Security Assessment Result"

@@ -1,8 +1,5 @@
 import csv
 from datetime import datetime
-
-from urllib3.util import url
-
 from CustomReporting import *
 from MasterConfig import *
 from shutil import copyfile
@@ -10,21 +7,18 @@ from shutil import copytree
 import os
 import shutil
 # from WebAutomation import log
+
+# inputfile = "D:\security_automation\main\webapps\Test\ImproperWriting\Test2.csv"
+# appname = "Test"
+# url = "xyz.com"
 #
-# inputfile = "C:\\security_automation\\reports\\WebApplication\\19-02-2018\\1519014892\\Report_19_2_2018_4_34_52.csv"
-# inputfile = r"{}".format(inputfile)
-# appname = "test"
-# url = "url"
-# print inputfile
-
-def main(inputfile=None, appname=None):
-    generateHtml(inputfile,appname, url)
-
+# def main():
+#     generateHtml(inputfile,appname, url)
 
 def generateHtml(inputfile, appname, url):
     outputfile = inputfile
     outputfile = outputfile.replace('csv', 'html')
-    # outputfile = r"{}".format(outputfile)
+
     htmlfile = open(outputfile, "w")
     htmlfile.write(
         '<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.4/components/reporters/xml/schema.xsd">')
@@ -38,7 +32,7 @@ def generateHtml(inputfile, appname, url):
     htmlfile.write('<div class="art-header-jpeg"></div></div></div>')
     htmlfile.write('<div class="art-header-wrapper"><div class="art-header-inner"><div class="art-logo">')
     htmlfile.write(
-        '<center><img src="css/Deloitte.png"></center><h1 class="art-logo-name">Web Application Security Assessment Report</h1></div>')
+        '<center><img src="css/vmware.png"></center><h1 class="art-logo-name">Web Application Security Assessment Report</h1></div>')
     htmlfile.write('</div></div></div><div class="cleared reset-box"></div>')
     htmlfile.write('<div class="art-nav"><div class="art-nav-outer"><div class="art-nav-wrapper"></div></div></div>')
     htmlfile.write('<div class="cleared reset-box"></div>')
@@ -103,8 +97,6 @@ def generateHtml(inputfile, appname, url):
                             elif columnnum == 15:
                                 htmlfile.write('<td style="overflow-x:auto; overflow-y:auto; max-width:420px;">' + column + '</td>')
                             elif columnnum >= 40:
-                                value = str(row[-1:])
-                                print( value)
                                 htmlfile.write('<td>''<center>' + str(row[-1]) + '</center>''</td>')
                                 break;
 
@@ -119,8 +111,7 @@ def generateHtml(inputfile, appname, url):
     htmlfile.write(
         '<p style=fon-weight:1000;"><left><b><h3 style="color:blue;"> 2. List of URLs Scanned for <u>' + url + '</u></h3></b></left></p>')
 
-    file = APP_DIR + '\sitemap.txt'
-
+    file = os.path.join(APP_DIR, 'sitemap.txt')
     with open(file) as f:
         content = str(f.readlines())
         content = content.split('[')
@@ -160,7 +151,7 @@ def generateHtml(inputfile, appname, url):
                     #     shutil.rmtree(file_path)
                 except Exception as e:
                     print (e)
-            print( "Old Final Report Directory was present and successfully deleted")
+            print ("Old Final Report Directory was present and successfully deleted")
             # log.record('debug', "Old Final Report Directory was present and successfully deleted")
         else:
             print ("No Old Final Report Directory was present")
@@ -170,39 +161,42 @@ def generateHtml(inputfile, appname, url):
         if os.path.isfile(finalzipfile):
 
             os.remove(finalzipfile)
-            print("Old Final ZIP File was present and successfully deleted")
+            # print "Old Final ZIP File was present and successfully deleted"
             # log.record('debug', "Old Final ZIP File was present and successfully deleted")
         else:
             print ("No Old Final ZIP File was present")
             # log.record('debug', "No Old Final ZIP File was present")
 
         if os.path.isdir(finalreportdirectory):
-            NewDIR = finalreportdirectory
             print ("Final Report Directory already exists")
+            NewDIR = os.path.join(APP_DIR, 'WebApplicationSecurityResults')   
             # log.record('debug', "Final Report Directory already exists")
         else:
             NewDIR = os.path.join(APP_DIR, 'WebApplicationSecurityResults')
             os.makedirs(NewDIR)
 
+        # targetlocation = str(APP_DIR + "\\" + 'WebApplicationSecurityResults')
         targetlocation = str(NewDIR)
+        # targetlocation2 = targetlocation + '\\' + str(reportname)
         targetlocation2 = os.path.join(targetlocation, str(reportname))
-        cssTargetLocation = os.path.join(targetlocation, CSSFilePath)
-        thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
-        thirdpartypath = thirdpartypath.replace("\\", "/")
-        thirdpartytargetlocation = os.path.join(targetlocation, 'ThirdParty.txt')
-        thirdpartytargetlocation = thirdpartytargetlocation.replace("\\", "/")
+        # cssTargetLocation = targetlocation + '\\' + 'css'
+        cssTargetLocation = os.path.join(targetlocation, 'css')
+        # thirdpartypath = APP_DIR + "\\" + "ThirdParty.txt"
+        thirdpartypath = os.path.join(APP_DIR, 'ThirtParty.txt')
+        # thirdpartytargetlocation = targetlocation + '\\' + 'ThirdParty.txt'
+        thirdpartytargetlocation = os.path.join(APP_DIR, 'ThirdParty.txt')
+
+        print (outputfile)
+        print (targetlocation2)
 
         if outputfile:
-            # copyfile(outputfile, targetlocation2)
-            shutil.copy(outputfile, targetlocation2)
+           shutil. copyfile(outputfile, targetlocation2)
         else:
             print ("Issue copying HTML file to destination")
             # log.record('debug', "Issue copying HTML file to destination")
 
         if thirdpartypath:
-            # copyfile(thirdpartypath, thirdpartytargetlocation)
-            shutil.copy(thirdpartypath, thirdpartytargetlocation)
-            print( "ThirdParty file Copied Successfully")
+            shutil.copyfile(thirdpartypath, thirdpartytargetlocation)
         else:
             print ("Issue copying ThirdParty path to destination")
             # log.record('debug',  "Issue copying ThirdParty path to destination")
@@ -211,7 +205,7 @@ def generateHtml(inputfile, appname, url):
             print ("CSS files already exists")
             # log.record('debug', "CSS files already exists")
         else:
-            copytree(CSSFilePath, cssTargetLocation)
+            shutil.copytree(CSSFilePath, cssTargetLocation)
 
         # foldertozip = APP_DIR + "\\" + "WebApplicationSecurityResults"
         foldertozip = os.path.join(APP_DIR, 'WebApplicationSecurityResults')
@@ -221,19 +215,11 @@ def generateHtml(inputfile, appname, url):
             # log.record('debug', "ZIP report file created successfully")
             os.rename(zippedfile, zippedfile + '.txt')
         else:
-            print( "Issue creating Zip report file")
+            print ("Issue creating Zip report file")
             # log.record('debug', "Issue creating Zip report file")
-
-        print ("----------------------------------------------")
-        print ("                 SCAN Report                 ")
-        print ("----------------------------------------------")
-
-        print ("HTML Report: " + outputfile)
     except Exception as e:
         print (e.message)
         # log.record('debug', e.message)
-
-
 
 
 # main ()

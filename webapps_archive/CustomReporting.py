@@ -47,6 +47,6 @@ def customreporting(xmlreport):
             print ("Issue in deleting ThirdParty.txt")
 
     except Exception as e:
-        print(e)
+        print (e.message)
 
 # main ()

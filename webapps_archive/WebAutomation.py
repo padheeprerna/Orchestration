@@ -1,15 +1,13 @@
 import getopt
-import traceback
-import time
-from HTMLReportGenerator import *
-from CustomReporting import *
-from JiraBugCreation import *
 import stat
-from mail import *
-from lib.commons import get_report_path
+
+from HTMLReportGenerator import *
+from JiraBugCreation import *
 from lib.commons import get_debugger
+from lib.commons import get_report_path
 from lib.logger import Logger
-import xmlutils
+# import statcd
+from mail import *
 
 hostname = ''
 xmlreportname = ''
@@ -22,14 +20,11 @@ finalreportpath = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
 
 thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
 
-# customoptions = "--http-request-concurrency=20 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-include-pattern=www-stage.vmware.com --scope-exclude-file-extensions=css,png "
-customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
+customoptions = "--http-request-concurrency=20 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-include-pattern=www-stage.vmware.com --scope-exclude-file-extensions=css,png"
+customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-exclude-file-extensions=css,png "
 
 report_path = get_report_path(REPORT_PATH, app_type)
-
 log = Logger(get_debugger(report_path))
-time2 = datetime.now()
-log.record('debug', "Web Application Scan Started at: " + str(time2))
 log.record('debug', "Value of report_path is: " + report_path)
 log_path = os.path.join(report_path, "Debug")
 log.record('debug', "Value of log_path is: " + log_path)
@@ -37,28 +32,29 @@ log.record('debug', "Value of log_path is: " + log_path)
 afrreportname = report_path + "//" + 'Report_' + dir + '.afr'
 logfilename = log_path + dir + '.log'
 
+
 # --------------------------------------------------------------------------
 # Function: Defining Usage
 # --------------------------------------------------------------------------
 
 def usage():
-    print ('\n*************************************************************')
-    print ('\n******* VMware Web Application Security Scanner Usage *******')
-    print ('\n*************************************************************')
-    print ('\nFor Non-Authenticated Scan')
-    print ('--------------------------')
-    print ('\nWebAutomation.py -u <Loginlurl>')
-    print ('\nFor Authenticated Scan')
-    print ('----------------------')
-    print ('\nWebAutomation.py -u <Loginlurl> -n <UserName> -p <Password> -l <Platform>')
-    print ('\n\nMandatory Parameters:')
-    print ('---------')
-    print( '\n-u Application lurl')
-    print ('\n\nOptional Parameters:')
-    print ('--------')
-    print ('\nUsername and Password are optional. But required for authenticated scan.')
-    print ('-n UserName')
-    print ('-p Password')
+    print('\n*************************************************************')
+    print('\n******* VMware Web Application Security Scanner Usage *******')
+    print('\n*************************************************************')
+    print('\nFor Non-Authenticated Scan')
+    print('--------------------------')
+    print('\nWebAutomation.py -u <Loginlurl>')
+    print('\nFor Authenticated Scan')
+    print('----------------------')
+    print('\nWebAutomation.py -u <Loginlurl> -n <UserName> -p <Password> -l <Platform>')
+    print('\n\nMandatory Parameters:')
+    print('---------')
+    print('\n-u Application lurl')
+    print('\n\nOptional Parameters:')
+    print('--------')
+    print('\nUsername and Password are optional. But required for authenticated scan.')
+    print('-n UserName')
+    print('-p Password')
 
 
 # --------------------------------------------------------------------------
@@ -66,17 +62,14 @@ def usage():
 # --------------------------------------------------------------------------
 
 def main():
-
+    deleteoldfiles()
+    deleteolddirectory()
     try:
-        deleteoldfiles()
-        deleteolddirectory()
+
         startscan(sys.argv[1:])
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
-
-
+        setattr(e, 'message', 'show this message')
+        log.record('debug', e.message)
 
 
 # --------------------------------------------------------------------------
@@ -92,7 +85,7 @@ def startscan(argv):
     try:
         opts, args = getopt.getopt(argv, "hu:n:p:l:", ["lurl=", "username=", "password=", "platform="])
         if len(opts) == 0:
-            print( 'Please check usage:')
+            print('Please check usage:')
             usage()
 
     except getopt.GetoptError:
@@ -119,17 +112,17 @@ def startscan(argv):
         if lurl != '' and username == '' or password == '':
             normalscan(sys.argv[1:])
         elif lurl != '' and username != '' and password == '':
-            print( 'Check Usage:')
+            print('Check Usage:')
             usage()
         elif lurl == '' and username == '' and password != '':
-            print ('Check Usage:')
+            print('Check Usage:')
             usage()
         elif lurl == '' and username != '' and password == '':
-            print ('Check Usage')
+            print('Check Usage')
             usage()
         elif lurl != '' and username != '' and password != '':
-            execplugin = "--plugin=exec:during=" + '"' 'Python ' + externaltoolpath + ' ' + hostname
-            # print "Initiating Authenticated Scan"
+            execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
+            print("Initiating Authenticated Scan")
             log.record('debug', "Initializing Authenticated Scan")
 
             platformoption = "--platform=" + platform
@@ -141,22 +134,27 @@ def startscan(argv):
             workingdirectory = os.path.join(report_path, 'ThirdParty.txt')
 
 
-            os.system('Arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
-                '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
+            print(
+                ' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb" ' + "--scope-exclude-pattern=logout " + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
 
-            # os.system('arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="username=' + username +
-            #    '&password=' + password + '",check="Logout" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
+            os.system(
+                ' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb"' + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 2> ' + logfilename + ' --report-save-path=' + afrreportname)
 
-            os.path.isfile(afrreportname)
-            os.system('arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
-            os.system('arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+            log.record('debug',
+                       "arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' --plugin=login_script:script="D:\security_automation\main\webapps\loginscript.rb"' + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 2> ' + logfilename + ' --report-save-path=' + afrreportname)
+
+            if os.path.isfile(afrreportname):
+                os.system(
+                    ' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
+                os.system(
+                    ' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+            else:
+                log.record('debug', "APR Report does not exist")
 
             if xmlreportname:
                 os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
-                log.record('debug', "Value of csvfilepath: " + csvfilepath)
             else:
-                log.record('debug', "XML Report Not Found")
-
+                log.record('debug', "XML Report not found")
 
             if csvfilepath:
                 log.record('debug', "CSV_REPORT: " + csvfilepath)
@@ -168,26 +166,19 @@ def startscan(argv):
             else:
                 log.record('debug', "HTML report not present")
 
-            log.record('debug', "PDF_REPORT: " + 'NA')
+            print("PDF_REPORT: NA")
+
+            if csvfilepath:
+                log.record('debug', csvfilepath)
+                createbug(csvfilepath)
+                generateHtml(csvfilepath, hostname, lurl)
+            else:
+                log.record('debug', "CSV Report not found")
 
             if xmlreportname:
                 customreporting(xmlreportname)
             else:
-                log.record('debug', "XML Report Not Found")
-
-
-            if jiraflag:
-                csvfilepath = r"{}".format(csvfilepath)
-                os.system('Python ' + 'C:\\security_automation\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
-            else:
-                log.record('debug', 'JIRA flag is set to 0')
-
-            if csvfilepath:
-                csvfilepath = r"{}".format(csvfilepath)
-                print( csvfilepath)
-                generateHtml(csvfilepath, hostname, lurl)
-            else:
-                log.record('debug', "CSV Report not Found")
+                log.record('debug', "XML not found")
 
             if thirdpartypath:
                 copyfile(thirdpartypath, workingdirectory)
@@ -195,7 +186,6 @@ def startscan(argv):
                 log.record('debug', "Issue copying Third party files to working directory")
 
             copycss()
-
 
             # SATT = [Successattachments];
             #
@@ -207,10 +197,10 @@ def startscan(argv):
             # else:
             #     send_email(from_, to, subject, Failedbody, FailedAttachments, cc)
             #     print("Email trigger failed")
+
+
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
+        log.record('debug', e.message)
 
 
 # --------------------------------------------------------------------------
@@ -243,12 +233,12 @@ def normalscan(argv):
         elif opt in ("-l"):
             platform = arg
         else:
-            print( "Please provide mandatory values")
+            print("Please provide mandatory values")
             usage()
 
     try:
-        execplugin = "--plugin=exec:during=" + '"' 'Python ' + externaltoolpath + ' ' + hostname
-        # print "Initiating Non-Authenticated Scan"
+        execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
+        print("Initiating Non-Authenticated Scan")
         log.record('debug', "Initiating Non-Authenticated Scan")
 
         platformoption = "--platform=" + platform
@@ -260,24 +250,25 @@ def normalscan(argv):
         workingdirectory = os.path.join(report_path, 'ThirdParty.txt')
 
         # print (
-        # 'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
+        # '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
         #
         # os.system(
-        #     'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
+        #     '/opt/arachni/bin/arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
 
-        log.record('debug', "Arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
-        os.system('arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
+        log.record('debug',
+                   "arachni Command Triggered is: " + 'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
+        os.system(
+            ' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
 
         os.path.isfile(afrreportname)
-        os.system('arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
-        os.system('arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+        os.system(' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
+        os.system(' C:/"Program Files"/arachni-1.6.1-0.6.1-windows-x86_64/bin/arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
         if xmlreportname:
             os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
             log.record('debug', "Value of csvfilepath: " + csvfilepath)
         else:
             log.record('debug', "XML Report Not Found")
-
 
         if csvfilepath:
             log.record('debug', "CSV_REPORT: " + csvfilepath)
@@ -296,23 +287,16 @@ def normalscan(argv):
         else:
             log.record('debug', "XML Report Not Found")
 
-
-
-
-        if jiraflag:
-            csvfilepath = r"{}".format(csvfilepath)
-            os.system('Python ' + 'C:\\security_automation\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
-        else:
-            log.record('debug', "JIRA Flag is set to 0")
-
-
         if csvfilepath:
-            csvfilepath = r"{}".format(csvfilepath)
-            print( csvfilepath)
+            log.record('debug', "Calling GenerateHTML Function")
             generateHtml(csvfilepath, hostname, lurl)
         else:
             log.record('debug', "CSV Report not Found")
 
+        if jiraflag:
+            createbug(csvfilepath)
+        else:
+            log.record('debug', "JIRA Flag is set to 0")
 
         if thirdpartypath:
             copyfile(thirdpartypath, workingdirectory)
@@ -335,9 +319,7 @@ def normalscan(argv):
         # log.record('debug', "Failed")
 
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
+        log.record('debug', e.message)
 
 
 # -------------------------------------------------------------------------
@@ -353,9 +335,8 @@ def deleteoldfiles():
         else:
             log.record('debug', "Issue deleting old zip report files")
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
+        setattr(e, 'message', 'show this message')
+        log.record('debug', e.message)
 
     try:
         txtfiletoremove = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
@@ -364,10 +345,14 @@ def deleteoldfiles():
             log.record('debug', "Old txt reports got deleted successfully")
         else:
             log.record('debug', "Issue deleting old txt report files")
+
+
+
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
+        setattr(e, 'message', 'show this message')
+        log.record('debug', e.message)
+
+
 # -------------------------------------------------------------------------
 # Clearing old Directory
 # -------------------------------------------------------------------------
@@ -388,9 +373,8 @@ def deleteolddirectory():
         else:
             log.record('debug', "WebApplicationSecurityResults does not exist")
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
+        log.record('debug', e.message)
+
 
 def copycss():
     try:
@@ -402,9 +386,8 @@ def copycss():
             log.record('debug', "Issue copying CSS file to target location")
 
     except Exception as e:
-        #print("MY ERROR --->>>>>" + str(e))
-        #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
-        log.record('debug', str(e))
+        setattr(e, 'message', 'show this message')
+        log.record('debug', e.message)
 
 
 # --------------------------------------------------------------------------

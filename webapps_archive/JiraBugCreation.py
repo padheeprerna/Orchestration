@@ -9,10 +9,6 @@ import http.client
 http.client.HTTPConnection.debuglevel = 2
 
 
-class JiraMS_URL:
-    pass
-
-
 def createbug(reportfilename):  # Utilizing excel file generated to input mandatory details for Jira bug logging
 
     try:
@@ -45,30 +41,28 @@ def createbug(reportfilename):  # Utilizing excel file generated to input mandat
 
             headers = {'Content-Type': 'application/json'}
 
-            print( JiraMS_URL + ',' + headers + ',' + jsondata)
-
             response = requests.post(JiraMS_URL, headers=headers, json=jsondata)
 
             auth_jira = JIRA(server=server, basic_auth=(username, password))  # Authentication to JIRA
             issuekey = str(response.content)  # Capturing issue key returned by JIRA in a variable
             issue = JIRA.issue(auth_jira, issuekey)
             issue.update(fields={'customfield_12701': [{'value': 'Security'}]})
-            print( 'Issue created for project ' + project + ' in Jira. You can track issue by issue key: ' + issuekey)
+            print ('Issue created for project ' + project + ' in Jira. You can track issue by issue key: ' + issuekey)
 
             # Appending issuekey to CSV for further custom reporting
             if len(data[i]) == 65:
                 data[i].append(issuekey)
             else:
                 data[i].extend(['', issuekey])
-                print( 'printing else')
+                print ('printing else')
             counter += 1
             i += 1
             if counter == 0:
-                print( 'No issues created in Jira for project ' + project)
+                print ('No issues created in Jira for project ' + project)
 
             with open(reportfilename, 'wb') as fp:
                 a = csv.writer(fp, delimiter=',')
                 a.writerows(data)
 
     except Exception as e:
-        print( e.message)
+        print (e.message)
