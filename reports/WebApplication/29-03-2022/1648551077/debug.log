@@ -1,0 +1,16 @@
+2022-03-29 10:51:17,083 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-03-29 10:51:17,083 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-03-29 10:51:17,083 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-03-29 10:51:17,083 - security_automation - DEBUG - Web Application Scan Started at: 2022-03-29 10:51:17.083582
+2022-03-29 10:51:17,083 - security_automation - DEBUG - Value of report_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\29-03-2022\1648551077
+2022-03-29 10:51:17,083 - security_automation - DEBUG - Value of log_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\29-03-2022\1648551077\Debug
+2022-03-29 10:51:17,083 - security_automation - DEBUG - [WinError 2] The system cannot find the file specified: 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\WebApplicationSecurityResults.zip'
+2022-03-29 10:51:17,083 - security_automation - DEBUG - [WinError 2] The system cannot find the file specified: 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\WebApplicationSecurityResults.zip.txt'
+2022-03-29 10:51:17,083 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-03-29 10:51:17,083 - security_automation - DEBUG - Initializing Authenticated Scan
+2022-03-29 10:54:23,782 - security_automation - DEBUG - Value of csvfilepath: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\29-03-2022\1648551077\Report_29_3_2022_10_51_17.csv
+2022-03-29 10:54:23,782 - security_automation - DEBUG - CSV_REPORT: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\29-03-2022\1648551077\Report_29_3_2022_10_51_17.csv
+2022-03-29 10:54:23,782 - security_automation - DEBUG - HTML_REPORT: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\29-03-2022\1648551077\Report_29_3_2022_10_51_17.html
+2022-03-29 10:54:23,782 - security_automation - DEBUG - PDF_REPORT: NA
+2022-03-29 10:54:23,897 - security_automation - DEBUG - [Errno 2] No such file or directory: 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\reports\\WebApplication\\29-03-2022\\1648551077\\Report_29_3_2022_10_51_17.csv'
+2022-03-29 10:54:23,929 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

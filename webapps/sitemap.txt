@@ -1,1 +1,2 @@
-<a href="http://10.127.235.84:5000/jiramicroservice">http://10.127.235.84:5000/jiramicroservice</a>
+<a href="http://172.31.33.131/dvwa/index.php">http://172.31.33.131/dvwa/index.php</a>
+<a href="http://172.31.33.131/dvwa/login.php">http://172.31.33.131/dvwa/login.php</a>

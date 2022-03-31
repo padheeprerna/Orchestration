@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.6.1/components/reporters/xml/schema.xsd">
+  <version>1.6.1</version>
+  <seed>7f13d544fdf38b6ef353bc9ca645b967</seed>
+  <options>---
+audit:
+  parameter_values: true
+  exclude_vector_patterns: []
+  include_vector_patterns: []
+  link_templates: []
+  links: true
+  forms: true
+  cookies: true
+  ui_inputs: true
+  ui_forms: true
+  jsons: true
+  xmls: true
+  nested_cookies: true
+browser_cluster:
+  local_storage: {}
+  session_storage: {}
+  wait_for_elements: {}
+  wait_for_timers: false
+  pool_size: 10
+  job_timeout: 60
+  worker_time_to_live: 250
+  ignore_images: true
+  screen_width: 1600
+  screen_height: 1200
+datastore:
+  report_path: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\29-03-2022\1648552423//Report_29_3_2022_11_13_43.afr
+http:
+  user_agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1
+  request_timeout: 20000
+  request_redirect_limit: 5
+  request_concurrency: 10
+  request_queue_size: 200
+  request_headers: {}
+  response_max_size: 10000
+  cookies: {}
+  authentication_type: auto
+input:
+  values: {}
+  default_values:
+    name: arachni_name
+    user: arachni_user
+    usr: arachni_user
+    pass: 5543!%arachni_secret
+    txt: arachni_text
+    num: '132'
+    amount: '100'
+    mail: arachni@email.gr
+    account: '12'
+    id: '1'
+  without_defaults: false
+  force: false
+scope:
+  directory_depth_limit: 4
+  auto_redundant_paths: 2
+  redundant_path_patterns: {}
+  dom_depth_limit: 3
+  exclude_file_extensions:
+  - css
+  - png
+  exclude_path_patterns: []
+  exclude_content_patterns: []
+  include_path_patterns:
+  - 13.126.222.138
+  restrict_paths: []
+  extend_paths: []
+  url_rewrites: {}
+session: {}
+checks:
+- code_injection
+- code_injection_php_input_wrapper
+- code_injection_timing
+- csrf
+- file_inclusion
+- ldap_injection
+- no_sql_injection
+- no_sql_injection_differential
+- os_cmd_injection
+- os_cmd_injection_timing
+- path_traversal
+- response_splitting
+- rfi
+- session_fixation
+- source_code_disclosure
+- sql_injection
+- sql_injection_differential
+- sql_injection_timing
+- trainer
+- unvalidated_redirect
+- unvalidated_redirect_dom
+- xpath_injection
+- xss
+- xss_dom
+- xss_dom_script_context
+- xss_event
+- xss_path
+- xss_script_context
+- xss_tag
+- xxe
+- allowed_methods
+- backdoors
+- backup_directories
+- backup_files
+- common_admin_interfaces
+- common_directories
+- common_files
+- directory_listing
+- captcha
+- cookie_set_for_parent_domain
+- credit_card
+- cvs_svn_users
+- emails
+- form_upload
+- hsts
+- html_objects
+- http_only_cookies
+- insecure_cookies
+- insecure_cors_policy
+- mixed_resource
+- password_autocomplete
+- private_ip
+- ssn
+- unencrypted_password_forms
+- x_frame_options
+- htaccess_limit
+- http_put
+- insecure_client_access_policy
+- insecure_cross_domain_policy_access
+- insecure_cross_domain_policy_headers
+- interesting_responses
+- localstart_asp
+- origin_spoof_access_restriction_bypass
+- webdav
+- xst
+platforms:
+- windows
+plugins:
+  exec:
+    during: Python C:\Users\Public\Desktop\code\Orchestration\webapps\ThirdPartyTools.py
+      13.126.222.138
+  autologin:
+    url: http://13.126.222.138/dvwa/index.php
+    parameters: uid=admin&amp;passw=admin
+    check: PERSONAL
+no_fingerprinting: false
+authorized_by:
+url: http://13.126.222.138/dvwa/index.php
+</options>
+  <start_datetime>2022-03-29T11:13:49+00:00</start_datetime>
+  <finish_datetime>2022-03-29T11:16:37+00:00</finish_datetime>
+  <sitemap/>
+  <issues/>
+  <plugins>
+    <autologin>
+      <name>AutoLogin</name>
+      <description>
+It looks for the login form in the user provided URL, merges its input fields
+with the user supplied parameters and sets the cookies of the response and
+request as framework-wide cookies.
+
+**NOTICE**: If the login form is by default hidden and requires a sequence of DOM
+interactions in order to become visible, this plugin will not be able to submit it.
+</description>
+      <results>
+        <message>Could not find a form suiting the provided parameters.</message>
+        <status>form_not_found</status>
+      </results>
+    </autologin>
+    <exec>
+      <name>Exec</name>
+      <description>
+Calls external executables at different scan stages.
+
+The following variables can be used in the executable string:
+
+* `__URL__`: Target URL.
+* `__URL_SCHEME__`: URL scheme (http/https).
+* `__URL_HOST__`: URL host.
+* `__URL_PORT__`: URL port.
+* `__STAGE__`: Scan stage (pre/during/post).
+* `__ISSUE_COUNT__`: Amount of logged issues.
+* `__SITEMAP_SIZE__`: Amount of discovered pages.
+* `__FRAMEWORK_RUNTIME__`: Scan runtime.
+* `__FRAMEWORK_STATUS__`: Framework status.
+
+**Example:**
+
+The following:
+
+    echo "__URL__ __URL_SCHEME__ __URL_HOST__ __URL_PORT__ __STAGE__ __ISSUE_COUNT__ __SITEMAP_SIZE__ __FRAMEWORK_RUNTIME__ __FRAMEWORK_STATUS__"
+
+Will result in:
+
+    http://testfire.net/ http testfire.net 80 post 0 2 3.906482517 cleanup
+
+_Will not work over RPC._
+</description>
+      <results>
+        <outcome>
+          <stage>during</stage>
+          <status>0</status>
+          <pid>8892</pid>
+          <executable>Python C:\Users\Public\Desktop\code\Orchestration\webapps\ThirdPartyTools.py 13.126.222.138</executable>
+          <stdout>SSLScan 13.126.222.138
+</stdout>
+          <stderr>'nmap' is not recognized as an internal or external command,
+operable program or batch file.
+'SSLscan' is not recognized as an internal or external command,
+operable program or batch file.
+</stderr>
+          <runtime>0.0864202</runtime>
+        </outcome>
+      </results>
+    </exec>
+  </plugins>
+</report>

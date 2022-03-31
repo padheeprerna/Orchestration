@@ -11,15 +11,16 @@ def main():
 
 def thirdpartyinvoke(hostname):
     try:
-
+        os.chdir('C:\\Program Files (x86)\\Nmap')
         os.system('nmap ' + '-sV ' + hostname)
 
+        os.chdir('C:\\Users\\Public\\Desktop\\code\\SSLScan')
         os.system('SSLscan ' + hostname)
 
         print ('SSLScan ' + hostname)
 
     except Exception as e:
-        print(e.message)
+        print(str(e))
         # log.record('debug', e.message)
 
 

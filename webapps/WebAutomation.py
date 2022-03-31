@@ -9,7 +9,6 @@ from mail import *
 from lib.commons import get_report_path
 from lib.commons import get_debugger
 from lib.logger import Logger
-import xmlutils
 
 hostname = ''
 xmlreportname = ''
@@ -140,7 +139,7 @@ def startscan(argv):
             csvfilepath = os.path.join(report_path, 'Report_' + dir + '.csv')
             workingdirectory = os.path.join(report_path, 'ThirdParty.txt')
 
-
+            os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
             os.system('Arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
                 '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
 
@@ -152,6 +151,7 @@ def startscan(argv):
             os.system('arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
             if xmlreportname:
+                os.chdir('C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310\\Scripts')
                 os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
                 log.record('debug', "Value of csvfilepath: " + csvfilepath)
             else:
@@ -266,6 +266,7 @@ def normalscan(argv):
         #     'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
 
         log.record('debug', "Arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
+        os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
         os.system('arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
 
         os.path.isfile(afrreportname)
@@ -273,6 +274,7 @@ def normalscan(argv):
         os.system('arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
         if xmlreportname:
+            os.chdir('C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310\\Scripts')
             os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
             log.record('debug', "Value of csvfilepath: " + csvfilepath)
         else:

@@ -1,0 +1,927 @@
+<?xml version="1.0"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.6.1/components/reporters/xml/schema.xsd">
+  <version>1.6.1</version>
+  <seed>de141abbdf1c5e1a4d257538e09ef34f</seed>
+  <options>---
+audit:
+  parameter_values: true
+  exclude_vector_patterns: []
+  include_vector_patterns: []
+  link_templates: []
+  links: true
+  forms: true
+  cookies: true
+  ui_inputs: true
+  ui_forms: true
+  jsons: true
+  xmls: true
+  nested_cookies: true
+browser_cluster:
+  local_storage: {}
+  session_storage: {}
+  wait_for_elements: {}
+  wait_for_timers: false
+  pool_size: 10
+  job_timeout: 60
+  worker_time_to_live: 250
+  ignore_images: true
+  screen_width: 1600
+  screen_height: 1200
+datastore:
+  report_path: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\30-03-2022\1648636818//Report_30_3_2022_10_40_18.afr
+http:
+  user_agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1
+  request_timeout: 20000
+  request_redirect_limit: 5
+  request_concurrency: 10
+  request_queue_size: 200
+  request_headers: {}
+  response_max_size: 10000
+  cookies: {}
+  authentication_type: auto
+input:
+  values: {}
+  default_values:
+    name: arachni_name
+    user: arachni_user
+    usr: arachni_user
+    pass: 5543!%arachni_secret
+    txt: arachni_text
+    num: '132'
+    amount: '100'
+    mail: arachni@email.gr
+    account: '12'
+    id: '1'
+  without_defaults: false
+  force: false
+scope:
+  directory_depth_limit: 4
+  auto_redundant_paths: 2
+  redundant_path_patterns: {}
+  dom_depth_limit: 3
+  exclude_file_extensions:
+  - css
+  - png
+  exclude_path_patterns: []
+  exclude_content_patterns: []
+  include_path_patterns:
+  - 172.31.33.131
+  restrict_paths: []
+  extend_paths: []
+  url_rewrites: {}
+session: {}
+checks:
+- code_injection
+- code_injection_php_input_wrapper
+- code_injection_timing
+- csrf
+- file_inclusion
+- ldap_injection
+- no_sql_injection
+- no_sql_injection_differential
+- os_cmd_injection
+- os_cmd_injection_timing
+- path_traversal
+- response_splitting
+- rfi
+- session_fixation
+- source_code_disclosure
+- sql_injection
+- sql_injection_differential
+- sql_injection_timing
+- trainer
+- unvalidated_redirect
+- unvalidated_redirect_dom
+- xpath_injection
+- xss
+- xss_dom
+- xss_dom_script_context
+- xss_event
+- xss_path
+- xss_script_context
+- xss_tag
+- xxe
+- allowed_methods
+- backdoors
+- backup_directories
+- backup_files
+- common_admin_interfaces
+- common_directories
+- common_files
+- directory_listing
+- captcha
+- cookie_set_for_parent_domain
+- credit_card
+- cvs_svn_users
+- emails
+- form_upload
+- hsts
+- html_objects
+- http_only_cookies
+- insecure_cookies
+- insecure_cors_policy
+- mixed_resource
+- password_autocomplete
+- private_ip
+- ssn
+- unencrypted_password_forms
+- x_frame_options
+- htaccess_limit
+- http_put
+- insecure_client_access_policy
+- insecure_cross_domain_policy_access
+- insecure_cross_domain_policy_headers
+- interesting_responses
+- localstart_asp
+- origin_spoof_access_restriction_bypass
+- webdav
+- xst
+platforms:
+- windows
+plugins:
+  exec:
+    during: Python C:\Users\Public\Desktop\code\Orchestration\webapps\ThirdPartyTools.py
+      172.31.33.131
+  autologin:
+    url: http://172.31.33.131/dvwa/index.php
+    parameters: uid=admin&amp;passw=password
+    check: PERSONAL
+no_fingerprinting: false
+authorized_by:
+url: http://172.31.33.131/dvwa/index.php
+</options>
+  <start_datetime>2022-03-30T10:40:24+00:00</start_datetime>
+  <finish_datetime>2022-03-30T10:41:03+00:00</finish_datetime>
+  <sitemap>
+    <entry url="http://172.31.33.131/dvwa/index.php" code="302"/>
+    <entry url="http://172.31.33.131/dvwa/login.php" code="200"/>
+  </sitemap>
+  <issues>
+    <issue>
+      <name>HTTP TRACE</name>
+      <description>
+The `TRACE` HTTP method allows a client so send a request to the server, and
+have the same request then send back in the server's response. This allows the
+client to determine if the server is receiving the request as expected or if
+specific parts of the request are not arriving as expected.
+For example incorrect encoding or a load balancer has filtered or changed a value.
+On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to
+bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to
+successfully access a session token.
+
+Arachni has discovered that the affected page permits the HTTP `TRACE` method.
+</description>
+      <remedy_guidance>
+The HTTP `TRACE` method is normally not required within production sites and
+should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk
+level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases
+will not have any negative impact on the server or application.
+</remedy_guidance>
+      <remedy_code/>
+      <severity>medium</severity>
+      <check>
+        <name>XST</name>
+        <description>Sends an HTTP TRACE request and checks if it succeeded.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@arachni-scanner.com&gt;</author>
+        <version>0.1.8</version>
+        <shortname>xst</shortname>
+      </check>
+      <cwe>693</cwe>
+      <digest>234735376</digest>
+      <references>
+        <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+        <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+      </references>
+      <vector>
+        <class>Arachni::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.33.131/dvwa/index.php</url>
+        <action>http://172.31.33.131/dvwa/index.php</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body/>
+        <request>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <method>trace</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body/>
+          <raw>TRACE /dvwa/index.php HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <code>200</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0011</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:42 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="Transfer-Encoding" value="chunked"/>
+            <header name="Content-Type" value="message/http"/>
+          </headers>
+          <body/>
+          <raw_headers>HTTP/1.1 200 OK&#xD;
+Date: Wed, 30 Mar 2022 10:40:42 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+Transfer-Encoding: chunked&#xD;
+Content-Type: message/http&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body/>
+        <request>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body/>
+          <raw>GET /dvwa/index.php HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <code>302</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0061</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:40 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="X-Powered-By" value="PHP/8.1.2"/>
+            <header name="Expires" value="Thu, 19 Nov 1981 08:52:00 GMT"/>
+            <header name="Cache-Control" value="no-store, no-cache, must-revalidate"/>
+            <header name="Pragma" value="no-cache"/>
+            <header name="Location" value="login.php"/>
+            <header name="Content-Length" value="0"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body/>
+          <raw_headers>HTTP/1.1 302 Found&#xD;
+Date: Wed, 30 Mar 2022 10:40:40 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+X-Powered-By: PHP/8.1.2&#xD;
+Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;
+Cache-Control: no-store, no-cache, must-revalidate&#xD;
+Pragma: no-cache&#xD;
+Location: login.php&#xD;
+Content-Length: 0&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 200 OK</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+    <issue>
+      <name>Interesting response</name>
+      <description>
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+</description>
+      <remedy_guidance/>
+      <remedy_code/>
+      <severity>informational</severity>
+      <check>
+        <name>Interesting responses</name>
+        <description>Logs all non 200 (OK) server responses.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@arachni-scanner.com&gt;</author>
+        <version>0.2.1</version>
+        <shortname>interesting_responses</shortname>
+      </check>
+      <digest>4184692649</digest>
+      <references>
+        <reference title="w3.org" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+      </references>
+      <vector>
+        <class>Arachni::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.33.131/dvwa/index.php</url>
+        <action>http://172.31.33.131/dvwa/index.php</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  session_start(): Session ID is too long or contains illegal characters. Only the A-Z, a-z, 0-9, &amp;quot;-&amp;quot;, and &amp;quot;,&amp;quot; characters are allowed in &lt;b&gt;C:\xampp\htdocs\dvwa\dvwa\includes\dvwaPage.inc.php&lt;/b&gt; on line &lt;b&gt;8&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  session_start(): Failed to read session data: files (path: C:\xampp\tmp) in &lt;b&gt;C:\xampp\htdocs\dvwa\dvwa\includes\dvwaPage.inc.php&lt;/b&gt; on line &lt;b&gt;8&lt;/b&gt;&lt;br /&gt;
+</body>
+        <request>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="PHPSESSID=hTtP://tests.arachni-scanner.com/rfi.md5.txt;security=impossible"/>
+          </headers>
+          <body/>
+          <raw>GET /dvwa/index.php HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: PHPSESSID=hTtP://tests.arachni-scanner.com/rfi.md5.txt;security=impossible&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <code>302</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.1533</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:41 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="X-Powered-By" value="PHP/8.1.2"/>
+            <header name="Location" value="login.php"/>
+            <header name="Content-Length" value="443"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body>&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  session_start(): Session ID is too long or contains illegal characters. Only the A-Z, a-z, 0-9, &amp;quot;-&amp;quot;, and &amp;quot;,&amp;quot; characters are allowed in &lt;b&gt;C:\xampp\htdocs\dvwa\dvwa\includes\dvwaPage.inc.php&lt;/b&gt; on line &lt;b&gt;8&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  session_start(): Failed to read session data: files (path: C:\xampp\tmp) in &lt;b&gt;C:\xampp\htdocs\dvwa\dvwa\includes\dvwaPage.inc.php&lt;/b&gt; on line &lt;b&gt;8&lt;/b&gt;&lt;br /&gt;
+</body>
+          <raw_headers>HTTP/1.1 302 Found&#xD;
+Date: Wed, 30 Mar 2022 10:40:41 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+X-Powered-By: PHP/8.1.2&#xD;
+Location: login.php&#xD;
+Content-Length: 443&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body/>
+        <request>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body/>
+          <raw>GET /dvwa/index.php HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <code>302</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0061</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:40 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="X-Powered-By" value="PHP/8.1.2"/>
+            <header name="Expires" value="Thu, 19 Nov 1981 08:52:00 GMT"/>
+            <header name="Cache-Control" value="no-store, no-cache, must-revalidate"/>
+            <header name="Pragma" value="no-cache"/>
+            <header name="Location" value="login.php"/>
+            <header name="Content-Length" value="0"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body/>
+          <raw_headers>HTTP/1.1 302 Found&#xD;
+Date: Wed, 30 Mar 2022 10:40:40 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+X-Powered-By: PHP/8.1.2&#xD;
+Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;
+Cache-Control: no-store, no-cache, must-revalidate&#xD;
+Pragma: no-cache&#xD;
+Location: login.php&#xD;
+Content-Length: 0&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 302 Found</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+    <issue>
+      <name>Interesting response</name>
+      <description>
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+</description>
+      <remedy_guidance/>
+      <remedy_code/>
+      <severity>informational</severity>
+      <check>
+        <name>Interesting responses</name>
+        <description>Logs all non 200 (OK) server responses.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@arachni-scanner.com&gt;</author>
+        <version>0.2.1</version>
+        <shortname>interesting_responses</shortname>
+      </check>
+      <digest>1200411284</digest>
+      <references>
+        <reference title="w3.org" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+      </references>
+      <vector>
+        <class>Arachni::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.33.131/dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f</url>
+        <action>http://172.31.33.131/dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for this URL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2 Server at 172.31.33.131 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.33.131/dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f</url>
+          <method>put</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body>Created by Arachni. PUTde141abbdf1c5e1a4d257538e09ef34f</body>
+          <raw>PUT /dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+Content-Length: 55&#xD;
+&#xD;
+Created by Arachni. PUTde141abbdf1c5e1a4d257538e09ef34f</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f</url>
+          <code>405</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0316</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:42 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="Allow" value="GET,POST,OPTIONS,HEAD,TRACE"/>
+            <header name="Content-Length" value="323"/>
+            <header name="Content-Type" value="text/html; charset=iso-8859-1"/>
+          </headers>
+          <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for this URL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2 Server at 172.31.33.131 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 405 Method Not Allowed&#xD;
+Date: Wed, 30 Mar 2022 10:40:42 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+Allow: GET,POST,OPTIONS,HEAD,TRACE&#xD;
+Content-Length: 323&#xD;
+Content-Type: text/html; charset=iso-8859-1&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body/>
+        <request>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body/>
+          <raw>GET /dvwa/index.php HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <code>302</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0061</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:40 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="X-Powered-By" value="PHP/8.1.2"/>
+            <header name="Expires" value="Thu, 19 Nov 1981 08:52:00 GMT"/>
+            <header name="Cache-Control" value="no-store, no-cache, must-revalidate"/>
+            <header name="Pragma" value="no-cache"/>
+            <header name="Location" value="login.php"/>
+            <header name="Content-Length" value="0"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body/>
+          <raw_headers>HTTP/1.1 302 Found&#xD;
+Date: Wed, 30 Mar 2022 10:40:40 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+X-Powered-By: PHP/8.1.2&#xD;
+Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;
+Cache-Control: no-store, no-cache, must-revalidate&#xD;
+Pragma: no-cache&#xD;
+Location: login.php&#xD;
+Content-Length: 0&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 405 Method Not Allowed</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+    <issue>
+      <name>Interesting response</name>
+      <description>
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+</description>
+      <remedy_guidance/>
+      <remedy_code/>
+      <severity>informational</severity>
+      <check>
+        <name>Interesting responses</name>
+        <description>Logs all non 200 (OK) server responses.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@arachni-scanner.com&gt;</author>
+        <version>0.2.1</version>
+        <shortname>interesting_responses</shortname>
+      </check>
+      <digest>1634021214</digest>
+      <references>
+        <reference title="w3.org" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+      </references>
+      <vector>
+        <class>Arachni::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.33.131/dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E</url>
+        <action>http://172.31.33.131/dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access this resource.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2 Server at 172.31.33.131 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.33.131/dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body/>
+          <raw>GET /dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E</url>
+          <code>403</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0015</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:41 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="Content-Length" value="302"/>
+            <header name="Content-Type" value="text/html; charset=iso-8859-1"/>
+          </headers>
+          <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access this resource.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2 Server at 172.31.33.131 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 403 Forbidden&#xD;
+Date: Wed, 30 Mar 2022 10:40:41 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+Content-Length: 302&#xD;
+Content-Type: text/html; charset=iso-8859-1&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body/>
+        <request>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) Arachni/v1.6.1"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Arachni-Scan-Seed" value="de141abbdf1c5e1a4d257538e09ef34f"/>
+            <header name="Cookie" value="security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t"/>
+          </headers>
+          <body/>
+          <raw>GET /dvwa/index.php HTTP/1.1&#xD;
+Host: 172.31.33.131&#xD;
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Arachni-Scan-Seed: de141abbdf1c5e1a4d257538e09ef34f&#xD;
+Cookie: security=impossible;PHPSESSID=45j0ivu2c8t74nbha8bim9aj7t&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <code>302</code>
+          <ip_address>172.31.33.131</ip_address>
+          <time>0.0061</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 30 Mar 2022 10:40:40 GMT"/>
+            <header name="Server" value="Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2"/>
+            <header name="X-Powered-By" value="PHP/8.1.2"/>
+            <header name="Expires" value="Thu, 19 Nov 1981 08:52:00 GMT"/>
+            <header name="Cache-Control" value="no-store, no-cache, must-revalidate"/>
+            <header name="Pragma" value="no-cache"/>
+            <header name="Location" value="login.php"/>
+            <header name="Content-Length" value="0"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body/>
+          <raw_headers>HTTP/1.1 302 Found&#xD;
+Date: Wed, 30 Mar 2022 10:40:40 GMT&#xD;
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2&#xD;
+X-Powered-By: PHP/8.1.2&#xD;
+Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;
+Cache-Control: no-store, no-cache, must-revalidate&#xD;
+Pragma: no-cache&#xD;
+Location: login.php&#xD;
+Content-Length: 0&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.33.131/dvwa/index.php</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 403 Forbidden</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+  </issues>
+  <plugins>
+    <autologin>
+      <name>AutoLogin</name>
+      <description>
+It looks for the login form in the user provided URL, merges its input fields
+with the user supplied parameters and sets the cookies of the response and
+request as framework-wide cookies.
+
+**NOTICE**: If the login form is by default hidden and requires a sequence of DOM
+interactions in order to become visible, this plugin will not be able to submit it.
+</description>
+      <results>
+        <message>Could not find a form suiting the provided parameters.</message>
+        <status>form_not_found</status>
+      </results>
+    </autologin>
+    <exec>
+      <name>Exec</name>
+      <description>
+Calls external executables at different scan stages.
+
+The following variables can be used in the executable string:
+
+* `__URL__`: Target URL.
+* `__URL_SCHEME__`: URL scheme (http/https).
+* `__URL_HOST__`: URL host.
+* `__URL_PORT__`: URL port.
+* `__STAGE__`: Scan stage (pre/during/post).
+* `__ISSUE_COUNT__`: Amount of logged issues.
+* `__SITEMAP_SIZE__`: Amount of discovered pages.
+* `__FRAMEWORK_RUNTIME__`: Scan runtime.
+* `__FRAMEWORK_STATUS__`: Framework status.
+
+**Example:**
+
+The following:
+
+    echo "__URL__ __URL_SCHEME__ __URL_HOST__ __URL_PORT__ __STAGE__ __ISSUE_COUNT__ __SITEMAP_SIZE__ __FRAMEWORK_RUNTIME__ __FRAMEWORK_STATUS__"
+
+Will result in:
+
+    http://testfire.net/ http testfire.net 80 post 0 2 3.906482517 cleanup
+
+_Will not work over RPC._
+</description>
+      <results>
+        <outcome>
+          <stage>during</stage>
+          <status>0</status>
+          <pid>13236</pid>
+          <executable>Python C:\Users\Public\Desktop\code\Orchestration\webapps\ThirdPartyTools.py 172.31.33.131</executable>
+          <stdout>SSLScan 172.31.33.131
+</stdout>
+          <stderr>'nmap' is not recognized as an internal or external command,
+operable program or batch file.
+'SSLscan' is not recognized as an internal or external command,
+operable program or batch file.
+</stderr>
+          <runtime>0.079914</runtime>
+        </outcome>
+      </results>
+    </exec>
+    <healthmap>
+      <name>Health map</name>
+      <description>Generates a simple list of safe/unsafe URLs.</description>
+      <results>
+        <map>
+          <with_issues>http://172.31.33.131/dvwa/%3E%22'%3E%3Cmy_tag_de141abbdf1c5e1a4d257538e09ef34f/%3E</with_issues>
+          <with_issues>http://172.31.33.131/dvwa/Arachni-de141abbdf1c5e1a4d257538e09ef34f</with_issues>
+          <with_issues>http://172.31.33.131/dvwa/index.php</with_issues>
+          <without_issues>http://172.31.33.131/dvwa/login.php</without_issues>
+        </map>
+        <total>4</total>
+        <with_issues>3</with_issues>
+        <without_issues>1</without_issues>
+        <issue_percentage>75</issue_percentage>
+      </results>
+    </healthmap>
+  </plugins>
+</report>

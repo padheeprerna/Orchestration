@@ -1,0 +1,5 @@
+
+spython:S11929"[Define a constant instead of duplicating this literal "%A %B %d %Y %I:%M:%S %p %Z" 3 times.(©–Ü
+;python:S125H"Remove this commented out code.(ÈÏÿ©úÿÿÿÿ
+fpython:S117o"PRename this parameter "LOGS" to match the regular expression ^[_a-z][a-z0-9_]*$.(ä’«l
+gpython:S117|"PRename this parameter "LOGS" to match the regular expression ^[_a-z][a-z0-9_]*$.(ßÙš¡

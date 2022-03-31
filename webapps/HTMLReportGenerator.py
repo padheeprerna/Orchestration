@@ -38,7 +38,7 @@ def generateHtml(inputfile, appname, url):
     htmlfile.write('<div class="art-header-jpeg"></div></div></div>')
     htmlfile.write('<div class="art-header-wrapper"><div class="art-header-inner"><div class="art-logo">')
     htmlfile.write(
-        '<center><img src="css/Deloitte.png"></center><h1 class="art-logo-name">Web Application Security Assessment Report</h1></div>')
+        '<center><img src="css/images/EY.png" width = "50" height = "50"></center><h1 class="art-logo-name">Web Application Security Assessment Report</h1></div>')
     htmlfile.write('</div></div></div><div class="cleared reset-box"></div>')
     htmlfile.write('<div class="art-nav"><div class="art-nav-outer"><div class="art-nav-wrapper"></div></div></div>')
     htmlfile.write('<div class="cleared reset-box"></div>')
