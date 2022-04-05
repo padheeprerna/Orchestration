@@ -1,0 +1,9 @@
+
+`python:S5797&"HReplace this expression; used as a condition it will always be constant.(Ø•úõ
+6python:S125"Remove this commented out code.(åÔäæ
+6python:S125	"Remove this commented out code.(Îêı
+;python:S125"Remove this commented out code.(éÉ¶·ıÿÿÿÿ
+qpython:S3776"TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(Øã“Ñşÿÿÿÿ
+Tpython:S5754e"<Specify an exception class to catch or reraise the exception(ˆÊÉ·
+qpython:S117q"ZRename this local variable "JiraIssue" to match the regular expression ^[_a-z][a-z0-9_]*$.(´ĞŸÜ
+Kpython:S1481o".Remove the unused local variable "_issuetype".(„Ÿ¸øÿÿÿÿ

@@ -1,0 +1,9 @@
+2022-04-04 10:58:33,286 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-04 10:58:33,287 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-04-04 10:58:33,287 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-04 10:58:33,287 - security_automation - DEBUG - Web Application Scan Started at: 2022-04-04 10:58:33.287280
+2022-04-04 10:58:33,287 - security_automation - DEBUG - Value of report_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\04-04-2022\1649069913
+2022-04-04 10:58:33,288 - security_automation - DEBUG - Value of log_path is: C:\Users\Public\Desktop\code\Orchestration\reports\WebApplication\04-04-2022\1649069913\Debug
+2022-04-04 10:58:33,289 - security_automation - DEBUG - [WinError 2] The system cannot find the file specified: 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\WebApplicationSecurityResults.zip'
+2022-04-04 10:58:33,289 - security_automation - DEBUG - [WinError 2] The system cannot find the file specified: 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\WebApplicationSecurityResults.zip.txt'
+2022-04-04 10:58:33,290 - security_automation - DEBUG - WebApplicationSecurityResults does not exist

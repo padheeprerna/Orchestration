@@ -1,33 +1,0 @@
-
-npython:S1192"UDefine a constant instead of duplicating this literal "XML Report Not Found" 4 times.(ŞâÓØ
-ppython:S1192–"RDefine a constant instead of duplicating this literal 'arachni_reporter ' 4 times.(èèĞ†ùÿÿÿÿ
-rpython:S1192"YDefine a constant instead of duplicating this literal '--scope-include-pattern=' 3 times.(¿üÄø
-npython:S1192"UDefine a constant instead of duplicating this literal ' --report-save-path=' 3 times.(¿üÄø
-lpython:S1192"ODefine a constant instead of duplicating this literal 'ThirdParty.txt' 3 times.(©¿á´ùÿÿÿÿ
-_python:S2208"GImport only needed names or import the module and then use its members.(ÏÏ˜¬
-_python:S2208"GImport only needed names or import the module and then use its members.(×ƒ¸Ÿ
-^python:S2208"GImport only needed names or import the module and then use its members.(ĞŸ¼
-dpython:S2208"GImport only needed names or import the module and then use its members.(ö¢æóùÿÿÿÿ
-;python:S125"Remove this commented out code.(ÜÓûæùÿÿÿÿ
-;python:S125J"Remove this commented out code.(—ûş€ùÿÿÿÿ
-wpython:S117l"[Rename this local variable "splitedURL" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÆšÆÂûÿÿÿÿ
-qpython:S3776U"TRefactor this function to reduce its Cognitive Complexity from 45 to the 15 allowed.(¡ãéŒıÿÿÿÿ
-€python:S1871|"cEither merge this branch with the identical one on line "121" or change one of the implementations.(±¬Ö¸şÿÿÿÿ
-`python:S5799‚"GMerge these implicitly concatenated strings; or did you forget a comma?(…œËÄ
-7python:S125ƒ"Remove this commented out code.(‚ö”
-epython:S5799›"GMerge these implicitly concatenated strings; or did you forget a comma?(‚‹Üîûÿÿÿÿ
-<python:S125È"Remove this commented out code.(ç¿®ûÿÿÿÿ
-7python:S125Ì"Remove this commented out code.(Ïæ¶¡
-<python:S125Ó"Remove this commented out code.(—ûş€ùÿÿÿÿ
-xpython:S117ğ"[Rename this local variable "splitedURL" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÆšÆÂûÿÿÿÿ
-rpython:S3776Ü"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(„˜®Áøÿÿÿÿ
-`python:S5799ú"GMerge these implicitly concatenated strings; or did you forget a comma?(…œËÄ
-7python:S125û"Remove this commented out code.(Ïÿûó
-7python:S125†"Remove this commented out code.(àñå
-epython:S5799–"GMerge these implicitly concatenated strings; or did you forget a comma?(‚‹Üîûÿÿÿÿ
-<python:S125Æ"Remove this commented out code.(ç¿®ûÿÿÿÿ
-<python:S125Ô"Remove this commented out code.(—ûş€ùÿÿÿÿ
-<python:S125æ"Remove this commented out code.(—ûş€ùÿÿÿÿ
-<python:S125ò"Remove this commented out code.(—ûş€ùÿÿÿÿ
-<python:S125‰"Remove this commented out code.(—ûş€ùÿÿÿÿ
-<python:S125—"Remove this commented out code.(—ûş€ùÿÿÿÿ

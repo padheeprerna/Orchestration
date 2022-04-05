@@ -15,24 +15,25 @@ REPORT_PATH = os.path.join(REPORT_PATH, 'reports')
 externaltoolpath = os.path.join(APP_DIR, 'ThirdPartyTools.py')
 # print externaltoolpath
 
-username = 'mheda@deloitte.com'
-password = 'Deloitte@123'
+username = 'devsecopscollab@gmail.com'
+password = 'L1l2l3l4l5!'
 project = 'DevSecOps'
-server = 'https://riskadvisory.atlassian.net'
+server = 'https://devsecopscollab.atlassian.net'
 IssueType = 'Bug'
 
 CSSFilePath = os.path.join(APP_DIR, 'css')
 # print CSSFilePath
 
 jiraflag = True
-
-from_ = "pankaja@vmware.com"
-to = ["pankaja@vmware.com"]  # coma seperated email list
+#JiraMS_URL = "http://10.127.235.84:5000/jiramicroservice"
+JiraMS_URL = "http://172.31.33.131:5000/jiramicroservice"
+from_ = "devsecopscollab@gmail.com"
+to = ["devsecopscollab@gmail.com"]  # coma seperated email list
 subject = "Web Application Security Assessment Result"
 # Successbody = "Please find the attachment for Web Application Security Assessment Results"
-Failedbody = "Scan invoked was fail. Please contact pankaja@vmware.com"
-Successattachments = 'D:\security_automation\main\webapps\WebApplicationSecurityResults.zip.txt' # ABsolute path of file
+Failedbody = "Scan invoked was fail. Please contact devsecopscollab@gmail.com"
+Successattachments = 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\*.html' # ABsolute path of file
 FailedAttachments = ""
-cc = ["pankaja@vmware.com"]
+cc = ["devsecopscollab@gmail.com"]
 app_type = "WebApplication"
 

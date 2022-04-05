@@ -25,7 +25,9 @@ def main():
 		_issuedict = new_issue.raw
 		return _issuedict['key']
 	except Exception as e:
-		return e.message
+		return str(e)
 
 if __name__ == "__main__":
-	app.run(host='172.31.0.167')
+	#app.run(host='172.31.0.167')
+	#app.run(host='https://devsecopscollab.atlassian.net')
+	app.run(host='172.31.33.131')

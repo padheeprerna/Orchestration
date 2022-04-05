@@ -1,0 +1,102 @@
+name,description,remedy_guidance,remedy_code,severity,check_name_description_author,check_name_description_version,check_name_description_shortname,check_name_description,cwe,digest,references_reference,references_reference,vector_class,vector_type,vector_url,vector_action,vector,remarks,page_body,page_request_url_method,page_request_url_parameters,page_request_url_headers_header,page_request_url_headers_header_header_header_header,page_request_url_body_raw,page_request_url_body,page_response_url_code,page_response_url_ip_address,page_response_url_time,page_response_url_return_code,page_response_url_return_message,page_response_url_headers_header_header_header_header_body_raw_headers,page_response_url_headers_header_header_header_header_body,page_dom_url_transitions,page_dom_url_data_flow_sinks,page_dom_url_execution_flow_sinks,page_dom_url,page,referring_page_body_request_url_method_parameters_headers_header_header_header_header_header_body_raw_response_url_code_ip_address_time_return_code_return_message_headers_header_header_header_header_header_header_header_header_header_body_raw_headers_dom_url_transitions_data_flow_sinks_execution_flow_sinks,signature,proof,trusted,platform_type,platform_name
+"HTTP TRACE","The `TRACE` HTTP method allows a client so send a request to the server, and
+have the same request then send back in the server's response. This allows the
+client to determine if the server is receiving the request as expected or if
+specific parts of the request are not arriving as expected.
+For example incorrect encoding or a load balancer has filtered or changed a value.
+On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to
+bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to
+successfully access a session token.
+
+Arachni has discovered that the affected page permits the HTTP `TRACE` method.","The HTTP `TRACE` method is normally not required within production sites and
+should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk
+level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases
+will not have any negative impact on the server or application.","","medium","Tasos ""Zapotek"" Laskos <tasos.laskos@arachni-scanner.com>","0.1.8","xst","","693","234735376","","","Arachni::Element::Server","server","http://172.31.33.131/dvwa/index.php","http://172.31.33.131/dvwa/index.php","","","","trace","","","","TRACE /dvwa/index.php HTTP/1.1
+Host: 172.31.33.131
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Arachni-Scan-Seed: e7662299e583b87566b859837087fc56
+Cookie: security=impossible;PHPSESSID=bfp8ms41r9ubp9536qnkmmsih0","","200","172.31.33.131","0.0079","ok","No error","HTTP/1.1 200 OK
+Date: Mon, 04 Apr 2022 10:29:21 GMT
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2
+Transfer-Encoding: chunked
+Content-Type: message/http","","","","","","","","","HTTP/1.1 200 OK","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@arachni-scanner.com>","0.2.1","interesting_responses","","4184692649","","","Arachni::Element::Server","server","http://172.31.33.131/dvwa/index.php","http://172.31.33.131/dvwa/index.php","","","<br />
+<b>Warning</b>:  session_start(): Session ID is too long or contains illegal characters. Only the A-Z, a-z, 0-9, &quot;-&quot;, and &quot;,&quot; characters are allowed in <b>C:\xampp\htdocs\dvwa\dvwa\includes\dvwaPage.inc.php</b> on line <b>8</b><br />
+<br />
+<b>Warning</b>:  session_start(): Failed to read session data: files (path: C:\xampp\tmp) in <b>C:\xampp\htdocs\dvwa\dvwa\includes\dvwaPage.inc.php</b> on line <b>8</b><br />","get","","","","GET /dvwa/index.php HTTP/1.1
+Host: 172.31.33.131
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Arachni-Scan-Seed: e7662299e583b87566b859837087fc56
+Cookie: PHPSESSID=hTtP://tests.arachni-scanner.com/rfi.md5.txt;security=impossible","","302","172.31.33.131","0.0151","ok","No error","HTTP/1.1 302 Found
+Date: Mon, 04 Apr 2022 10:29:19 GMT
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2
+X-Powered-By: PHP/8.1.2
+Location: login.php
+Content-Length: 443
+Content-Type: text/html; charset=UTF-8","","","","","","","","","HTTP/1.1 302 Found","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@arachni-scanner.com>","0.2.1","interesting_responses","","306705362","","","Arachni::Element::Server","server","http://172.31.33.131/dvwa/Arachni-e7662299e583b87566b859837087fc56","http://172.31.33.131/dvwa/Arachni-e7662299e583b87566b859837087fc56","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method PUT is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2 Server at 172.31.33.131 Port 80</address>
+</body></html>","put","","","","PUT /dvwa/Arachni-e7662299e583b87566b859837087fc56 HTTP/1.1
+Host: 172.31.33.131
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Arachni-Scan-Seed: e7662299e583b87566b859837087fc56
+Cookie: security=impossible;PHPSESSID=bfp8ms41r9ubp9536qnkmmsih0
+Content-Length: 55
+
+Created by Arachni. PUTe7662299e583b87566b859837087fc56","","405","172.31.33.131","0.0202","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Mon, 04 Apr 2022 10:29:20 GMT
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2
+Allow: GET,POST,OPTIONS,HEAD,TRACE
+Content-Length: 323
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@arachni-scanner.com>","0.2.1","interesting_responses","","1087552804","","","Arachni::Element::Server","server","http://172.31.33.131/dvwa/%3Cmy_tag_e7662299e583b87566b859837087fc56/%3E","http://172.31.33.131/dvwa/%3Cmy_tag_e7662299e583b87566b859837087fc56/%3E","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+<hr>
+<address>Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2 Server at 172.31.33.131 Port 80</address>
+</body></html>","get","","","","GET /dvwa/%3Cmy_tag_e7662299e583b87566b859837087fc56/%3E HTTP/1.1
+Host: 172.31.33.131
+Authorization: Negotiate TlRMTVNTUAABAAAAt7II4gkACQA3AAAADwAPACgAAAAKAGNFAAAAD0VDMkFNQVotUkZSRUM2NVdPUktHUk9VUA==
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Arachni-Scan-Seed: e7662299e583b87566b859837087fc56
+Cookie: security=impossible;PHPSESSID=bfp8ms41r9ubp9536qnkmmsih0","","403","172.31.33.131","0.0013","ok","No error","HTTP/1.1 403 Forbidden
+Date: Mon, 04 Apr 2022 10:29:20 GMT
+Server: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.2
+Content-Length: 302
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 403 Forbidden","true","",""

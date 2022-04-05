@@ -4,6 +4,7 @@ import time
 from HTMLReportGenerator import *
 from CustomReporting import *
 from JiraBugCreation import *
+#from jira_api import *
 import stat
 from mail import *
 from lib.commons import get_report_path
@@ -65,7 +66,6 @@ def usage():
 # --------------------------------------------------------------------------
 
 def main():
-
     try:
         deleteoldfiles()
         deleteolddirectory()
@@ -97,7 +97,6 @@ def startscan(argv):
     except getopt.GetoptError:
         usage()
         sys.exit(2)
-
     for opt, arg in opts:
         if opt == '-h':
             usage()
@@ -175,16 +174,17 @@ def startscan(argv):
             else:
                 log.record('debug', "XML Report Not Found")
 
-
             if jiraflag:
                 csvfilepath = r"{}".format(csvfilepath)
-                os.system('Python ' + 'C:\\security_automation\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
+                os.system('Python ' + 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
             else:
                 log.record('debug', 'JIRA flag is set to 0')
 
+
             if csvfilepath:
                 csvfilepath = r"{}".format(csvfilepath)
-                print( csvfilepath)
+                print(csvfilepath)
+                createbug(csvfilepath)
                 generateHtml(csvfilepath, hostname, lurl)
             else:
                 log.record('debug', "CSV Report not Found")
@@ -303,7 +303,7 @@ def normalscan(argv):
 
         if jiraflag:
             csvfilepath = r"{}".format(csvfilepath)
-            os.system('Python ' + 'C:\\security_automation\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
+            os.system('Python ' + 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
         else:
             log.record('debug', "JIRA Flag is set to 0")
 
