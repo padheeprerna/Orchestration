@@ -1,1 +1,0 @@
-<a href="http://10.127.235.84:5000/jiramicroservice">http://10.127.235.84:5000/jiramicroservice</a>
