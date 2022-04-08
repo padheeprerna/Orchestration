@@ -4,7 +4,6 @@ import os
 
 hostname = ""
 
-
 def main():
     thirdpartyinvoke(sys.argv[1])
 
@@ -16,8 +15,7 @@ def thirdpartyinvoke(hostname):
 
         os.chdir('C:\\Users\\Public\\Desktop\\code\\SSLScan')
         os.system('SSLscan ' + hostname)
-
-        print ('SSLScan ' + hostname)
+        print('SSLScan ' + hostname)
 
     except Exception as e:
         print(str(e))

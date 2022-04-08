@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 from datetime import datetime
 
 from urllib3.util import url
@@ -16,6 +17,11 @@ import shutil
 # appname = "test"
 # url = "url"
 # print inputfile
+
+# START - Adding the below piece of code for OWASP Dependency Check
+odcCSVPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP\\dependency-check-report.csv"
+htmlTable = ""
+# END - Adding the below piece of code for OWASP Dependency Check
 
 def main(inputfile=None, appname=None):
     generateHtml(inputfile,appname, url)
@@ -138,11 +144,18 @@ def generateHtml(inputfile, appname, url):
 
     htmlfile.write(
         '<p styple=fon-weight:2000;"><left><b><h3 style="color:blue;"> 3. Third Party Tools Security Assessment Results </h3></b></left></p>')
-    htmlfile.write('<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> i). Nmap </h4></b></left></p>')
+    htmlfile.write('<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> i) Nmap </h4></b></left></p>')
     htmlfile.write(
-        '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> ii). SSLScan </h4></b></left></p>')
+        '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> ii) SSLScan </h4></b></left></p>')
     htmlfile.write('<iframe src="ThirdParty.txt"' + '" width="842" height="300"> </iframe>')
 
+    # START - Adding the below piece of code for OWASP Dependency Check
+    htmlfile.write(
+        '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> iii) OWASP Dependency Check </h4></b></left></p>')
+    dataFrame = pd.read_csv(odcCSVPath, usecols = [3, 10, 11, 17, 20])
+    htmlTable = dataFrame.to_html(index = False, na_rep = 'NA', classes = 'table table-stripped')
+    htmlfile.write(htmlTable)
+    # END - Adding the below piece of code for OWASP Dependency Check
     htmlfile.close()
 
     reportname = outputfile.split('\\')

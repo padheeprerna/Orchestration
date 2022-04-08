@@ -17,6 +17,10 @@ csvfilepath = ''
 time = datetime.now()
 dir = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
+# START - Adding the below piece of code for OWASP Dependency Check
+scanPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps"
+reportPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP"
+# END - Adding the below piece of code for OWASP Dependency Check
 
 finalreportpath = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
 
@@ -173,6 +177,11 @@ def startscan(argv):
                 customreporting(xmlreportname)
             else:
                 log.record('debug', "XML Report Not Found")
+            # START - Adding the below piece of code for OWASP Dependency Check
+            os.chdir('C:\\Users\\Administrator\\Downloads\\dependency-check-7.0.4-release\\dependency-check\\bin')
+            os.system(
+                'dependency-check.bat --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format ALL')
+            # END - Adding the below piece of code for OWASP Dependency Check
 
             if jiraflag:
                 csvfilepath = r"{}".format(csvfilepath)
