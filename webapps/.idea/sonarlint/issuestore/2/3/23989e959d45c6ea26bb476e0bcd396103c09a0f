@@ -1,0 +1,9 @@
+
+kpython:S2208	"GImport only needed names or import the module and then use its members.(çøÜ·þÿÿÿÿ8¦…Ÿ‚„0
+}python:S117:"ZRename this local variable "dataFrame" to match the regular expression ^[_a-z][a-z0-9_]*$.(îï–Úþÿÿÿÿ8¦…Ÿ‚„0
+zpython:S117H"\Rename this local variable "excelReport" to match the regular expression ^[_a-z][a-z0-9_]*$.(©”›Ç8¦…Ÿ‚„0
+xpython:S117;"ZRename this local variable "htmlTable" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ú—ÆÒ8¦…Ÿ‚„0
+ypython:S117"[Rename this local variable "outNewPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(þ‡˜Ç8¦…Ÿ‚„0
+~python:S117E"[Rename this local variable "projectKey" to match the regular expression ^[_a-z][a-z0-9_]*$.(Î‡ÐØúÿÿÿÿ8¦…Ÿ‚„0
+ypython:S117"VRename this parameter "reportPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÅÅÿ¼ûÿÿÿÿ8¦…Ÿ‚„0
+xpython:S1542"TRename function "generateReport" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÅÅÿ¼ûÿÿÿÿ8¶…Ÿ‚„0

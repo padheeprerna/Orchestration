@@ -18,8 +18,8 @@ time = datetime.now()
 dir = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
 # START - Adding the below piece of code for OWASP Dependency Check
-scanPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps"
-reportPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP"
+#scanPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps"
+#reportPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP"
 # END - Adding the below piece of code for OWASP Dependency Check
 
 finalreportpath = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
@@ -40,6 +40,9 @@ log.record('debug', "Value of log_path is: " + log_path)
 
 afrreportname = report_path + "//" + 'Report_' + dir + '.afr'
 logfilename = log_path + dir + '.log'
+
+orchPath = str(os.path.dirname(os.path.realpath(sys.argv[0])))
+pythonExePath = str(os.path.dirname(sys.executable))
 
 # --------------------------------------------------------------------------
 # Function: Defining Usage
@@ -142,7 +145,8 @@ def startscan(argv):
             csvfilepath = os.path.join(report_path, 'Report_' + dir + '.csv')
             workingdirectory = os.path.join(report_path, 'ThirdParty.txt')
 
-            os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
+            #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
+            os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
             os.system('Arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
                 '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
 
@@ -154,7 +158,7 @@ def startscan(argv):
             os.system('arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
             if xmlreportname:
-                os.chdir('C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310\\Scripts')
+                os.chdir(pythonExePath + '\\Scripts')
                 os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
                 log.record('debug', "Value of csvfilepath: " + csvfilepath)
             else:
@@ -177,10 +181,11 @@ def startscan(argv):
                 customreporting(xmlreportname)
             else:
                 log.record('debug', "XML Report Not Found")
+
             # START - Adding the below piece of code for OWASP Dependency Check
-            os.chdir('C:\\Users\\Administrator\\Downloads\\dependency-check-7.0.4-release\\dependency-check\\bin')
-            os.system(
-                'dependency-check.bat --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format ALL')
+            #os.chdir('C:\\Users\\Administrator\\Downloads\\dependency-check-7.0.4-release\\dependency-check\\bin')
+            #os.system(
+                #'dependency-check.bat --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format ALL')
             # END - Adding the below piece of code for OWASP Dependency Check
 
             if jiraflag:
@@ -275,7 +280,8 @@ def normalscan(argv):
         #     'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
 
         log.record('debug', "Arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
-        os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
+        #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
+        os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
         os.system('arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
 
         os.path.isfile(afrreportname)
@@ -283,7 +289,7 @@ def normalscan(argv):
         os.system('arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
         if xmlreportname:
-            os.chdir('C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310\\Scripts')
+            os.chdir(pythonExePath + '\\Scripts')
             os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
             log.record('debug', "Value of csvfilepath: " + csvfilepath)
         else:

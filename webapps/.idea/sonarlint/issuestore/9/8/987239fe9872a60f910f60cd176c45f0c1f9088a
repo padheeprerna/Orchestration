@@ -1,0 +1,7 @@
+
+kpython:S2208"GImport only needed names or import the module and then use its members.(çøÜ·þÿÿÿÿ8´Ùž‚„0
+fpython:S2208	"GImport only needed names or import the module and then use its members.(Þ§8ÔÙž‚„0
+=python:S125"Remove this commented out code.(±€ù¾8ÔÙž‚„0
+zpython:S1542$"VRename function "copycssForReport" to match the regular expression ^[a-z_][a-z0-9_]*$.(÷ÛßÊúÿÿÿÿ8ÔÙž‚„0
+}python:S117>"_Rename this local variable "projectBaseDir" to match the regular expression ^[_a-z][a-z0-9_]*$.(™¤¡è8ÔÙž‚„0
+spython:S1542."ORename function "startSAST" to match the regular expression ^[a-z_][a-z0-9_]*$.(ºŠ¡Ùþÿÿÿÿ8ÔÙž‚„0

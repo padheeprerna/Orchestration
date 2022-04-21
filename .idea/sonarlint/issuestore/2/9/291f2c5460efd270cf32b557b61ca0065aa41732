@@ -1,26 +1,0 @@
-
-npython:S1192N"JDefine a constant instead of duplicating this literal '</center>' 6 times.(ì–›ùÿÿÿÿ8‚½š€ş/
-ipython:S1192N"EDefine a constant instead of duplicating this literal '<td>' 6 times.(ì–›ùÿÿÿÿ8‚½š€ş/
-fpython:S2208"GImport only needed names or import the module and then use its members.(×ƒ¸Ÿ8‘½š€ş/
-kpython:S2208"GImport only needed names or import the module and then use its members.(çøÜ·şÿÿÿÿ8‘½š€ş/
-=python:S125"Remove this commented out code.(´óÔ†8‘½š€ş/
-upython:S117´"WRename this local variable "NewDIR" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÅÍ÷+8‘½š€ş/
-†python:S117½"bRename this local variable "cssTargetLocation" to match the regular expression ^[_a-z][a-z0-9_]*$.(Áç¡šúÿÿÿÿ8‘½š€ş/
-vpython:S1542"RRename function "generateHtml" to match the regular expression ^[a-z_][a-z0-9_]*$.(É¦¤Øøÿÿÿÿ8‘½š€ş/
-Npython:S1481K"*Remove the unused local variable "rownum".(ë–Ãıÿÿÿÿ8‘½š€ş/
-Ipython:S1481Z"*Remove the unused local variable "rownum".(ÌùÏ8‘½š€ş/
-xpython:S3776"TRefactor this function to reduce its Cognitive Complexity from 54 to the 15 allowed.(É¦¤Øøÿÿÿÿ8‘½š€ş/
-=python:S125"Remove this commented out code.(È˜ˆ8‘½š€ş/
-kpython:S5799N"GMerge these implicitly concatenated strings; or did you forget a comma?(ì–›ùÿÿÿÿ8‘½š€ş/
-kpython:S5799N"GMerge these implicitly concatenated strings; or did you forget a comma?(ì–›ùÿÿÿÿ8‘½š€ş/
-kpython:S5799O"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ8‘½š€ş/
-kpython:S5799O"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ8‘½š€ş/
-kpython:S5799P"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ8‘½š€ş/
-kpython:S5799P"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ8¡½š€ş/
-kpython:S5799Q"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ8¡½š€ş/
-kpython:S5799Q"GMerge these implicitly concatenated strings; or did you forget a comma?(ûÑŞ€üÿÿÿÿ8¡½š€ş/
-fpython:S5799f"GMerge these implicitly concatenated strings; or did you forget a comma?(ÂœÂ²8¡½š€ş/
-fpython:S5799f"GMerge these implicitly concatenated strings; or did you forget a comma?(ÂœÂ²8¡½š€ş/
-kpython:S5799l"GMerge these implicitly concatenated strings; or did you forget a comma?(¤®‘úùÿÿÿÿ8¡½š€ş/
-kpython:S5799l"GMerge these implicitly concatenated strings; or did you forget a comma?(¤®‘úùÿÿÿÿ8¡½š€ş/
->python:S125Ø"Remove this commented out code.(•Ğ²Í8¡½š€ş/

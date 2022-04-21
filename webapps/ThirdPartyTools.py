@@ -3,6 +3,7 @@ import os
 # from WebAutomation import log
 
 hostname = ""
+orchPath = str(os.path.dirname(os.path.realpath(sys.argv[0])))
 
 def main():
     thirdpartyinvoke(sys.argv[1])
@@ -13,7 +14,7 @@ def thirdpartyinvoke(hostname):
         os.chdir('C:\\Program Files (x86)\\Nmap')
         os.system('nmap ' + '-sV ' + hostname)
 
-        os.chdir('C:\\Users\\Public\\Desktop\\code\\SSLScan')
+        os.chdir(orchPath + "\\..\\SSLScan")
         os.system('SSLscan ' + hostname)
         print('SSLScan ' + hostname)
 

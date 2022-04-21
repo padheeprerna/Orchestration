@@ -1,0 +1,34 @@
+
+upython:S1192¥"UDefine a constant instead of duplicating this literal "XML Report Not Found" 4 times.(ŞâÓØ8Şáš‚„0
+wpython:S1192"RDefine a constant instead of duplicating this literal 'arachni_reporter ' 4 times.(èèĞ†ùÿÿÿÿ8ßáš‚„0
+ypython:S1192—"YDefine a constant instead of duplicating this literal '--scope-include-pattern=' 3 times.(¿üÄø8äáš‚„0
+upython:S1192—"UDefine a constant instead of duplicating this literal ' --report-save-path=' 3 times.(¿üÄø8åáš‚„0
+spython:S1192"ODefine a constant instead of duplicating this literal 'ThirdParty.txt' 3 times.(©¿á´ùÿÿÿÿ8æáš‚„0
+fpython:S2208"GImport only needed names or import the module and then use its members.(ÏÏ˜¬8çáš‚„0
+fpython:S2208"GImport only needed names or import the module and then use its members.(×ƒ¸Ÿ8èáš‚„0
+epython:S2208"GImport only needed names or import the module and then use its members.(ĞŸ¼8éáš‚„0
+kpython:S2208	"GImport only needed names or import the module and then use its members.(ö¢æóùÿÿÿÿ8éáš‚„0
+=python:S125"Remove this commented out code.(¶‰ôâ8êáš‚„0
+Bpython:S125"Remove this commented out code.(ÜÓûæùÿÿÿÿ8êáš‚„0
+Bpython:S125Q"Remove this commented out code.(—ûş€ùÿÿÿÿ8ëáš‚„0
+~python:S117r"[Rename this local variable "splitedURL" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÆšÆÂûÿÿÿÿ8îáš‚„0
+xpython:S3776\"TRefactor this function to reduce its Cognitive Complexity from 45 to the 15 allowed.(¡ãéŒıÿÿÿÿ8òáš‚„0
+ˆpython:S1871‚"cEither merge this branch with the identical one on line "127" or change one of the implementations.(±¬Ö¸şÿÿÿÿ8òáš‚„0
+gpython:S5799ˆ"GMerge these implicitly concatenated strings; or did you forget a comma?(…œËÄ8óáš‚„0
+>python:S125‰"Remove this commented out code.(‚ö”8ôáš‚„0
+lpython:S5799¢"GMerge these implicitly concatenated strings; or did you forget a comma?(‚‹Üîûÿÿÿÿ8ôáš‚„0
+Cpython:S125Ö"Remove this commented out code.(ç¿®ûÿÿÿÿ8õáš‚„0
+>python:S125Ú"Remove this commented out code.(Ïæ¶¡8öáš‚„0
+Cpython:S125á"Remove this commented out code.(—ûş€ùÿÿÿÿ8öáš‚„0
+python:S117ş"[Rename this local variable "splitedURL" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÆšÆÂûÿÿÿÿ8÷áš‚„0
+ypython:S3776ê"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(„˜®Áøÿÿÿÿ8øáš‚„0
+gpython:S5799ˆ"GMerge these implicitly concatenated strings; or did you forget a comma?(…œËÄ8øáš‚„0
+>python:S125‰"Remove this commented out code.(Ïÿûó8ùáš‚„0
+>python:S125”"Remove this commented out code.(àñå8ùáš‚„0
+lpython:S5799¥"GMerge these implicitly concatenated strings; or did you forget a comma?(‚‹Üîûÿÿÿÿ8úáš‚„0
+Cpython:S125Õ"Remove this commented out code.(ç¿®ûÿÿÿÿ8úáš‚„0
+Cpython:S125ã"Remove this commented out code.(—ûş€ùÿÿÿÿ8úáš‚„0
+Cpython:S125õ"Remove this commented out code.(—ûş€ùÿÿÿÿ8ûáš‚„0
+Cpython:S125"Remove this commented out code.(—ûş€ùÿÿÿÿ8ûáš‚„0
+Cpython:S125˜"Remove this commented out code.(—ûş€ùÿÿÿÿ8üáš‚„0
+Cpython:S125¦"Remove this commented out code.(—ûş€ùÿÿÿÿ8üáš‚„0

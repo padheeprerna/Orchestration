@@ -19,8 +19,8 @@ import shutil
 # print inputfile
 
 # START - Adding the below piece of code for OWASP Dependency Check
-odcCSVPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP\\dependency-check-report.csv"
-htmlTable = ""
+#odcCSVPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP\\dependency-check-report.csv"
+#htmlTable = ""
 # END - Adding the below piece of code for OWASP Dependency Check
 
 def main(inputfile=None, appname=None):
@@ -44,7 +44,7 @@ def generateHtml(inputfile, appname, url):
     htmlfile.write('<div class="art-header-jpeg"></div></div></div>')
     htmlfile.write('<div class="art-header-wrapper"><div class="art-header-inner"><div class="art-logo">')
     htmlfile.write(
-        '<center><img src="css/images/EY.png" width = "50" height = "50"></center><h1 class="art-logo-name">Web Application Security Assessment Report</h1></div>')
+        '<center><img src="css/images/ey-white-logo.png" width = "75" height = "75"></center><h1 class="art-logo-name">Web Application Security Assessment Report</h1></div>')
     htmlfile.write('</div></div></div><div class="cleared reset-box"></div>')
     htmlfile.write('<div class="art-nav"><div class="art-nav-outer"><div class="art-nav-wrapper"></div></div></div>')
     htmlfile.write('<div class="cleared reset-box"></div>')
@@ -150,11 +150,11 @@ def generateHtml(inputfile, appname, url):
     htmlfile.write('<iframe src="ThirdParty.txt"' + '" width="842" height="300"> </iframe>')
 
     # START - Adding the below piece of code for OWASP Dependency Check
-    htmlfile.write(
-        '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> iii) OWASP Dependency Check </h4></b></left></p>')
-    dataFrame = pd.read_csv(odcCSVPath, usecols = [3, 10, 11, 17, 20])
-    htmlTable = dataFrame.to_html(index = False, na_rep = 'NA', classes = 'table table-stripped')
-    htmlfile.write(htmlTable)
+    #htmlfile.write(
+    #    '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> iii) OWASP Dependency Check </h4></b></left></p>')
+    #dataFrame = pd.read_csv(odcCSVPath, usecols = [3, 10, 11, 17, 20])
+    #htmlTable = dataFrame.to_html(index = False, na_rep = 'NA', classes = 'table table-stripped')
+    #htmlfile.write(htmlTable)
     # END - Adding the below piece of code for OWASP Dependency Check
     htmlfile.close()
 
