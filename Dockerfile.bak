@@ -39,10 +39,10 @@ RUN .\nmap-7.92-setup.exe
 COPY arachni-1.6.1-0.6.1-windows-x86_64/ ./arachni-1.6.1-0.6.1-windows-x86_64/
 
 #set PYTHONPATH and other ENV variables
-ENV PATH "${PATH}:/Orchestration/sonar-scanner-cli-4.7.0.2747-windows/sonar-scanner-cli-4.7.0.2747-windows/bin"
-ENV PYTHONPATH "${PYTHONPATH}:/Orchestration/"
+ENV PATH="C:/Orchestration/sonar-scanner-cli-4.7.0.2747-windows/sonar-scanner-cli-4.7.0.2747-windows/bin"
+ENV PYTHONPATH="C:/Orchestration/"
 
 # command to run on container start
-CMD [ "python", "./webapps/WebAutomation.py", "-u", "http://172.31.33.131/dvwa/index.php", "-n", "admin", "-p", "password", "-l", "windows"]
+CMD [ "python", "C:/Orchestration/webapps/WebAutomation.py", "-u", "http://172.31.33.131/dvwa/index.php", "-n", "admin", "-p", "password", "-l", "windows"]
 
 
