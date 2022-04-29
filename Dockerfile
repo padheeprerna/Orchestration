@@ -43,6 +43,6 @@ ENV PATH="C:/Orchestration/sonar-scanner-cli-4.7.0.2747-windows/sonar-scanner-cl
 ENV PYTHONPATH="C:/Orchestration/"
 
 # command to run on container start
-CMD [ "python", "C:\Orchestration\webapps\WebAutomation.py", "-u", "http://172.31.33.131/dvwa/index.php", "-n", "admin", "-p", "password", "-l", "windows"]
+CMD [ "python", "C:/Orchestration/webapps/WebAutomation.py", "-u", "http://172.31.33.131/dvwa/index.php", "-n", "admin", "-p", "password", "-l", "windows"]
 
 

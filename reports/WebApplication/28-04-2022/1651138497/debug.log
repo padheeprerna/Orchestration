@@ -1,0 +1,16 @@
+2022-04-28 09:34:57,189 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-28 09:34:57,189 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-04-28 09:34:57,189 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-28 09:34:57,189 - security_automation - DEBUG - Web Application Scan Started at: 2022-04-28 09:34:57.189721
+2022-04-28 09:34:57,189 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/28-04-2022/1651138497
+2022-04-28 09:34:57,189 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/28-04-2022/1651138497/Debug
+2022-04-28 09:34:57,190 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-04-28 09:34:57,190 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-04-28 09:34:57,190 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-04-28 09:34:57,190 - security_automation - DEBUG - Initializing Authenticated Scan
+2022-04-28 09:35:03,969 - security_automation - DEBUG - Value of csvfilepath: /home/ubuntu/Orchestration/reports/WebApplication/28-04-2022/1651138497/Report_28_4_2022_9_34_57.csv
+2022-04-28 09:35:03,969 - security_automation - DEBUG - CSV_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/28-04-2022/1651138497/Report_28_4_2022_9_34_57.csv
+2022-04-28 09:35:03,969 - security_automation - DEBUG - HTML_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/28-04-2022/1651138497/Report_28_4_2022_9_34_57.html
+2022-04-28 09:35:03,969 - security_automation - DEBUG - PDF_REPORT: NA
+2022-04-28 09:35:04,466 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/reports/WebApplication/28-04-2022/1651138497/Report_28_4_2022_9_34_57.csv'
+2022-04-28 09:35:04,518 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
-projectKey=Test-Python-Project
+projectKey=Test-Python-Project-Linux
 serverUrl=http://localhost:9000
-serverVersion=9.3.0.51899
-dashboardUrl=http://localhost:9000/dashboard?id=Test-Python-Project
-ceTaskId=AYBFyhV5WZUOJ1kM4rx7
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYBFyhV5WZUOJ1kM4rx7
+serverVersion=8.9.8.54436
+dashboardUrl=http://localhost:9000/dashboard?id=Test-Python-Project-Linux
+ceTaskId=AYBz05pYOoEwibyaf_2l
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYBz05pYOoEwibyaf_2l

@@ -11,16 +11,19 @@ from shutil import copyfile
 from shutil import copytree
 
 htmlTable = ""
-xlSrc = "C:\\Program Files\\SonarQube\\sonarqube-9.3.0.51899\\extensions\\plugins"
 projectKey = ''
-sonarProperties = 'C:\\Users\\Public\\\Desktop\\code\\Orchestration\\sonar-project.properties'
-pluginsPath = "C:\\Program Files\\SonarQube\\sonarqube-9.3.0.51899\\extensions\\plugins"
+
+#xlSrc = "C:\\Program Files\\SonarQube\\sonarqube-9.3.0.51899\\extensions\\plugins"
+#sonarProperties = 'C:\\Users\\Public\\\Desktop\\code\\Orchestration\\sonar-project.properties'
+#pluginsPath = "C:\\Program Files\\SonarQube\\sonarqube-9.3.0.51899\\extensions\\plugins"
+pluginsPath = '//home//ubuntu//Tools//sonarqube-8.9.8.54436//extensions//plugins'
+sonarProperties = '//home//ubuntu//Orchestration//sonar-project.properties'
 
 def not_xlsx(path, names):
     return {name for name in names if os.path.isfile(name) and not name.endswith('.xlsx')}
 
 def generateReport(inputfile, reportPath):
-    outNewPath = reportPath + '\\SAST-Analysis-Report.html'
+    outNewPath = reportPath + '//SAST-Analysis-Report.html'
     htmlfile = open(outNewPath, "w")
     htmlfile.write(
         '<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.4/components/reporters/xml/schema.xsd">')
@@ -68,10 +71,10 @@ def generateReport(inputfile, reportPath):
         configs.load(config_file)
     projectKey = configs.get('sonar.projectKey')
     os.chdir(pluginsPath)
-    os.system("java -jar sonar-cnes-report-4.1.0.jar -p " + str(projectKey.data) +" -o " + reportPath)
+    os.system("java -jar sonar-cnes-report-4.1.1.jar -p " + str(projectKey.data) +" -o " + reportPath + " -t 5206d2a5c6ff32de4a9052e5881651beb160505f")
     excelReport = list(glob.glob(os.path.join(reportPath, '*.xlsx')))
     df = pd.read_excel(str(excelReport[0]), sheet_name ='Issues', usecols = [1, 2, 3, 5, 6])
-    df = df[df['Severity'] == 'MAJOR']
+    df = df[df['Severity'] == 'CRITICAL']
     htmlTable = df.to_html(index=False)
     htmlfile.write(htmlTable)
     # END - Write results of SonarQube scan

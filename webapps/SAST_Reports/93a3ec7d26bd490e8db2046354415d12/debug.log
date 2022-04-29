@@ -1,0 +1,15 @@
+2022-04-28 12:06:59,159 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-28 12:06:59,159 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-04-28 12:06:59,159 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-28 12:06:59,159 - security_automation - DEBUG - SAST Scan Started at: 2022-04-28 12:06:59.159755
+2022-04-28 12:06:59,159 - security_automation - DEBUG - Value of report path is: /home/ubuntu/Orchestration/webapps//SAST_Reports//93a3ec7d26bd490e8db2046354415d12
+2022-04-28 12:06:59,159 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/webapps//SAST_Reports//93a3ec7d26bd490e8db2046354415d12/Debug
+2022-04-28 12:06:59,159 - security_automation - DEBUG - Initiating SAST Scan
+2022-04-28 12:06:59,159 - security_automation - DEBUG - Starting OWASP Dependency Scan
+2022-04-28 12:07:18,124 - security_automation - DEBUG - OWASP Dependency Scan Complete
+2022-04-28 12:07:18,124 - security_automation - DEBUG - Starting SonarQube Scan
+2022-04-28 12:07:18,146 - security_automation - DEBUG - SonarQube Scan Complete
+2022-04-28 12:07:18,146 - security_automation - DEBUG - SAST Scan Ended
+2022-04-28 12:07:18,277 - security_automation - DEBUG - Successfully copied CSS to target location
+2022-04-28 12:07:20,006 - security_automation - DEBUG - list index out of range
+2022-04-28 12:07:20,125 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

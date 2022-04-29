@@ -1,0 +1,67 @@
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.4/components/reporters/xml/schema.xsd"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>SAST Security Assessment Report</title><link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /></head><body><div id="art-main"><div class="art-header"><div class="art-header-clip"><div class="art-header-center"><div class="art-header-png"></div><div class="art-header-jpeg"></div></div></div><div class="art-header-wrapper"><div class="art-header-inner"><div class="art-logo"><center><img src="css/images/ey-white-logo.png" width = "75" height = "75"></center><h1 class="art-logo-name">SAST Security Assessment Report</h1></div></div></div></div><div class="cleared reset-box"></div><div class="art-nav"><div class="art-nav-outer"><div class="art-nav-wrapper"></div></div></div><div class="cleared reset-box"></div><div class="art-sheet"><div class="art-sheet-tl"></div><div class="art-sheet-tr"></div><div class="art-sheet-bl"></div><div class="art-sheet-br"></div><div class="art-sheet-tc"></div><div class="art-sheet-bc"></div><div class="art-sheet-cl"></div><div class="art-sheet-cr"></div><div class="art-sheet-cc"></div><div class="art-sheet-body"><div class="art-content-layout"><div class="art-content-layout-row"><div class="art-layout-cell art-content"><div class="art-post"><div class="art-post-tl"></div><div class="art-post-tr"></div><div class="art-post-bl"></div><div class="art-post-br"></div><div class="art-post-tc"></div><div class="art-post-bc"></div><div class="art-post-cl"></div><div class="art-post-cr"></div><div class="art-post-cc"></div>    <div class="art-post-body"><div class="art-post-inner art-article"><h2 class="art-postheader">  </h2><div class="cleared"></div><p style="font-weight:bold;"><left><b><h5 style="color:blue;"> SAST Tools Assessment Results </h5></b></left></p><br><p style="font-weight:bold;color:blue;"><left><b> i) OWASP Dependency Check Results</b></left></p><table border="1" class="dataframe table table-stripped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>DependencyPath</th>
+      <th>CVE</th>
+      <th>CWE</th>
+      <th>CVSSv3_BaseSeverity</th>
+      <th>CPE Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>/home/ubuntu/Orchestration/webapps/css/jquery.js</td>
+      <td>CVE-2012-6708</td>
+      <td>CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
+      <td>MEDIUM</td>
+      <td>HIGHEST</td>
+    </tr>
+    <tr>
+      <td>/home/ubuntu/Orchestration/webapps/css/jquery.js</td>
+      <td>CVE-2015-9251</td>
+      <td>CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
+      <td>MEDIUM</td>
+      <td>HIGHEST</td>
+    </tr>
+    <tr>
+      <td>/home/ubuntu/Orchestration/webapps/css/jquery.js</td>
+      <td>CVE-2019-11358</td>
+      <td>CWE-1321</td>
+      <td>MEDIUM</td>
+      <td>HIGHEST</td>
+    </tr>
+    <tr>
+      <td>/home/ubuntu/Orchestration/webapps/css/jquery.js</td>
+      <td>CVE-2020-11022</td>
+      <td>CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
+      <td>MEDIUM</td>
+      <td>HIGHEST</td>
+    </tr>
+    <tr>
+      <td>/home/ubuntu/Orchestration/webapps/css/jquery.js</td>
+      <td>CVE-2020-11023</td>
+      <td>CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
+      <td>MEDIUM</td>
+      <td>HIGHEST</td>
+    </tr>
+    <tr>
+      <td>/home/ubuntu/Orchestration/webapps/css/jquery.js</td>
+      <td>CVE-2011-4969</td>
+      <td>CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
+      <td>NA</td>
+      <td>HIGHEST</td>
+    </tr>
+  </tbody>
+</table><br><p style="font-weight:bold;color:blue;"><left><b> ii) Sonar Scan Results</b></left></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Message</th>
+      <th>Type</th>
+      <th>Severity</th>
+      <th>File</th>
+      <th>Line</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>

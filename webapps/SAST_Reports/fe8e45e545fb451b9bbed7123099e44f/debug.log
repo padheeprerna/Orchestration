@@ -1,0 +1,12 @@
+2022-04-28 10:46:47,974 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-28 10:46:47,975 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-04-28 10:46:47,975 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-04-28 10:46:47,975 - security_automation - DEBUG - SAST Scan Started at: 2022-04-28 10:46:47.975967
+2022-04-28 10:46:47,976 - security_automation - DEBUG - Value of report path is: /home/ubuntu/Orchestration/webapps//SAST_Reports//fe8e45e545fb451b9bbed7123099e44f
+2022-04-28 10:46:47,977 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/webapps//SAST_Reports//fe8e45e545fb451b9bbed7123099e44f/Debug
+2022-04-28 10:46:47,977 - security_automation - DEBUG - Initiating SAST Scan
+2022-04-28 10:46:47,977 - security_automation - DEBUG - Starting OWASP Dependency Scan
+2022-04-28 10:46:56,410 - security_automation - DEBUG - OWASP Dependency Scan Complete
+2022-04-28 10:46:56,410 - security_automation - DEBUG - Starting SonarQube Scan
+2022-04-28 10:46:56,411 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps ..//sonar-project.properties'
+2022-04-28 10:46:56,419 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

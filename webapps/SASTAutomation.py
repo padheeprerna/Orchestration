@@ -15,9 +15,12 @@ dir = str(uuid.uuid4().hex)
 
 orchPath = str(os.path.dirname(os.path.realpath(sys.argv[0])))
 scanPath = orchPath
-reportPath = orchPath + "\\SAST_Reports\\"+dir
-odcCSVPath = reportPath + "\\dependency-check-report.csv"
-OWASPBinPath = '\\..\\dependency-check-7.0.4-release\\dependency-check\\bin'
+#reportPath = orchPath + "\\SAST_Reports\\"+dir
+#odcCSVPath = reportPath + "\\dependency-check-report.csv"
+#OWASPBinPath = '\\..\\dependency-check-7.0.4-release\\dependency-check\\bin'
+reportPath = orchPath + "//SAST_Reports//"+dir
+odcCSVPath = reportPath + "//dependency-check-report.csv"
+OWASPBinPath = '//home//ubuntu//Tools//dependency-check//bin'
 
 
 log = Logger(get_debugger(reportPath))
@@ -36,7 +39,8 @@ def main():
 def copycssForReport():
     try:
         if CSSFilePath:
-            copytree(CSSFilePath, reportPath+'\\css')
+            #copytree(CSSFilePath, reportPath+'\\css')
+            copytree(CSSFilePath, reportPath+'//css')
             log.record('debug', "Successfully copied CSS to target location")
         else:
             log.record('debug', "Issue copying CSS file to target location")
@@ -48,9 +52,12 @@ def startSAST():
         log.record('debug', 'Initiating SAST Scan')
         #START - OWASP Dependency Check
         log.record('debug', 'Starting OWASP Dependency Scan')
-        os.chdir(orchPath + OWASPBinPath)
+        #os.chdir(orchPath + OWASPBinPath)
+        os.chdir(OWASPBinPath)
+        # os.system(
+        #     'dependency-check.bat --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format CSV')
         os.system(
-            'dependency-check.bat --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format CSV')
+            './dependency-check.sh --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format CSV')
         log.record('debug', 'OWASP Dependency Scan Complete')
         #END - OWASP Dependency Check
 
@@ -61,8 +68,9 @@ def startSAST():
             configs.load(config_file)
         projectBaseDir = configs.get('sonar.projectBaseDir')
         os.chdir(str(projectBaseDir.data))
+        #os.system('sonar-scanner')
         os.system('sonar-scanner')
-        log.record('debug', 'SonarQube Complete')
+        log.record('debug', 'SonarQube Scan Complete')
         # END - SonarQube
         log.record('debug', 'SAST Scan Ended')
 
