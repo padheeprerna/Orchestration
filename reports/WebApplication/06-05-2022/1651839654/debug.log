@@ -1,0 +1,17 @@
+2022-05-06 12:20:54,044 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-06 12:20:54,044 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-06 12:20:54,044 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-06 12:20:54,044 - security_automation - DEBUG - Web Application Scan Started at: 2022-05-06 12:20:54.044975
+2022-05-06 12:20:54,045 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651839654
+2022-05-06 12:20:54,045 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651839654/Debug
+2022-05-06 12:20:54,045 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-05-06 12:20:54,045 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-05-06 12:20:54,045 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-05-06 12:20:54,045 - security_automation - DEBUG - Initializing Authenticated Scan
+2022-05-06 12:21:08,573 - security_automation - DEBUG - Value of csvfilepath: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651839654/Report_6_5_2022_12_20_54.csv
+2022-05-06 12:21:08,573 - security_automation - DEBUG - CSV_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651839654/Report_6_5_2022_12_20_54.csv
+2022-05-06 12:21:08,574 - security_automation - DEBUG - HTML_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651839654/Report_6_5_2022_12_20_54.html
+2022-05-06 12:21:08,574 - security_automation - DEBUG - PDF_REPORT: NA
+2022-05-06 12:21:08,579 - security_automation - DEBUG - print_exception() missing 1 required positional argument: 'exc'
+2022-05-06 12:21:08,579 - security_automation - WARNING - print_exception() missing 1 required positional argument: 'exc'
+2022-05-06 12:21:08,628 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

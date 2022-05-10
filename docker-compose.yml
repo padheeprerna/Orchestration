@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    depends_on:
+      - arachni
+      - ssl
+      - nmap
+      - owasp
+      - sonar
+  arachni:
+    image: "arachni/arachni"
+    ports:
+      - "9292"
+  ssl:
+    image: "blairy/sslscan"
+    ports:
+      - "9292:3000"
+  nmap:
+    image: "jonlabelle/nmap"
+    ports:
+      - "7000:443"
+  owasp:
+    image: "owasp/dependency-check"
+    ports:
+      - "6000:5678"
+  sonar:
+    image: "sonarsource/sonar-scanner-cli"
+    ports:
+      - "4000:8765"

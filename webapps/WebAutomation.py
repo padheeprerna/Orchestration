@@ -135,7 +135,7 @@ def startscan(argv):
             print ('Check Usage')
             usage()
         elif lurl != '' and username != '' and password != '':
-            execplugin = "--plugin=exec:during=" + '"' 'Python ' + externaltoolpath + ' ' + hostname
+            execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
             # print "Initiating Authenticated Scan"
             log.record('debug', "Initializing Authenticated Scan")
 
@@ -152,7 +152,7 @@ def startscan(argv):
 
             #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
             #os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
-            os.chdir('//home//ubuntu//Tools//arachni-1.6.1-0.6.1//bin')
+            os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
             # os.system('Arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
             #     '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
             os.system('./arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
@@ -199,15 +199,14 @@ def startscan(argv):
 
             if jiraflag:
                 csvfilepath = r"{}".format(csvfilepath)
-                os.system('python ' + '//home//ubuntu//Orchestration//webapps//jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
+                #os.system('python ' + '//home//ubuntu//Orchestration//webapps//jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
             else:
                 log.record('debug', 'JIRA flag is set to 0')
 
 
             if csvfilepath:
                 csvfilepath = r"{}".format(csvfilepath)
-                print(csvfilepath)
-                createbug(csvfilepath)
+                #createbug(csvfilepath)
                 generateHtml(csvfilepath, hostname, lurl)
             else:
                 log.record('debug', "CSV Report not Found")
@@ -233,8 +232,9 @@ def startscan(argv):
     except Exception as e:
         #print("MY ERROR --->>>>>" + str(e))
         #print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
+        traceback.print_exc()
         log.record('debug', str(e))
-
+        log.record('warn', str(e))
 
 # --------------------------------------------------------------------------
 # Defining Non - Authenticated Scan
@@ -270,7 +270,7 @@ def normalscan(argv):
             usage()
 
     try:
-        execplugin = "--plugin=exec:during=" + '"' 'Python ' + externaltoolpath + ' ' + hostname
+        execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
         # print "Initiating Non-Authenticated Scan"
         log.record('debug', "Initiating Non-Authenticated Scan")
 
@@ -291,15 +291,16 @@ def normalscan(argv):
         log.record('debug', "Arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
         #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
         #os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
-        os.chdir('//home//ubuntu//Tools//arachni-1.6.1-0.6.1//bin')
+        os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
+        #os.system('arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
         os.system('./arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
-
         os.path.isfile(afrreportname)
         os.system('./arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
         os.system('./arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
         if xmlreportname:
             #os.chdir(pythonExePath + '\\Scripts')
+            os.chdir(pythonExePath)
             os.system('xml2csv --input ' + xmlreportname + ' --output ' + csvfilepath + ' --tag' ' "issue"')
             log.record('debug', "Value of csvfilepath: " + csvfilepath)
         else:

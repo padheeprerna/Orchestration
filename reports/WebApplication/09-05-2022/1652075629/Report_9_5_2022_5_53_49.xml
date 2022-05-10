@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.6.1.1/components/reporters/xml/schema.xsd">
+  <version>1.6.1.1</version>
+  <seed>3c3ce12ec79ec84a6e63c8deb5081e9b</seed>
+  <options>---
+session: {}
+audit:
+  parameter_values: true
+  exclude_vector_patterns: []
+  include_vector_patterns: []
+  link_templates: []
+  links: true
+  forms: true
+  cookies: true
+  ui_inputs: true
+  ui_forms: true
+  jsons: true
+  xmls: true
+  nested_cookies: true
+datastore:
+  report_path: "/home/ubuntu/Orchestration/reports/WebApplication/09-05-2022/1652075629//Report_9_5_2022_5_53_49.afr"
+scope:
+  directory_depth_limit: 4
+  auto_redundant_paths: 2
+  redundant_path_patterns: {}
+  dom_depth_limit: 3
+  exclude_file_extensions:
+  - css
+  - png
+  exclude_path_patterns: []
+  exclude_content_patterns: []
+  include_path_patterns:
+  - 172.31.3.192
+  restrict_paths: []
+  extend_paths: []
+  url_rewrites: {}
+browser_cluster:
+  local_storage: {}
+  session_storage: {}
+  wait_for_elements: {}
+  wait_for_timers: false
+  pool_size: 10
+  job_timeout: 60
+  worker_time_to_live: 250
+  ignore_images: true
+  screen_width: 1600
+  screen_height: 1200
+input:
+  values: {}
+  default_values:
+    name: arachni_name
+    user: arachni_user
+    usr: arachni_user
+    pass: 5543!%arachni_secret
+    txt: arachni_text
+    num: '132'
+    amount: '100'
+    mail: arachni@email.gr
+    account: '12'
+    id: '1'
+  without_defaults: false
+  force: false
+http:
+  user_agent: Mozilla/5.0 (Gecko) Arachni/v1.6.1.1
+  request_timeout: 20000
+  request_redirect_limit: 5
+  request_concurrency: 10
+  request_queue_size: 200
+  request_headers: {}
+  response_max_size: 10000
+  cookies: {}
+  authentication_type: auto
+checks:
+- insecure_client_access_policy
+- backup_files
+- insecure_cross_domain_policy_access
+- interesting_responses
+- directory_listing
+- htaccess_limit
+- insecure_cross_domain_policy_headers
+- common_files
+- webdav
+- backdoors
+- origin_spoof_access_restriction_bypass
+- common_admin_interfaces
+- localstart_asp
+- http_put
+- allowed_methods
+- backup_directories
+- xst
+- common_directories
+- ssn
+- http_only_cookies
+- captcha
+- emails
+- x_frame_options
+- password_autocomplete
+- cookie_set_for_parent_domain
+- hsts
+- unencrypted_password_forms
+- credit_card
+- mixed_resource
+- form_upload
+- insecure_cookies
+- cvs_svn_users
+- private_ip
+- html_objects
+- insecure_cors_policy
+- xxe
+- os_cmd_injection
+- xss_tag
+- path_traversal
+- response_splitting
+- xss
+- file_inclusion
+- code_injection_timing
+- xss_path
+- xss_script_context
+- no_sql_injection
+- sql_injection_differential
+- session_fixation
+- xss_event
+- source_code_disclosure
+- sql_injection_timing
+- unvalidated_redirect_dom
+- xpath_injection
+- trainer
+- csrf
+- code_injection
+- code_injection_php_input_wrapper
+- no_sql_injection_differential
+- unvalidated_redirect
+- sql_injection
+- xss_dom_script_context
+- ldap_injection
+- xss_dom
+- os_cmd_injection_timing
+- rfi
+platforms:
+- linux
+plugins:
+  exec:
+    during: python /home/ubuntu/Orchestration/webapps/ThirdPartyTools.py 172.31.3.192
+  autologin:
+    url: http://172.31.3.192/dvwa/index.php
+    parameters: uid=admin&amp;passw=password
+    check: PERSONAL
+no_fingerprinting: false
+authorized_by: 
+url: http://172.31.3.192/dvwa/index.php
+</options>
+  <start_datetime>2022-05-09T05:53:50+00:00</start_datetime>
+  <finish_datetime>2022-05-09T05:53:53+00:00</finish_datetime>
+  <sitemap/>
+  <issues/>
+  <plugins>
+    <autologin>
+      <name>AutoLogin</name>
+      <description>
+It looks for the login form in the user provided URL, merges its input fields
+with the user supplied parameters and sets the cookies of the response and
+request as framework-wide cookies.
+
+**NOTICE**: If the login form is by default hidden and requires a sequence of DOM
+interactions in order to become visible, this plugin will not be able to submit it.
+</description>
+      <results>
+        <message>Could not find a form suiting the provided parameters.</message>
+        <status>form_not_found</status>
+      </results>
+    </autologin>
+    <exec>
+      <name>Exec</name>
+      <description>
+Calls external executables at different scan stages.
+
+The following variables can be used in the executable string:
+
+* `__URL__`: Target URL.
+* `__URL_SCHEME__`: URL scheme (http/https).
+* `__URL_HOST__`: URL host.
+* `__URL_PORT__`: URL port.
+* `__STAGE__`: Scan stage (pre/during/post).
+* `__ISSUE_COUNT__`: Amount of logged issues.
+* `__SITEMAP_SIZE__`: Amount of discovered pages.
+* `__FRAMEWORK_RUNTIME__`: Scan runtime.
+* `__FRAMEWORK_STATUS__`: Framework status.
+
+**Example:**
+
+The following:
+
+    echo "__URL__ __URL_SCHEME__ __URL_HOST__ __URL_PORT__ __STAGE__ __ISSUE_COUNT__ __SITEMAP_SIZE__ __FRAMEWORK_RUNTIME__ __FRAMEWORK_STATUS__"
+
+Will result in:
+
+    http://testfire.net/ http testfire.net 80 post 0 2 3.906482517 cleanup
+
+_Will not work over RPC._
+</description>
+      <results>
+        <outcome>
+          <stage>during</stage>
+          <status>0</status>
+          <pid>29761</pid>
+          <executable>python /home/ubuntu/Orchestration/webapps/ThirdPartyTools.py 172.31.3.192</executable>
+          <stdout>Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-09 05:53 UTC
+Nmap scan report for ip-172-31-3-192.ap-south-1.compute.internal (172.31.3.192)
+Host is up (0.00014s latency).
+Not shown: 993 closed tcp ports (conn-refused)
+PORT      STATE SERVICE           VERSION
+22/tcp    open  ssh               OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+80/tcp    open  http              Apache httpd 2.4.41 ((Ubuntu))
+443/tcp   open  ssl/http          Apache httpd 2.4.41 ((Ubuntu))
+3389/tcp  open  ms-wbt-server     xrdp
+8000/tcp  open  nagios-nsca       Nagios NSCA
+9000/tcp  open  cslistener?
+10000/tcp open  snet-sensor-mgmt?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9000-TCP:V=7.92%I=7%D=5/9%Time=6278AC7C%P=x86_64-redhat-linux-gnu%r
+SF:(GetRequest,2000,"HTTP/1\.1\x20200\x20\r\nX-Frame-Options:\x20SAMEORIGI
+SF:N\r\nX-XSS-Protection:\x201;\x20mode=block\r\nX-Content-Type-Options:\x
+SF:20nosniff\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidat
+SF:e\r\nvary:\x20accept-encoding\r\nContent-Type:\x20text/html;charset=utf
+SF:-8\r\nDate:\x20Mon,\x2009\x20May\x202022\x2005:54:04\x20GMT\r\nConnecti
+SF:on:\x20close\r\n\r\n&lt;!doctype\x20html&gt;&lt;html\x20lang=\"en\"&gt;&lt;head&gt;&lt;meta\
+SF:x20http-equiv=\"content-type\"\x20content=\"text/html;\x20charset=UTF-8
+SF:\"\x20charset=\"UTF-8\"/&gt;&lt;meta\x20http-equiv=\"X-UA-Compatible\"\x20con
+SF:tent=\"IE=edge\"&gt;&lt;link\x20rel=\"apple-touch-icon\"\x20href=\"/apple-tou
+SF:ch-icon\.png\"&gt;&lt;link\x20rel=\"apple-touch-icon\"\x20sizes=\"57x57\"\x20
+SF:href=\"/apple-touch-icon-57x57\.png\"&gt;&lt;link\x20rel=\"apple-touch-icon\"
+SF:\x20sizes=\"60x60\"\x20href=\"/apple-touch-icon-60x60\.png\"&gt;&lt;link\x20r
+SF:el=\"apple-touch-icon\"\x20sizes=\"72x72\"\x20href=\"/apple-touch-icon-
+SF:72x72\.png\"&gt;&lt;link\x20rel=\"apple-touch-icon\"\x20sizes=\"76x76\"\x20hr
+SF:ef=\"/apple-touch-icon-76x76\.png\"&gt;&lt;link\x20rel=\"apple-touch-icon\"\x
+SF:20sizes=\"114x114\"\x20href=\"/apple-touch-icon-114x1")%r(HTTPOptions,5
+SF:C,"HTTP/1\.1\x20405\x20\r\nContent-Length:\x200\r\nDate:\x20Mon,\x2009\
+SF:x20May\x202022\x2005:54:04\x20GMT\r\nConnection:\x20close\r\n\r\n")%r(R
+SF:TSPRequest,24E,"HTTP/1\.1\x20400\x20\r\nContent-Type:\x20text/html;char
+SF:set=utf-8\r\nContent-Language:\x20en\r\nContent-Length:\x20435\r\nDate:
+SF:\x20Mon,\x2009\x20May\x202022\x2005:54:04\x20GMT\r\nConnection:\x20clos
+SF:e\r\n\r\n&lt;!doctype\x20html&gt;&lt;html\x20lang=\"en\"&gt;&lt;head&gt;&lt;title&gt;HTTP\x20St
+SF:atus\x20400\x20\xe2\x80\x93\x20Bad\x20Request&lt;/title&gt;&lt;style\x20type=\"t
+SF:ext/css\"&gt;body\x20{font-family:Tahoma,Arial,sans-serif;}\x20h1,\x20h2,\
+SF:x20h3,\x20b\x20{color:white;background-color:#525D76;}\x20h1\x</stdout>
+          <stderr/>
+          <runtime>119.217370109</runtime>
+        </outcome>
+      </results>
+    </exec>
+  </plugins>
+</report>

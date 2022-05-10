@@ -74,7 +74,8 @@ def generateReport(inputfile, reportPath):
     os.system("java -jar sonar-cnes-report-4.1.1.jar -p " + str(projectKey.data) +" -o " + reportPath + " -t 5206d2a5c6ff32de4a9052e5881651beb160505f")
     excelReport = list(glob.glob(os.path.join(reportPath, '*.xlsx')))
     df = pd.read_excel(str(excelReport[0]), sheet_name ='Issues', usecols = [1, 2, 3, 5, 6])
-    df = df[df['Severity'] == 'CRITICAL']
+    #df = df[df['Severity'] == 'CRITICAL' | df['Severity'] == 'MAJOR']
+    df = df[(df['Severity'] == 'CRITICAL') | (df['Severity'] == 'MAJOR')]
     htmlTable = df.to_html(index=False)
     htmlfile.write(htmlTable)
     # END - Write results of SonarQube scan

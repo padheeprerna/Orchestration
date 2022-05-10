@@ -1,0 +1,15 @@
+2022-05-10 05:04:20,240 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-10 05:04:20,240 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-10 05:04:20,241 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-10 05:04:20,241 - security_automation - DEBUG - SAST Scan Started at: 2022-05-10 05:04:20.241137
+2022-05-10 05:04:20,241 - security_automation - DEBUG - Value of report path is: /home/ubuntu/Orchestration/webapps//SAST_Reports//fc897d6da17646febb0081efd3f49a79
+2022-05-10 05:04:20,241 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/webapps//SAST_Reports//fc897d6da17646febb0081efd3f49a79/Debug
+2022-05-10 05:04:20,241 - security_automation - DEBUG - Initiating SAST Scan
+2022-05-10 05:04:20,241 - security_automation - DEBUG - Starting OWASP Dependency Scan
+2022-05-10 05:04:28,302 - security_automation - DEBUG - OWASP Dependency Scan Complete
+2022-05-10 05:04:28,302 - security_automation - DEBUG - Starting SonarQube Scan
+2022-05-10 05:04:56,897 - security_automation - DEBUG - SonarQube Scan Complete
+2022-05-10 05:04:56,898 - security_automation - DEBUG - SAST Scan Ended
+2022-05-10 05:04:56,903 - security_automation - DEBUG - Successfully copied CSS to target location
+2022-05-10 05:05:05,440 - security_automation - DEBUG - Cannot perform 'ror_' with a dtyped [object] array and scalar of type [bool]
+2022-05-10 05:05:05,474 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

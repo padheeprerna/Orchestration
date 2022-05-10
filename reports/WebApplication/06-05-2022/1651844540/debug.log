@@ -1,0 +1,16 @@
+2022-05-06 13:42:20,203 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-06 13:42:20,204 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-06 13:42:20,204 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-06 13:42:20,204 - security_automation - DEBUG - Web Application Scan Started at: 2022-05-06 13:42:20.204518
+2022-05-06 13:42:20,204 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651844540
+2022-05-06 13:42:20,204 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651844540/Debug
+2022-05-06 13:42:20,205 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-05-06 13:42:20,205 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-05-06 13:42:20,205 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-05-06 13:42:20,206 - security_automation - DEBUG - Initializing Authenticated Scan
+2022-05-06 13:48:37,433 - security_automation - DEBUG - Value of csvfilepath: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651844540/Report_6_5_2022_13_42_20.csv
+2022-05-06 13:48:37,433 - security_automation - DEBUG - CSV_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651844540/Report_6_5_2022_13_42_20.csv
+2022-05-06 13:48:37,433 - security_automation - DEBUG - HTML_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/06-05-2022/1651844540/Report_6_5_2022_13_42_20.html
+2022-05-06 13:48:37,434 - security_automation - DEBUG - PDF_REPORT: NA
+2022-05-06 13:48:37,471 - security_automation - DEBUG - Successfully copied CSS to target location
+2022-05-06 13:48:37,514 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
