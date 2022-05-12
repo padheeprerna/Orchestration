@@ -1,6 +1,7 @@
 import getopt
 import traceback
 import time
+import subprocess
 from HTMLReportGenerator import *
 from CustomReporting import *
 from JiraBugCreation import *
@@ -27,7 +28,10 @@ finalreportpath = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
 thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
 
 # customoptions = "--http-request-concurrency=20 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-include-pattern=www-stage.vmware.com --scope-exclude-file-extensions=css,png "
-customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
+# Modified for Arachni -> Ecsypno SCNR Migration - START
+#customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
+customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
+# Modified for Arachni -> Ecsypno SCNR Migration - END
 
 report_path = get_report_path(REPORT_PATH, app_type)
 
@@ -40,7 +44,10 @@ log.record('debug', "Value of report_path is: " + report_path)
 log_path = os.path.join(report_path, "Debug")
 log.record('debug', "Value of log_path is: " + log_path)
 
-afrreportname = report_path + "//" + 'Report_' + dir + '.afr'
+# Modified for Arachni -> Ecsypno SCNR Migration - START
+#afrreportname = report_path + "//" + 'Report_' + dir + '.afr'
+scnrreportname = report_path + "//" + 'Report_' + dir + '.ser'
+# Modified for Arachni -> Ecsypno SCNR Migration - END
 logfilename = log_path + dir + '.log'
 
 orchPath = str(os.path.dirname(os.path.realpath(sys.argv[0])))
@@ -52,7 +59,7 @@ pythonExePath = str(os.path.dirname(sys.executable))
 
 def usage():
     print ('\n*************************************************************')
-    print ('\n******* VMware Web Application Security Scanner Usage *******')
+    print ('\n******* EY Web Application Security Scanner Usage *******')
     print ('\n*************************************************************')
     print ('\nFor Non-Authenticated Scan')
     print ('--------------------------')
@@ -135,7 +142,9 @@ def startscan(argv):
             print ('Check Usage')
             usage()
         elif lurl != '' and username != '' and password != '':
-            execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
+            # Modified for moving NMap and SSL out of Arachni/SCNR - START
+            #execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
+            # Modified for moving NMap and SSL out of Arachni/SCNR - END
             # print "Initiating Authenticated Scan"
             log.record('debug', "Initializing Authenticated Scan")
 
@@ -150,21 +159,37 @@ def startscan(argv):
             
             workingdirectory = os.path.join(report_path, 'ThirdParty.txt')
 
+            # Modified for Arachni -> Ecsypno SCNR Migration - START
+
             #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
             #os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
-            os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
+            #os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
+            os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
             # os.system('Arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
             #     '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
-            os.system('./arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
-                '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
-
+            #os.system('./arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
+            #    '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
+            os.system('./scnr ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
+                '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + scnrreportname)
             # os.system('arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="username=' + username +
             #    '&password=' + password + '",check="Logout" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
 
-            os.path.isfile(afrreportname)
-            os.system('./arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
-            os.system('./arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+            # Modified for moving NMap and SSL out of Arachni/SCNR - START
+            os.chdir(orchPath)
+            os.system('python ThirdPartyTools.py ' + hostname + ' > ThirdParty.txt')
+            # Modified for moving NMap and SSL out of Arachni/SCNR - END            
 
+            os.path.isfile(scnrreportname)
+            os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+            #os.system('./arachni_reporter ' + scnrreportname + ' --reporter=html:outfile=' + htmlreportname)
+            #os.system('./arachni_reporter ' + scnrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+            os.system('./scnr_reporter ' + scnrreportname + ' --reporter=html:outfile=' + htmlreportname)
+            os.system('./scnr_reporter ' + scnrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+
+            # Modified for Arachni -> Ecsypno SCNR Migration - END
+            
+            
+            
             if xmlreportname:
                 #print('MY PYTHON PATH=======>>>>>>>'+pythonExePath)
                 os.chdir(pythonExePath)
@@ -270,7 +295,10 @@ def normalscan(argv):
             usage()
 
     try:
-        execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
+        # Modified for moving NMap and SSL out of Arachni/SCNR - START
+        #execplugin = "--plugin=exec:during=" + '"' 'python ' + externaltoolpath + ' ' + hostname
+        # Modified for moving NMap and SSL out of Arachni/SCNR - END
+        
         # print "Initiating Non-Authenticated Scan"
         log.record('debug', "Initiating Non-Authenticated Scan")
 
@@ -288,15 +316,34 @@ def normalscan(argv):
         # os.system(
         #     'Arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + ' --report-save-path=' + afrreportname)
 
-        log.record('debug', "Arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
+        # Modified for Arachni -> Ecsypno SCNR Migration - START
+
+        #log.record('debug', "Arachni Command Triggered is: " + 'arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + afrreportname)
+        log.record('debug',
+                   "Ecsypno SCNR Command Triggered is: " + 'scnr ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + scnrreportname)
         #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
         #os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
-        os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
+        #os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
+        os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
         #os.system('arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
-        os.system('./arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
-        os.path.isfile(afrreportname)
-        os.system('./arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
-        os.system('./arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+        #os.system('./arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
+        scnr_cmd2 = './scnr ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + scnrreportname
+        os.system(scnr_cmd2)
+        # Modified for moving NMap and SSL out of Arachni/SCNR - START
+        os.chdir(orchPath)
+        os.system('python ThirdPartyTools.py ' + hostname + ' > ThirdParty.txt')
+        # Modified for moving NMap and SSL out of Arachni/SCNR - END
+        
+        os.path.isfile(scnrreportname)
+        os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+        #os.system('./arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
+        #os.system('./arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+        os.system('./scnr_reporter ' + scnrreportname + ' --reporter=html:outfile=' + htmlreportname)
+        os.system('./scnr_reporter ' + scnrreportname + ' --reporter=xml:outfile=' + xmlreportname)
+
+        # Modified for Arachni -> Ecsypno SCNR Migration - END
+
+       
 
         if xmlreportname:
             #os.chdir(pythonExePath + '\\Scripts')

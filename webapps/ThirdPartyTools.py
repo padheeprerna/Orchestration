@@ -20,7 +20,7 @@ def thirdpartyinvoke(hostname):
         #os.chdir('//home//ubuntu//Tools//Working_SSL//sslscan-1.11.11-rbsec')
         #os.system('SSLscan ' + hostname)
         #os.system('./sslscan ' + hostname)
-        os.system('python3.10 -m sslyze ' + hostname)
+        os.system('python -m sslyze ' + hostname)
         print('SSLScan ' + hostname)
 
     except Exception as e:
