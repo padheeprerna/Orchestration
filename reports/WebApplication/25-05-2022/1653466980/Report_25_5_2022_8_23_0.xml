@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/placeholder/scnr/engine/v1.0dev/components/reporters/xml/schema.xsd">
+  <version>1.0dev</version>
+  <status>aborting</status>
+  <seed>3d73d4ea52dd1c58e7512d658076896a</seed>
+  <options>---
+dom:
+  engine: chrome
+  local_storage: {}
+  session_storage: {}
+  wait_for_elements: {}
+  pool_size: 4
+  job_timeout: 60
+  worker_time_to_live: 250
+  wait_for_timers: false
+session: {}
+device:
+  visible: false
+  width: 1600
+  height: 1200
+  user_agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+  pixel_ratio: 1.0
+  touch: false
+timeout: {}
+audit:
+  parameter_values: true
+  paranoia: medium
+  exclude_vector_patterns: []
+  include_vector_patterns: []
+  link_templates: []
+  links: true
+  forms: true
+  cookies: true
+  ui_inputs: true
+  ui_forms: true
+  jsons: true
+  xmls: true
+datastore: {}
+scope:
+  directory_depth_limit: 4
+  auto_redundant_paths: 2
+  redundant_path_patterns: {}
+  dom_depth_limit: 3
+  dom_event_limit: 500
+  dom_event_inheritance_limit: 500
+  exclude_file_extensions:
+  - css
+  - png
+  exclude_path_patterns: []
+  exclude_content_patterns: []
+  include_path_patterns:
+  - 172.31.3.192
+  restrict_paths: []
+  extend_paths: []
+  url_rewrites: {}
+input:
+  values: {}
+  default_values:
+    name: scnr_engine_name
+    user: scnr_engine_user
+    usr: scnr_engine_user
+    pass: 5543!%scnr_engine_secret
+    txt: scnr_engine_text
+    num: '132'
+    amount: '100'
+    mail: scnr_engine@email.gr
+    account: '12'
+    id: '1'
+  without_defaults: false
+  force: false
+http:
+  request_timeout: 20000
+  request_redirect_limit: 5
+  request_concurrency: 10
+  request_queue_size: 200
+  request_headers: {}
+  response_max_size: 10000
+  cookies: {}
+  authentication_type: auto
+checks:
+- "*"
+platforms:
+- linux
+plugins: {}
+no_fingerprinting: false
+authorized_by: 
+url: http://172.31.3.192:8081/
+</options>
+  <start_datetime>2022-05-25T08:23:01+00:00</start_datetime>
+  <finish_datetime>2022-05-25T08:23:02+00:00</finish_datetime>
+  <sitemap>
+    <entry url="http://172.31.3.192:8081/" code="200"/>
+  </sitemap>
+  <issues/>
+  <plugins/>
+</report>

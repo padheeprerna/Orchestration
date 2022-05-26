@@ -23,6 +23,9 @@ dir = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(t
 #reportPath = "C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\OWASP"
 # END - Adding the below piece of code for OWASP Dependency Check
 
+#START - Adding below piece of code for ZAP
+reportPathZAP = '//home//ubuntu//Orchestration//webapps//zap_Reports//'
+#END - Adding below piece of code for ZAP SCAN
 finalreportpath = os.path.join(APP_DIR, 'WebApplicationSecurityResults.zip.txt')
 
 thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
@@ -30,6 +33,7 @@ thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
 # customoptions = "--http-request-concurrency=20 --http-response-max-size=10000 --http-request-timeout=5000 --http-request-queue-size=200 --scope-auto-redundant=1 --scope-directory-depth-limit=3 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=2 --scope-include-pattern=www-stage.vmware.com --scope-exclude-file-extensions=css,png "
 # Modified for Arachni -> Ecsypno SCNR Migration - START
 #customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
+#--system-slots-override 
 customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
 # Modified for Arachni -> Ecsypno SCNR Migration - END
 
@@ -164,7 +168,8 @@ def startscan(argv):
             #os.chdir('C:\\Program Files\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
             #os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
             #os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
-            os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+            #os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+            os.chdir('//home//docuser//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
             # os.system('Arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
             #     '&passw=' + password + '",check="PERSONAL" "" ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --report-save-path=' + afrreportname)
             #os.system('./arachni ' + execplugin + '" ' + lurl + ' --plugin=autologin:url=' + lurl + ',parameters="uid=' + username +
@@ -180,7 +185,7 @@ def startscan(argv):
             # Modified for moving NMap and SSL out of Arachni/SCNR - END            
 
             os.path.isfile(scnrreportname)
-            os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+            os.chdir('//home//docuser//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
             #os.system('./arachni_reporter ' + scnrreportname + ' --reporter=html:outfile=' + htmlreportname)
             #os.system('./arachni_reporter ' + scnrreportname + ' --reporter=xml:outfile=' + xmlreportname)
             os.system('./scnr_reporter ' + scnrreportname + ' --reporter=html:outfile=' + htmlreportname)
@@ -188,7 +193,10 @@ def startscan(argv):
 
             # Modified for Arachni -> Ecsypno SCNR Migration - END
             
-            
+            #start zap scan
+            os.chdir('//home//ubuntu//Tools//ZAP//ZAP_2.11.1')
+            os.system("java -jar zap-2.11.1.jar -quickurl " + lurl + " -quickout " + reportPathZAP +dir+ ".html -cmd")
+            #END - ZAP SCAN
             
             if xmlreportname:
                 #print('MY PYTHON PATH=======>>>>>>>'+pythonExePath)
@@ -232,7 +240,7 @@ def startscan(argv):
             if csvfilepath:
                 csvfilepath = r"{}".format(csvfilepath)
                 #createbug(csvfilepath)
-                generateHtml(csvfilepath, hostname, lurl)
+                generateHtml(csvfilepath, hostname, lurl,reportPathZAP,dir)
             else:
                 log.record('debug', "CSV Report not Found")
 
@@ -325,24 +333,30 @@ def normalscan(argv):
         #os.chdir(orchPath + '\\..\\arachni-1.6.1-0.6.1-windows-x86_64\\bin')
         #os.chdir('//home//ubuntu//Tools//Arachni//arachni-1.6.1.1-0.6.1.1//bin')
         os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+        #os.chdir('//home//docuser//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
         #os.system('arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
         #os.system('./arachni ' + execplugin + '" ' + lurl + ' ' + platformoption + ' ' + '--check=xss ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 3> ' + logfilename + ' --report-save-path=' + afrreportname)
         scnr_cmd2 = './scnr ' + lurl + ' ' + platformoption + ' ' + customoptions + '--scope-include-pattern=' + hostname + ' --output-debug 1> ' + logfilename + ' --report-save-path=' + scnrreportname
         os.system(scnr_cmd2)
         # Modified for moving NMap and SSL out of Arachni/SCNR - START
         os.chdir(orchPath)
-        os.system('python ThirdPartyTools.py ' + hostname + ' > ThirdParty.txt')
+        os.system('python3.10 ThirdPartyTools.py ' + hostname + ' > ThirdParty.txt')
         # Modified for moving NMap and SSL out of Arachni/SCNR - END
         
         os.path.isfile(scnrreportname)
         os.chdir('//home//ubuntu//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
+        #os.chdir('//home//docuser//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin')
         #os.system('./arachni_reporter ' + afrreportname + ' --reporter=html:outfile=' + htmlreportname)
         #os.system('./arachni_reporter ' + afrreportname + ' --reporter=xml:outfile=' + xmlreportname)
         os.system('./scnr_reporter ' + scnrreportname + ' --reporter=html:outfile=' + htmlreportname)
         os.system('./scnr_reporter ' + scnrreportname + ' --reporter=xml:outfile=' + xmlreportname)
 
         # Modified for Arachni -> Ecsypno SCNR Migration - END
-
+        
+        #start zap scan
+        os.chdir('//home//ubuntu//Tools//ZAP//ZAP_2.11.1')
+        os.system("java -jar zap-2.11.1.jar -quickurl " + lurl + " -quickout " + reportPathZAP +dir+ ".html -cmd")
+        #END - ZAP SCAN
        
 
         if xmlreportname:
@@ -384,7 +398,7 @@ def normalscan(argv):
         if csvfilepath:
             csvfilepath = r"{}".format(csvfilepath)
             print( csvfilepath)
-            generateHtml(csvfilepath, hostname, lurl)
+            generateHtml(csvfilepath, hostname, lurl, reportPathZAP, dir)
         else:
             log.record('debug', "CSV Report not Found")
 

@@ -1,0 +1,26 @@
+SCNR::UI::CLI v1.0dev - SCNR::Engine v1.0dev
+
+
+[~] No checks were specified, loading all.
+[~] No element audit options were specified, will audit links, forms, cookies, UI inputs, UI forms, JSONs and XMLs.
+
+[-] Cannot perform the scan, the system has no available slots.
+
+[-] Scans that can be run in parallel: 0
+
+-------------------------------------------
+
+[+] CPU:   2 slots
+[~]   Required:  1
+[~]   Available: N/A
+
+[-] RAM:   0 slots
+[~]   Required:  4.0 GB
+[~]   Available: 1.3 GB
+
+[+] Disk:  1 slots
+[~]   Location:  /tmp
+[~]   Required:  4.0 GB
+[~]   Available: 5.3 GB
+
+[~] Set '--system-slots-override' to override this safeguard.

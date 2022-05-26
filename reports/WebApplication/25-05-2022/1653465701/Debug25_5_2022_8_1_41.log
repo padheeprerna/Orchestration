@@ -1,0 +1,78 @@
+SCNR::UI::CLI v1.0dev - SCNR::Engine v1.0dev
+
+
+[~] No checks were specified, loading all.
+[~] No element audit options were specified, will audit links, forms, cookies, UI inputs, UI forms, JSONs and XMLs.
+
+[*] Initializing...
+[*] Preparing plugins...
+[*] ... done.
+[*] BrowserPool: Initializing 4 Chrome browsers...
+[*] BrowserPool: Spawned with PID 53535 [lifeline at PID 53519].
+[*] BrowserPool: Spawned with PID 53525 [lifeline at PID 53523].
+[*] BrowserPool: Spawned with PID 53540 [lifeline at PID 53521].
+[*] BrowserPool: Spawned with PID 53526 [lifeline at PID 53518].
+[*] BrowserPool: Initialization completed with 4 browsers in the pool.
+
+[*] [HTTP: 200] http://172.31.3.192:8081/
+[~] Identified as: linux, apache, php
+[2J[*] Aborting...
+[~] Please wait while the system cleans up.
+[2J
+
+================================================================================
+
+
+[+] Web Application Security Report - SCNR::Engine Framework
+
+[~] Report generated on: 2022-05-25 08:01:43 +0000
+
+[+] System settings:
+[~] ---------------
+[~] Version:           1.0dev
+[~] Seed:              c5d4b168c3cd56b0b0dfc8bf2a20b00a
+[~] Audit started on:  2022-05-25 08:01:42 +0000
+[~] Audit finished on: 2022-05-25 08:01:43 +0000
+[~] Runtime:           00:00:00
+
+[~] URL:        http://172.31.3.192:8081/
+[~] User agent: 
+
+[*] Audited elements: 
+[~] * Links
+[~] * Forms
+[~] * Cookies
+[~] * XMLs
+[~] * JSONs
+[~] * UI inputs
+[~] * UI forms
+
+[*] Checks: *
+
+[*] Filters: 
+[~]   Include:
+[~]     (?i-mx:172.31.3.192)
+
+[~] ===========================
+
+[+] 0 issues were detected.
+
+
+[~] Report saved at: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653465701/Report_25_5_2022_8_1_41.ser [0.0MB]
+
+[~] Audited 1 page snapshots.
+
+[~] Duration: 00:00:00
+[~] Processed 2/2 HTTP requests -- timed-out: 0
+[~] -- 307.025 requests/second.
+[~] Processed 0/0 browser jobs -- timed-out: 0
+[~] -- 0 second/job.
+
+[~] Currently auditing          http://172.31.3.192:8081/
+[~] Burst response time sum     0.003 seconds
+[~] Burst response count        2
+[~] Burst average response time 0.002 seconds
+[~] Burst average               111.17 requests/second
+[~] Original max concurrency    10
+[~] Throttled max concurrency   10
+

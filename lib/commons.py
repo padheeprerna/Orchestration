@@ -89,8 +89,8 @@ def get_report_path(report_base, app_type):
     report_path = os.path.join(report_base, app_type, str(date_now), str(timestamp))
     debug_path = os.path.join(report_path, 'debug')
     if not os.path.exists(report_path):
-        os.makedirs(report_path)
-        os.makedirs(debug_path)
+        os.makedirs(report_path, mode = 0o777)
+        os.makedirs(debug_path, mode = 0o777)
     return report_path
 
 

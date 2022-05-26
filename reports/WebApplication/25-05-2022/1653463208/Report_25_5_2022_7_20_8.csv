@@ -1,0 +1,69 @@
+name,description,remedy_guidance,remedy_code,severity,check_name_description_author,check_name_description_version,check_name_description_shortname,check_name_description,digest,references_reference,references,vector_class,vector_type,vector_url,vector_action,vector,remarks,page_body,page_request_url_method,page_request_url_parameters,page_request_url_headers_header,page_request_url_headers_header_header_header,page_request_url_body_raw,page_request_url_body,page_response_url_code,page_response_url_ip_address,page_response_url_time,page_response_url_return_code,page_response_url_return_message,page_response_url_headers_header_header_header_header_header_body_raw_headers,page_response_url_headers_header_header_header_header_header_body,page_dom_url_transitions,page_dom_url_data_flow_sinks,page_dom_url_execution_flow_sinks,page_dom_url,page,referring_page_body_request_url_method_parameters_headers_header_header_header_header_body_raw_response_url_code_ip_address_time_return_code_return_message_headers_header_header_header_header_header_header_header_body_raw_headers_dom_url_transitions_data_flow_sinks_execution_flow_sinks,signature,proof,trusted,platform_type,platform_name
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","1795391917","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/","http://172.31.3.192:8081/","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method TRACE is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","trace","","","","TRACE / HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: 2117694847ccb3aa76c6f1259f1616ac","","405","172.31.3.192","0.0055","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Wed, 25 May 2022 07:20:10 GMT
+Server: Apache/2.4.53 (Debian)
+Allow: 
+Content-Length: 302
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","682621940","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/SCNR_Engine-2117694847ccb3aa76c6f1259f1616ac","http://172.31.3.192:8081/SCNR_Engine-2117694847ccb3aa76c6f1259f1616ac","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method PUT is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","put","","","","PUT /SCNR_Engine-2117694847ccb3aa76c6f1259f1616ac HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: 2117694847ccb3aa76c6f1259f1616ac
+Content-Length: 60
+
+Created by SCNR::Engine. PUT2117694847ccb3aa76c6f1259f1616ac","","405","172.31.3.192","0.0049","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Wed, 25 May 2022 07:20:10 GMT
+Server: Apache/2.4.53 (Debian)
+Allow: POST,OPTIONS,HEAD,GET
+Content-Length: 300
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","2217262411","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/server-status","http://172.31.3.192:8081/server-status","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","get","","","","GET /server-status HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: 2117694847ccb3aa76c6f1259f1616ac","","403","172.31.3.192","0.0051","ok","No error","HTTP/1.1 403 Forbidden
+Date: Wed, 25 May 2022 07:20:10 GMT
+Server: Apache/2.4.53 (Debian)
+Content-Length: 279
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 403 Forbidden","true","",""

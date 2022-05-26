@@ -1,0 +1,241 @@
+name,description,remedy_guidance,remedy_code,severity,check_name_description_author,check_name_description_version,check_name_description_shortname,check_name_description,digest,references_reference,references,vector_class,vector_type,vector_url,vector_action,vector,remarks,page_body,page_request_url_method,page_request_url_parameters,page_request_url_headers_header,page_request_url_headers_header_header_header,page_request_url_body_raw,page_request_url_body,page_response_url_code,page_response_url_ip_address,page_response_url_time,page_response_url_return_code,page_response_url_return_message,page_response_url_headers_header_header_header_header_header_body_raw_headers,page_response_url_headers_header_header_header_header_header_body,page_dom_url_transitions,page_dom_url_data_flow_sinks,page_dom_url_execution_flow_sinks,page_dom_url,page,referring_page_body_request_url_method_parameters_headers_header_header_header_header_body_raw_response_url_code_ip_address_time_return_code_return_message_headers_header_header_header_header_header_header_header_body_raw_headers_dom_url_transitions_data_flow_sinks_execution_flow_sinks,signature,proof,trusted,platform_type,platform_name
+"Common sensitive file","Web applications are often made up of multiple files and directories.
+
+It is possible that over time some files may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+files that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced files in the hope that the file will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common filenames.
+The response headers from the server will then indicate if the file exists.
+
+SCNR::Engine also contains a list of common file names which it will attempt to access.","If files are unreferenced then they should be removed from the web root
+and/or the application directory.
+
+Preventing access without authentication may also be an option and can stop a
+client from being able to view the contents of a file, however it is still likely
+that the directory structure will be able to be discovered.
+
+Using obscure file names is implementing security through obscurity and is
+not a recommended option.","","low","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.4","common_files","","3006415440","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/config.php","http://172.31.3.192:8081/config.php","","","","get","","","","GET /config.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: b18b689121933088bc567aa28caee04f","","200","172.31.3.192","0.0087","ok","No error","HTTP/1.1 200 OK
+Date: Wed, 25 May 2022 09:55:18 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.29
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8","","","","","","","","","HTTP/1.1 200 OK","true","",""
+"Missing 'X-Frame-Options' header","Clickjacking (User Interface redress attack, UI redress attack, UI redressing)
+is a malicious technique of tricking a Web user into clicking on something different
+from what the user perceives they are clicking on, thus potentially revealing
+confidential information or taking control of their computer while clicking on
+seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website
+could be at risk of a clickjacking attack.
+
+The `X-Frame-Options` HTTP response header can be used to indicate whether or not
+a browser should be allowed to render a page inside a frame or iframe. Sites can
+use this to avoid clickjacking attacks, by ensuring that their content is not
+embedded into other sites.","Configure your web server to include an `X-Frame-Options` header.","","low","Tasos Laskos <tasos.laskos@gmail.com>","0.1.3","x_frame_options","","693","1173186050","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/","http://172.31.3.192:8081/","","","<!doctype html>
+<html lang=""en"">
+  <head>
+	<style>
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+</style>
+    <!-- Required meta tags -->
+    <meta charset=""utf-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1, shrink-to-fit=no"">
+
+    <!-- Bootstrap CSS -->
+    <link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"" integrity=""sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"" crossorigin=""anonymous"">
+
+    <title>CTF</title>
+  </head>
+  <body>
+  <nav class=""navbar navbar-expand-lg navbar-dark bg-dark"">
+  <a class=""navbar-brand"" href=""#"">CTF</a>
+  <button class=""navbar-toggler"" type=""button"" data-toggle=""collapse"" data-target=""#navbarNavDropdown"" aria-controls=""navbarNavDropdown"" aria-expanded=""false"" aria-label=""Toggle navigation"">
+    <span class=""navbar-toggler-icon""></span>
+  </button>
+  <div class=""collapse navbar-collapse"" id=""navbarNavDropdown"">
+  <ul class=""navbar-nav"">
+      <li class=""nav-item active"">
+        <a class=""nav-link"" href=""index.php"">Home <span class=""sr-only"">(current)</span></a>
+      </li>
+      <li class=""nav-item"">
+        <a hidden class=""nav-link"" href=""encrypt.php"">Encrypt</a>
+      </li>
+      <li class=""nav-item"">
+        <a class=""nav-link"" href=""login.php"">Login</a>
+      </li>
+     
+
+      
+     
+    </ul>
+  </div>
+</nav>
+
+<div class=""container mt-4"">
+<h3>All the Best</h3>
+
+<div class=""container"">
+    <div class=""regisFrm"">
+        <form action=""c.php"" method=""post"">
+            <input type='cipher' name='cipher' placeholder="""" required="""">
+            <div class=""send-button"">
+                <input type=""submit"" name=""forgotSubmit"" value=""CONTINUE"">
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr>
+</div>
+<footer>
+  <p>ftp:ftp</p>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=""https://code.jquery.com/jquery-3.3.1.slim.min.js"" integrity=""sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"" crossorigin=""anonymous""></script>
+    <script src=""https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"" integrity=""sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"" crossorigin=""anonymous""></script>
+    <script src=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"" integrity=""sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"" crossorigin=""anonymous""></script>
+  </body>
+</html>","get","","","","GET / HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: b18b689121933088bc567aa28caee04f","","200","172.31.3.192","0.0047","ok","No error","HTTP/1.1 200 OK
+Date: Wed, 25 May 2022 09:55:18 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.29
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1197
+Content-Type: text/html; charset=UTF-8","","","","","","","","","HTTP/1.1 200 OK","true","",""
+"HttpOnly cookie","HTTP by itself is a stateless protocol. Therefore the server is unable to determine
+which requests are performed by which client, and which clients are authenticated
+or unauthenticated.
+
+The use of HTTP cookies within the headers, allows a web server to identify each
+individual client and can therefore determine which clients hold valid
+authentication, from those that do not. These are known as session cookies.
+
+When a cookie is set by the server (sent the header of an HTTP response) there
+are several flags that can be set to configure the properties of the cookie and
+how it is to be handled by the browser.
+
+The `HttpOnly` flag assists in the prevention of client side-scripts (such as
+JavaScript) accessing and using the cookie.
+
+This can help prevent XSS attacks targeting the cookies holding the client's
+session token (setting the `HttpOnly` flag does not prevent, nor safeguard against
+XSS vulnerabilities themselves).","The initial step to remedy this would be to determine whether any client-side
+scripts (such as JavaScript) need to access the cookie and if not, set the
+`HttpOnly` flag.
+
+Additionally, it should be noted that some older browsers are not compatible with
+the `HttpOnly` flag, and therefore setting this flag will not protect those clients
+against this form of attack.","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.1.5","http_only_cookies","","200","4206811426","","","SCNR::Engine::Element::Cookie","cookie","http://172.31.3.192:8081/c.php","http://172.31.3.192:8081/c.php","PHPSESSID=85aa1bc25d196f55ceb7313de58501a5; path=/","","","","","","","","<br/>","post","","","","POST /c.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: b18b689121933088bc567aa28caee04f
+Content-Length: 29
+Content-Type: application/x-www-form-urlencoded
+
+cipher=&forgotSubmit=CONTINUE","","200","172.31.3.192","0.0075","ok","No error","HTTP/1.1 200 OK
+Date: Wed, 25 May 2022 09:55:18 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.29
+Set-Cookie: PHPSESSID=85aa1bc25d196f55ceb7313de58501a5; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Length: 5
+Content-Type: text/html; charset=UTF-8","","","","","","","","","","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","1795391917","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/","http://172.31.3.192:8081/","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method TRACE is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","trace","","","","TRACE / HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: b18b689121933088bc567aa28caee04f","","405","172.31.3.192","0.0041","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Wed, 25 May 2022 09:55:18 GMT
+Server: Apache/2.4.53 (Debian)
+Allow: 
+Content-Length: 302
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","2667356831","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/SCNR_Engine-b18b689121933088bc567aa28caee04f","http://172.31.3.192:8081/SCNR_Engine-b18b689121933088bc567aa28caee04f","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method PUT is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","put","","","","PUT /SCNR_Engine-b18b689121933088bc567aa28caee04f HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: b18b689121933088bc567aa28caee04f
+Content-Length: 60
+
+Created by SCNR::Engine. PUTb18b689121933088bc567aa28caee04f","","405","172.31.3.192","0.0037","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Wed, 25 May 2022 09:55:18 GMT
+Server: Apache/2.4.53 (Debian)
+Allow: GET,POST,OPTIONS,HEAD
+Content-Length: 300
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","2217262411","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/server-status","http://172.31.3.192:8081/server-status","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","get","","","","GET /server-status HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: b18b689121933088bc567aa28caee04f","","403","172.31.3.192","0.0036","ok","No error","HTTP/1.1 403 Forbidden
+Date: Wed, 25 May 2022 09:55:18 GMT
+Server: Apache/2.4.53 (Debian)
+Content-Length: 279
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 403 Forbidden","true","",""

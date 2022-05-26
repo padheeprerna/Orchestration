@@ -1,0 +1,1327 @@
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.4/components/reporters/xml/schema.xsd"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>SAST Security Assessment Report</title><link rel="stylesheet" href="css/style.css" type="text/css" media="screen" /></head><body><div id="art-main"><div class="art-header"><div class="art-header-clip"><div class="art-header-center"><div class="art-header-png"></div><div class="art-header-jpeg"></div></div></div><div class="art-header-wrapper"><div class="art-header-inner"><div class="art-logo"><center><img src="css/images/ey-white-logo.png" width = "75" height = "75"></center><h1 class="art-logo-name">SAST Security Assessment Report</h1></div></div></div></div><div class="cleared reset-box"></div><div class="art-nav"><div class="art-nav-outer"><div class="art-nav-wrapper"></div></div></div><div class="cleared reset-box"></div><div class="art-sheet"><div class="art-sheet-tl"></div><div class="art-sheet-tr"></div><div class="art-sheet-bl"></div><div class="art-sheet-br"></div><div class="art-sheet-tc"></div><div class="art-sheet-bc"></div><div class="art-sheet-cl"></div><div class="art-sheet-cr"></div><div class="art-sheet-cc"></div><div class="art-sheet-body"><div class="art-content-layout"><div class="art-content-layout-row"><div class="art-layout-cell art-content"><div class="art-post"><div class="art-post-tl"></div><div class="art-post-tr"></div><div class="art-post-bl"></div><div class="art-post-br"></div><div class="art-post-tc"></div><div class="art-post-bc"></div><div class="art-post-cl"></div><div class="art-post-cr"></div><div class="art-post-cc"></div>    <div class="art-post-body"><div class="art-post-inner art-article"><h2 class="art-postheader">  </h2><div class="cleared"></div><p style="font-weight:bold;"><left><b><h5 style="color:blue;"> SAST Tools Assessment Results </h5></b></left></p><br><p style="font-weight:bold;color:blue;"><left><b> i) OWASP Dependency Check Results</b></left></p><table border="1" class="dataframe table table-stripped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>DependencyPath</th>
+      <th>CVE</th>
+      <th>CWE</th>
+      <th>CVSSv3_BaseSeverity</th>
+      <th>CPE Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table><br><p style="font-weight:bold;color:blue;"><left><b> ii) Sonar Scan Results</b></left></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Message</th>
+      <th>Type</th>
+      <th>Severity</th>
+      <th>File</th>
+      <th>Line</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/CustomReporting.py</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/CustomReporting.py</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/CustomReporting.py</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/CustomReporting.py</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>Rename function "generateHtml" to match the regular expression ^[a-z_][a-z0-9_]*$.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Refactor this function to reduce its Cognitive Complexity from 54 to the 15 allowed.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal '&lt;/center&gt;' 6 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal '&lt;td&gt;' 6 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>114</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>114</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/HTMLReportGenerator.py</td>
+      <td>230</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/JiraBugCreation.py</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Replace this expression; used as a condition it will always be constant.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/JiraBugCreation.py</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal "devsecopscollab@gmail.com" 3 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/MasterConfig.py</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTAutomation.py</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTAutomation.py</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTAutomation.py</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTAutomation.py</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>Rename function "copycssForReport" to match the regular expression ^[a-z_][a-z0-9_]*$.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTAutomation.py</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>Rename function "startSAST" to match the regular expression ^[a-z_][a-z0-9_]*$.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTAutomation.py</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTHTMLReporter.py</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Rename function "generateReport" to match the regular expression ^[a-z_][a-z0-9_]*$.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SASTHTMLReporter.py</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>Remove this deprecated "center" element.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/SAST-Analysis-Report.html</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/Backgroup.html</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/Backgroup.html</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/Backgroup.html</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/Backgroup.html</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>177</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>179</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>181</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>183</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>186</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>192</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>207</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>234</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>235</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>237</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>238</td>
+    </tr>
+    <tr>
+      <td>Add "&lt;th&gt;" headers to this "&lt;table&gt;".</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/6764542761c042d595a3af6e6e7ac419/css/template.html</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <td>Remove this deprecated "center" element.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/SAST-Analysis-Report.html</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/Backgroup.html</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/Backgroup.html</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/Backgroup.html</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/Backgroup.html</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>177</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>179</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>181</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>183</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>186</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>192</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>207</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>234</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>235</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>237</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>238</td>
+    </tr>
+    <tr>
+      <td>Add "&lt;th&gt;" headers to this "&lt;table&gt;".</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/SAST_Reports/67d726ef5e2242e1b10929bea9b2ffa3/css/template.html</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/ThirdPartyTools.py</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal 'ThirdParty.txt' 3 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <td>Refactor this function to reduce its Cognitive Complexity from 45 to the 15 allowed.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>Either merge this branch with the identical one on line "129" or change one of the implementations.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>138</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>139</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>153</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal '--scope-include-pattern=' 3 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>159</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal ' --report-save-path=' 3 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>159</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal './arachni_reporter ' 4 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>165</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>171</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal "XML Report Not Found" 4 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>174</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>223</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>227</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>234</td>
+    </tr>
+    <tr>
+      <td>Refactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>243</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>273</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>274</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>285</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>292</td>
+    </tr>
+    <tr>
+      <td>Merge these implicitly concatenated strings; or did you forget a comma?</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>303</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>351</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>383</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>395</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>418</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/WebAutomation.py</td>
+      <td>432</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/Backgroup.html</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/Backgroup.html</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/Backgroup.html</td>
+      <td>125</td>
+    </tr>
+    <tr>
+      <td>Add an "aria-label" or "aria-labbelledby" attribute to this element.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/Backgroup.html</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>177</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>179</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>181</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>183</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>186</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>192</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>197</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>207</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>234</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>235</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>237</td>
+    </tr>
+    <tr>
+      <td>Add either an 'id' or a 'scope' attribute to this &lt;th&gt; tag.</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>238</td>
+    </tr>
+    <tr>
+      <td>Add "&lt;th&gt;" headers to this "&lt;table&gt;".</td>
+      <td>BUG</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/css/template.html</td>
+      <td>242</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_api.py</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_api.py</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_api.py</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>Refactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_api.py</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>Replace this expression; used as a condition it will always be constant.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_api.py</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <td>Specify an exception class to catch or reraise the exception</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_api.py</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>Import only needed names or import the module and then use its members.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_micro_service.py</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Remove this commented out code.</td>
+      <td>CODE_SMELL</td>
+      <td>MAJOR</td>
+      <td>Test-Python-Project-Linux:webappsSonar/jira_micro_service.py</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal "Error:  %s" 8 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/mail.py</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal 'automation.py' 3 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/settings.py</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <td>Define a constant instead of duplicating this literal 'http://10.127.240.50/' 3 times.</td>
+      <td>CODE_SMELL</td>
+      <td>CRITICAL</td>
+      <td>Test-Python-Project-Linux:webappsSonar/settings.py</td>
+      <td>76</td>
+    </tr>
+  </tbody>
+</table>

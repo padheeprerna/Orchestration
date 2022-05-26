@@ -1,0 +1,30 @@
+2022-05-24 19:27:54,079 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:27:54,079 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-24 19:27:54,079 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:27:54,079 - security_automation - DEBUG - DAST Scan Started at: 2022-05-24 19:27:54.079966
+2022-05-24 19:27:54,080 - security_automation - DEBUG - Value of report path is: //home//ubuntu//Orchestration//webapps//zap_Reports//
+2022-05-24 19:27:54,080 - security_automation - DEBUG - Value of log_path is: //home//ubuntu//Orchestration//webapps//zap_Reports//Debug
+2022-05-24 19:27:54,080 - security_automation - DEBUG - Initiating ZAP Scan
+2022-05-24 19:27:54,080 - security_automation - DEBUG - Starting ZAP Scan
+2022-05-24 19:27:54,082 - security_automation - DEBUG - ZAP Scan Complete
+2022-05-24 19:27:54,107 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:29:11,462 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:29:11,462 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-24 19:29:11,463 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:29:11,463 - security_automation - DEBUG - DAST Scan Started at: 2022-05-24 19:29:11.463064
+2022-05-24 19:29:11,463 - security_automation - DEBUG - Value of report path is: //home//ubuntu//Orchestration//webapps//zap_Reports//
+2022-05-24 19:29:11,463 - security_automation - DEBUG - Value of log_path is: //home//ubuntu//Orchestration//webapps//zap_Reports//Debug
+2022-05-24 19:29:11,463 - security_automation - DEBUG - Initiating ZAP Scan
+2022-05-24 19:29:11,463 - security_automation - DEBUG - Starting ZAP Scan
+2022-05-24 19:29:11,465 - security_automation - DEBUG - ZAP Scan Complete
+2022-05-24 19:29:11,488 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:30:44,463 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:30:44,463 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-24 19:30:44,463 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-24 19:30:44,463 - security_automation - DEBUG - DAST Scan Started at: 2022-05-24 19:30:44.463888
+2022-05-24 19:30:44,463 - security_automation - DEBUG - Value of report path is: //home//ubuntu//Orchestration//webapps//zap_Reports//
+2022-05-24 19:30:44,464 - security_automation - DEBUG - Value of log_path is: //home//ubuntu//Orchestration//webapps//zap_Reports//Debug
+2022-05-24 19:30:44,464 - security_automation - DEBUG - Initiating ZAP Scan
+2022-05-24 19:30:44,464 - security_automation - DEBUG - Starting ZAP Scan
+2022-05-24 19:31:16,121 - security_automation - DEBUG - ZAP Scan Complete
+2022-05-24 19:31:16,146 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

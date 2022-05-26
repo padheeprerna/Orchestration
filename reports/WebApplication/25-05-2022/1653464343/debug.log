@@ -1,0 +1,13 @@
+2022-05-25 07:39:03,128 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-25 07:39:03,128 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-25 07:39:03,128 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-25 07:39:03,128 - security_automation - DEBUG - Web Application Scan Started at: 2022-05-25 07:39:03.128422
+2022-05-25 07:39:03,128 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653464343
+2022-05-25 07:39:03,128 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653464343/Debug
+2022-05-25 07:39:03,128 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-05-25 07:39:03,128 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-05-25 07:39:03,128 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-05-25 07:39:03,129 - security_automation - DEBUG - Initiating Non-Authenticated Scan
+2022-05-25 07:39:03,129 - security_automation - DEBUG - Ecsypno SCNR Command Triggered is: scnr http://172.31.3.192:8081/ --platform=linux --http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png --scope-include-pattern=172.31.3.192 --output-debug 1> /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653464343/Debug25_5_2022_7_39_3.log --report-save-path=/home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653464343//Report_25_5_2022_7_39_3.ser
+2022-05-25 07:54:59,875 - security_automation - DEBUG - name 'reportPath' is not defined
+2022-05-25 07:54:59,931 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

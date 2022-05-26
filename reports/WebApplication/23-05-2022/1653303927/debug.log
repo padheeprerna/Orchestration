@@ -1,0 +1,13 @@
+2022-05-23 11:05:27,891 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-23 11:05:27,891 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-23 11:05:27,891 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-23 11:05:27,891 - security_automation - DEBUG - Web Application Scan Started at: 2022-05-23 11:05:27.891640
+2022-05-23 11:05:27,891 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/23-05-2022/1653303927
+2022-05-23 11:05:27,892 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/23-05-2022/1653303927/Debug
+2022-05-23 11:05:27,892 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-05-23 11:05:27,893 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-05-23 11:05:27,893 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-05-23 11:05:27,893 - security_automation - DEBUG - Initiating Non-Authenticated Scan
+2022-05-23 11:05:27,893 - security_automation - DEBUG - Ecsypno SCNR Command Triggered is: scnr http://172.31.3.192:8081/ --platform=linux --http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png --scope-include-pattern=172.31.3.192 --output-debug 1> /home/ubuntu/Orchestration/reports/WebApplication/23-05-2022/1653303927/Debug23_5_2022_11_5_27.log --report-save-path=/home/ubuntu/Orchestration/reports/WebApplication/23-05-2022/1653303927//Report_23_5_2022_11_5_27.ser
+2022-05-23 11:05:27,895 - security_automation - DEBUG - [Errno 2] No such file or directory: '//home//docuser//Tools//SCNR/scnr-1.0dev-1.0dev-1.0dev//bin'
+2022-05-23 11:05:27,944 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

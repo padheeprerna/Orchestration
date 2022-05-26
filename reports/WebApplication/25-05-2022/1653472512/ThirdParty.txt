@@ -1,0 +1,244 @@
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-25 09:55 UTC
+Nmap scan report for ip-172-31-3-192.ap-south-1.compute.internal (172.31.3.192)
+Host is up (0.00018s latency).
+Not shown: 990 closed tcp ports (conn-refused)
+PORT      STATE SERVICE           VERSION
+21/tcp    open  ftp               vsftpd 3.0.3
+22/tcp    open  ssh               OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+80/tcp    open  http              Apache httpd 2.4.41 ((Ubuntu))
+443/tcp   open  ssl/http          Apache httpd 2.4.41 ((Ubuntu))
+3389/tcp  open  ms-wbt-server     xrdp
+8000/tcp  open  nagios-nsca       Nagios NSCA
+8080/tcp  open  http              Jetty 9.4.46.v20220331
+8081/tcp  open  http              Apache httpd 2.4.53 ((Debian))
+9000/tcp  open  cslistener?
+10000/tcp open  snet-sensor-mgmt?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9000-TCP:V=7.92%I=7%D=5/25%Time=628DFD24%P=x86_64-redhat-linux-gnu%
+SF:r(GetRequest,2000,"HTTP/1\.1\x20200\x20\r\nX-Frame-Options:\x20SAMEORIG
+SF:IN\r\nX-XSS-Protection:\x201;\x20mode=block\r\nX-Content-Type-Options:\
+SF:x20nosniff\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalida
+SF:te\r\nvary:\x20accept-encoding\r\nContent-Type:\x20text/html;charset=ut
+SF:f-8\r\nDate:\x20Wed,\x2025\x20May\x202022\x2009:55:48\x20GMT\r\nConnect
+SF:ion:\x20close\r\n\r\n<!doctype\x20html><html\x20lang=\"en\"><head><meta
+SF:\x20http-equiv=\"content-type\"\x20content=\"text/html;\x20charset=UTF-
+SF:8\"\x20charset=\"UTF-8\"/><meta\x20http-equiv=\"X-UA-Compatible\"\x20co
+SF:ntent=\"IE=edge\"><link\x20rel=\"apple-touch-icon\"\x20href=\"/apple-to
+SF:uch-icon\.png\"><link\x20rel=\"apple-touch-icon\"\x20sizes=\"57x57\"\x2
+SF:0href=\"/apple-touch-icon-57x57\.png\"><link\x20rel=\"apple-touch-icon\
+SF:"\x20sizes=\"60x60\"\x20href=\"/apple-touch-icon-60x60\.png\"><link\x20
+SF:rel=\"apple-touch-icon\"\x20sizes=\"72x72\"\x20href=\"/apple-touch-icon
+SF:-72x72\.png\"><link\x20rel=\"apple-touch-icon\"\x20sizes=\"76x76\"\x20h
+SF:ref=\"/apple-touch-icon-76x76\.png\"><link\x20rel=\"apple-touch-icon\"\
+SF:x20sizes=\"114x114\"\x20href=\"/apple-touch-icon-114x1")%r(HTTPOptions,
+SF:5C,"HTTP/1\.1\x20405\x20\r\nContent-Length:\x200\r\nDate:\x20Wed,\x2025
+SF:\x20May\x202022\x2009:55:48\x20GMT\r\nConnection:\x20close\r\n\r\n")%r(
+SF:RTSPRequest,24E,"HTTP/1\.1\x20400\x20\r\nContent-Type:\x20text/html;cha
+SF:rset=utf-8\r\nContent-Language:\x20en\r\nContent-Length:\x20435\r\nDate
+SF::\x20Wed,\x2025\x20May\x202022\x2009:55:48\x20GMT\r\nConnection:\x20clo
+SF:se\r\n\r\n<!doctype\x20html><html\x20lang=\"en\"><head><title>HTTP\x20S
+SF:tatus\x20400\x20\xe2\x80\x93\x20Bad\x20Request</title><style\x20type=\"
+SF:text/css\">body\x20{font-family:Tahoma,Arial,sans-serif;}\x20h1,\x20h2,
+SF:\x20h3,\x20b\x20{color:white;background-color:#525D76;}\x20h1\x20{font-
+SF:size:22px;}\x20h2\x20{font-size:16px;}\x20h3\x20{font-size:14px;}\x20p\
+SF:x20{font-size:12px;}\x20a\x20{color:black;}\x20\.line\x20{height:1px;ba
+SF:ckground-color:#525D76;border:none;}</style></head><body><h1>HTTP\x20St
+SF:atus\x20400\x20\xe2\x80\x93\x20Bad\x20Request</h1></body></html>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port10000-TCP:V=7.92%I=7%D=5/25%Time=628DFD1F%P=x86_64-redhat-linux-gnu
+SF:%r(GetRequest,16EA,"HTTP/1\.0\x20200\x20OK\r\nAccept-Ranges:\x20bytes\r
+SF:\nCache-Control:\x20max-age=31536000\r\nContent-Length:\x205558\r\nCont
+SF:ent-Type:\x20text/html;\x20charset=utf-8\r\nLast-Modified:\x20Wed,\x200
+SF:9\x20Feb\x202022\x2001:01:46\x20GMT\r\nVary:\x20Accept-Encoding\r\nX-Co
+SF:ntent-Type-Options:\x20nosniff\r\nX-Xss-Protection:\x201;\x20mode=block
+SF:\r\nDate:\x20Wed,\x2025\x20May\x202022\x2009:55:43\x20GMT\r\n\r\n<!doct
+SF:ype\x20html><html\x20lang=\"en\"\x20ng-app=\"portainer\"\x20ng-strict-d
+SF:i><head><meta\x20charset=\"utf-8\"/><title>Portainer</title><meta\x20na
+SF:me=\"description\"\x20content=\"\"/><meta\x20name=\"author\"\x20content
+SF:=\"Portainer\.io\"/><base\x20id=\"base\"/><script>var\x20path\x20=\x20w
+SF:indow\.location\.pathname\.replace\(/\^\\/\+\|\\/\+\$/g,\x20''\);\n\x20
+SF:\x20\x20\x20\x20\x20var\x20basePath\x20=\x20path\x20\?\x20'/'\x20\+\x20
+SF:path\x20\+\x20'/'\x20:\x20'/';\n\x20\x20\x20\x20\x20\x20document\.getEl
+SF:ementById\('base'\)\.href\x20=\x20basePath;</script><!--\[if\x20lt\x20I
+SF:E\x209\]>\n\x20\x20\x20\x20\x20\x20<script\x20src=\"//html5shim\.google
+SF:code\.com/svn/trunk/html5\.js\"></script>\n\x20\x20\x20\x20<!\[endif\]-
+SF:-><link\x20rel=\"apple-touch-icon\"\x20sizes=\"180x180\"\x20href=\"63a3
+SF:01f0574f1a696ce6\.png\"/><lin")%r(HTTPOptions,16EA,"HTTP/1\.0\x20200\x2
+SF:0OK\r\nAccept-Ranges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\
+SF:nContent-Length:\x205558\r\nContent-Type:\x20text/html;\x20charset=utf-
+SF:8\r\nLast-Modified:\x20Wed,\x2009\x20Feb\x202022\x2001:01:46\x20GMT\r\n
+SF:Vary:\x20Accept-Encoding\r\nX-Content-Type-Options:\x20nosniff\r\nX-Xss
+SF:-Protection:\x201;\x20mode=block\r\nDate:\x20Wed,\x2025\x20May\x202022\
+SF:x2009:55:43\x20GMT\r\n\r\n<!doctype\x20html><html\x20lang=\"en\"\x20ng-
+SF:app=\"portainer\"\x20ng-strict-di><head><meta\x20charset=\"utf-8\"/><ti
+SF:tle>Portainer</title><meta\x20name=\"description\"\x20content=\"\"/><me
+SF:ta\x20name=\"author\"\x20content=\"Portainer\.io\"/><base\x20id=\"base\
+SF:"/><script>var\x20path\x20=\x20window\.location\.pathname\.replace\(/\^
+SF:\\/\+\|\\/\+\$/g,\x20''\);\n\x20\x20\x20\x20\x20\x20var\x20basePath\x20
+SF:=\x20path\x20\?\x20'/'\x20\+\x20path\x20\+\x20'/'\x20:\x20'/';\n\x20\x2
+SF:0\x20\x20\x20\x20document\.getElementById\('base'\)\.href\x20=\x20baseP
+SF:ath;</script><!--\[if\x20lt\x20IE\x209\]>\n\x20\x20\x20\x20\x20\x20<scr
+SF:ipt\x20src=\"//html5shim\.googlecode\.com/svn/trunk/html5\.js\"></scrip
+SF:t>\n\x20\x20\x20\x20<!\[endif\]--><link\x20rel=\"apple-touch-icon\"\x20
+SF:sizes=\"180x180\"\x20href=\"63a301f0574f1a696ce6\.png\"/><lin");
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 117.69 seconds
+
+ CHECKING CONNECTIVITY TO SERVER(S)
+ ----------------------------------
+
+   172.31.3.192:443          => 172.31.3.192 
+
+ SCAN RESULTS FOR 172.31.3.192:443 - 172.31.3.192
+ ------------------------------------------------
+
+ * Certificates Information:
+       Hostname sent for SNI:             172.31.3.192
+       Number of certificates detected:   1
+
+
+     Certificate #0 ( _RSAPublicKey )
+       SHA1 Fingerprint:                  3556f0f9d8eb519448e0771397bc9262a3726fba
+       Common Name:                       172.31.3.192
+       Issuer:                            172.31.3.192
+       Serial Number:                     548817586603577213135347026608149395852530260079
+       Not Before:                        2022-05-06
+       Not After:                         2023-05-06
+       Public Key Algorithm:              _RSAPublicKey
+       Signature Algorithm:               sha256
+       Key Size:                          4096
+       Exponent:                          65537
+       DNS Subject Alternative Names:     []
+
+     Certificate #0 - Trust
+       Hostname Validation:               OK - Certificate matches server hostname
+       Android CA Store (12.1.0_r1):      FAILED - Certificate is NOT Trusted: self signed certificate
+       Apple CA Store (iOS 15.1, iPadOS 15.1, macOS 12.1, tvOS 15.1, and watchOS 8.1):FAILED - Certificate is NOT Trusted: self signed certificate
+       Java CA Store (jdk-13.0.2):        FAILED - Certificate is NOT Trusted: self signed certificate
+       Mozilla CA Store (2021-12-19):     FAILED - Certificate is NOT Trusted: self signed certificate
+       Windows CA Store (2022-02-06):     FAILED - Certificate is NOT Trusted: self signed certificate
+       Symantec 2018 Deprecation:         ERROR - Could not build verified chain (certificate untrusted?)
+       Received Chain:                    172.31.3.192
+       Verified Chain:                    ERROR - Could not build verified chain (certificate untrusted?)
+       Received Chain Contains Anchor:    ERROR - Could not build verified chain (certificate untrusted?)
+       Received Chain Order:              OK - Order is valid
+       Verified Chain contains SHA1:      ERROR - Could not build verified chain (certificate untrusted?)
+
+     Certificate #0 - Extensions
+       OCSP Must-Staple:                  NOT SUPPORTED - Extension not found
+       Certificate Transparency:          NOT SUPPORTED - Extension not found
+
+     Certificate #0 - OCSP Stapling
+                                          NOT SUPPORTED - Server did not send back an OCSP response
+
+ * SSL 2.0 Cipher Suites:
+     Attempted to connect using 7 cipher suites; the server rejected all cipher suites.
+
+ * SSL 3.0 Cipher Suites:
+     Attempted to connect using 80 cipher suites; the server rejected all cipher suites.
+
+ * TLS 1.0 Cipher Suites:
+     Attempted to connect using 80 cipher suites; the server rejected all cipher suites.
+
+ * TLS 1.1 Cipher Suites:
+     Attempted to connect using 80 cipher suites; the server rejected all cipher suites.
+
+ * TLS 1.2 Cipher Suites:
+     Attempted to connect using 156 cipher suites.
+
+     The server accepted the following 44 cipher suites:
+        TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256              256                      
+        TLS_RSA_WITH_CAMELLIA_256_CBC_SHA                 256                      
+        TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256              128                      
+        TLS_RSA_WITH_CAMELLIA_128_CBC_SHA                 128                      
+        TLS_RSA_WITH_ARIA_256_GCM_SHA384                  256                      
+        TLS_RSA_WITH_ARIA_128_GCM_SHA256                  128                      
+        TLS_RSA_WITH_AES_256_GCM_SHA384                   256                      
+        TLS_RSA_WITH_AES_256_CCM_8                        128                      
+        TLS_RSA_WITH_AES_256_CCM                          256                      
+        TLS_RSA_WITH_AES_256_CBC_SHA256                   256                      
+        TLS_RSA_WITH_AES_256_CBC_SHA                      256                      
+        TLS_RSA_WITH_AES_128_GCM_SHA256                   128                      
+        TLS_RSA_WITH_AES_128_CCM_8                        128                      
+        TLS_RSA_WITH_AES_128_CCM                          128                      
+        TLS_RSA_WITH_AES_128_CBC_SHA256                   128                      
+        TLS_RSA_WITH_AES_128_CBC_SHA                      128                      
+        TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256       256       ECDH: X25519 (253 bits)
+        TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384        256       ECDH: X25519 (253 bits)
+        TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256        128       ECDH: X25519 (253 bits)
+        TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384            256       ECDH: X25519 (253 bits)
+        TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256            128       ECDH: X25519 (253 bits)
+        TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384             256       ECDH: prime256v1 (256 bits)
+        TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384             256       ECDH: prime256v1 (256 bits)
+        TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA                256       ECDH: prime256v1 (256 bits)
+        TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256             128       ECDH: prime256v1 (256 bits)
+        TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256             128       ECDH: prime256v1 (256 bits)
+        TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA                128       ECDH: prime256v1 (256 bits)
+        TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256         256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256          256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA             256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256          128       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA             128       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384              256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256              256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_256_GCM_SHA384               256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_256_CCM_8                    256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_256_CCM                      256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_256_CBC_SHA256               256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_256_CBC_SHA                  256       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_128_GCM_SHA256               128       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_128_CCM_8                    128       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_128_CCM                      128       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_128_CBC_SHA256               128       DH (4096 bits) 
+        TLS_DHE_RSA_WITH_AES_128_CBC_SHA                  128       DH (4096 bits) 
+
+     The group of cipher suites supported by the server has the following properties:
+       Forward Secrecy                    OK - Supported
+       Legacy RC4 Algorithm               OK - Not Supported
+
+
+ * TLS 1.3 Cipher Suites:
+     Attempted to connect using 5 cipher suites.
+
+     The server accepted the following 3 cipher suites:
+        TLS_CHACHA20_POLY1305_SHA256                      256       ECDH: X25519 (253 bits)
+        TLS_AES_256_GCM_SHA384                            256       ECDH: X25519 (253 bits)
+        TLS_AES_128_GCM_SHA256                            128       ECDH: X25519 (253 bits)
+
+
+ * Deflate Compression:
+                                          OK - Compression disabled
+
+ * OpenSSL CCS Injection:
+                                          OK - Not vulnerable to OpenSSL CCS injection
+
+ * OpenSSL Heartbleed:
+                                          OK - Not vulnerable to Heartbleed
+
+ * ROBOT Attack:
+                                          OK - Not vulnerable.
+
+ * Session Renegotiation:
+       Client Renegotiation DoS Attack:   OK - Not vulnerable
+       Secure Renegotiation:              OK - Supported
+
+ * Elliptic Curve Key Exchange:
+       Supported curves:                  X25519, X448, prime256v1, secp384r1, secp521r1
+       Rejected curves:                   prime192v1, secp160k1, secp160r1, secp160r2, secp192k1, secp224k1, secp224r1, secp256k1, sect163k1, sect163r1, sect163r2, sect193r1, sect193r2, sect233k1, sect233r1, sect239k1, sect283k1, sect283r1, sect409k1, sect409r1, sect571k1, sect571r1
+
+ SCANS COMPLETED IN 1.875818 S
+ -----------------------------
+
+ COMPLIANCE AGAINST MOZILLA TLS CONFIGURATION
+ --------------------------------------------
+
+    Checking results against Mozilla's "intermediate" configuration. See https://ssl-config.mozilla.org/ for more details.
+
+    172.31.3.192:443: FAILED - Not compliant.
+        * certificate_path_validation: Certificate not path validation failed for C=IN,ST=Karnataka,L=Bengaluru,O=EY,OU=Cybersecurity,CN=172.31.3.192,1.2.840.113549.1.9.1=devsecopscollab@gmail.com.
+        * ciphers: Cipher suites {'TLS_DHE_RSA_WITH_AES_128_CCM', 'TLS_RSA_WITH_AES_256_GCM_SHA384', 'TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256', 'TLS_RSA_WITH_AES_128_CCM_8', 'TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384', 'TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256', 'TLS_DHE_RSA_WITH_AES_128_CCM_8', 'TLS_RSA_WITH_ARIA_256_GCM_SHA384', 'TLS_RSA_WITH_CAMELLIA_256_CBC_SHA', 'TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384', 'TLS_DHE_RSA_WITH_AES_128_CBC_SHA256', 'TLS_RSA_WITH_AES_128_CCM', 'TLS_DHE_RSA_WITH_AES_256_CCM', 'TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256', 'TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256', 'TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA', 'TLS_DHE_RSA_WITH_AES_128_CBC_SHA', 'TLS_RSA_WITH_AES_256_CCM_8', 'TLS_DHE_RSA_WITH_AES_256_CBC_SHA', 'TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384', 'TLS_RSA_WITH_AES_128_CBC_SHA256', 'TLS_RSA_WITH_CAMELLIA_128_CBC_SHA', 'TLS_RSA_WITH_AES_256_CBC_SHA256', 'TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA', 'TLS_RSA_WITH_AES_256_CCM', 'TLS_RSA_WITH_ARIA_128_GCM_SHA256', 'TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256', 'TLS_RSA_WITH_AES_128_GCM_SHA256', 'TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256', 'TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256', 'TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256', 'TLS_DHE_RSA_WITH_AES_256_CBC_SHA256', 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA', 'TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA', 'TLS_RSA_WITH_AES_128_CBC_SHA', 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384', 'TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256', 'TLS_DHE_RSA_WITH_AES_256_CCM_8', 'TLS_RSA_WITH_AES_256_CBC_SHA'} are supported, but should be rejected.
+
+SSLScan 172.31.3.192

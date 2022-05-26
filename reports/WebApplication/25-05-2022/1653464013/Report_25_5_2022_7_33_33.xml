@@ -1,0 +1,1454 @@
+<?xml version="1.0"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/placeholder/scnr/engine/v1.0dev/components/reporters/xml/schema.xsd">
+  <version>1.0dev</version>
+  <status>aborting</status>
+  <seed>149122a5c9c97e3923eb5223ab3c517a</seed>
+  <options>---
+dom:
+  engine: chrome
+  local_storage: {}
+  session_storage: {}
+  wait_for_elements: {}
+  pool_size: 4
+  job_timeout: 60
+  worker_time_to_live: 250
+  wait_for_timers: false
+session: {}
+device:
+  visible: false
+  width: 1600
+  height: 1200
+  user_agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+  pixel_ratio: 1.0
+  touch: false
+timeout: {}
+audit:
+  parameter_values: true
+  paranoia: medium
+  exclude_vector_patterns: []
+  include_vector_patterns: []
+  link_templates: []
+  links: true
+  forms: true
+  cookies: true
+  ui_inputs: true
+  ui_forms: true
+  jsons: true
+  xmls: true
+datastore: {}
+scope:
+  directory_depth_limit: 4
+  auto_redundant_paths: 2
+  redundant_path_patterns: {}
+  dom_depth_limit: 3
+  dom_event_limit: 500
+  dom_event_inheritance_limit: 500
+  exclude_file_extensions:
+  - css
+  - png
+  exclude_path_patterns: []
+  exclude_content_patterns: []
+  include_path_patterns:
+  - 172.31.3.192
+  restrict_paths: []
+  extend_paths: []
+  url_rewrites: {}
+input:
+  values: {}
+  default_values:
+    name: scnr_engine_name
+    user: scnr_engine_user
+    usr: scnr_engine_user
+    pass: 5543!%scnr_engine_secret
+    txt: scnr_engine_text
+    num: '132'
+    amount: '100'
+    mail: scnr_engine@email.gr
+    account: '12'
+    id: '1'
+  without_defaults: false
+  force: false
+http:
+  request_timeout: 20000
+  request_redirect_limit: 5
+  request_concurrency: 10
+  request_queue_size: 200
+  request_headers: {}
+  response_max_size: 10000
+  cookies: {}
+  authentication_type: auto
+checks:
+- "*"
+platforms:
+- linux
+plugins: {}
+no_fingerprinting: false
+authorized_by: 
+url: http://172.31.3.192:8081/
+</options>
+  <start_datetime>2022-05-25T07:33:35+00:00</start_datetime>
+  <finish_datetime>2022-05-25T07:33:37+00:00</finish_datetime>
+  <sitemap>
+    <entry url="http://172.31.3.192:8081/" code="200"/>
+    <entry url="http://172.31.3.192:8081/c.php" code="200"/>
+  </sitemap>
+  <issues>
+    <issue>
+      <name>Missing 'X-Frame-Options' header</name>
+      <description>
+Clickjacking (User Interface redress attack, UI redress attack, UI redressing)
+is a malicious technique of tricking a Web user into clicking on something different
+from what the user perceives they are clicking on, thus potentially revealing
+confidential information or taking control of their computer while clicking on
+seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website
+could be at risk of a clickjacking attack.
+
+The `X-Frame-Options` HTTP response header can be used to indicate whether or not
+a browser should be allowed to render a page inside a frame or iframe. Sites can
+use this to avoid clickjacking attacks, by ensuring that their content is not
+embedded into other sites.
+</description>
+      <remedy_guidance>
+Configure your web server to include an `X-Frame-Options` header.
+</remedy_guidance>
+      <remedy_code/>
+      <severity>low</severity>
+      <check>
+        <name>Missing X-Frame-Options header</name>
+        <description>Checks the host for a missing `X-Frame-Options` header.</description>
+        <author>Tasos Laskos &lt;tasos.laskos@gmail.com&gt;</author>
+        <version>0.1.3</version>
+        <shortname>x_frame_options</shortname>
+      </check>
+      <cwe>693</cwe>
+      <digest>1173186050</digest>
+      <references>
+        <reference title="MDN" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+        <reference title="RFC" url="http://tools.ietf.org/html/rfc7034"/>
+        <reference title="OWASP" url="https://www.owasp.org/index.php/Clickjacking"/>
+      </references>
+      <vector>
+        <class>SCNR::Engine::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.3.192:8081/</url>
+        <action>http://172.31.3.192:8081/</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>GET / HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/</url>
+          <code>200</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0016</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:35 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="X-Powered-By" value="PHP/7.4.29"/>
+            <header name="Vary" value="Accept-Encoding"/>
+            <header name="Content-Encoding" value="gzip"/>
+            <header name="Content-Length" value="1197"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 200 OK&#xD;
+Date: Wed, 25 May 2022 07:33:35 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+X-Powered-By: PHP/7.4.29&#xD;
+Vary: Accept-Encoding&#xD;
+Content-Encoding: gzip&#xD;
+Content-Length: 1197&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>GET / HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/</url>
+          <code>200</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0016</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:35 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="X-Powered-By" value="PHP/7.4.29"/>
+            <header name="Vary" value="Accept-Encoding"/>
+            <header name="Content-Encoding" value="gzip"/>
+            <header name="Content-Length" value="1197"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 200 OK&#xD;
+Date: Wed, 25 May 2022 07:33:35 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+X-Powered-By: PHP/7.4.29&#xD;
+Vary: Accept-Encoding&#xD;
+Content-Encoding: gzip&#xD;
+Content-Length: 1197&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 200 OK</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+    <issue>
+      <name>Interesting response</name>
+      <description>
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+</description>
+      <remedy_guidance/>
+      <remedy_code/>
+      <severity>informational</severity>
+      <check>
+        <name>Interesting responses</name>
+        <description>Logs all non 200 (OK) server responses.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@gmail.com&gt;</author>
+        <version>0.2.1</version>
+        <shortname>interesting_responses</shortname>
+      </check>
+      <digest>1795391917</digest>
+      <references>
+        <reference title="w3.org" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+      </references>
+      <vector>
+        <class>SCNR::Engine::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.3.192:8081/</url>
+        <action>http://172.31.3.192:8081/</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method TRACE is not allowed for this URL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/</url>
+          <method>trace</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>TRACE / HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/</url>
+          <code>405</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0066</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:36 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="Allow" value=""/>
+            <header name="Content-Length" value="302"/>
+            <header name="Content-Type" value="text/html; charset=iso-8859-1"/>
+          </headers>
+          <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method TRACE is not allowed for this URL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 405 Method Not Allowed&#xD;
+Date: Wed, 25 May 2022 07:33:36 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+Allow: &#xD;
+Content-Length: 302&#xD;
+Content-Type: text/html; charset=iso-8859-1&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>GET / HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/</url>
+          <code>200</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0016</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:35 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="X-Powered-By" value="PHP/7.4.29"/>
+            <header name="Vary" value="Accept-Encoding"/>
+            <header name="Content-Encoding" value="gzip"/>
+            <header name="Content-Length" value="1197"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 200 OK&#xD;
+Date: Wed, 25 May 2022 07:33:35 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+X-Powered-By: PHP/7.4.29&#xD;
+Vary: Accept-Encoding&#xD;
+Content-Encoding: gzip&#xD;
+Content-Length: 1197&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 405 Method Not Allowed</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+    <issue>
+      <name>Interesting response</name>
+      <description>
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+</description>
+      <remedy_guidance/>
+      <remedy_code/>
+      <severity>informational</severity>
+      <check>
+        <name>Interesting responses</name>
+        <description>Logs all non 200 (OK) server responses.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@gmail.com&gt;</author>
+        <version>0.2.1</version>
+        <shortname>interesting_responses</shortname>
+      </check>
+      <digest>3193294376</digest>
+      <references>
+        <reference title="w3.org" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+      </references>
+      <vector>
+        <class>SCNR::Engine::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.3.192:8081/SCNR_Engine-149122a5c9c97e3923eb5223ab3c517a</url>
+        <action>http://172.31.3.192:8081/SCNR_Engine-149122a5c9c97e3923eb5223ab3c517a</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for this URL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/SCNR_Engine-149122a5c9c97e3923eb5223ab3c517a</url>
+          <method>put</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body>Created by SCNR::Engine. PUT149122a5c9c97e3923eb5223ab3c517a</body>
+          <raw>PUT /SCNR_Engine-149122a5c9c97e3923eb5223ab3c517a HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+Content-Length: 60&#xD;
+&#xD;
+Created by SCNR::Engine. PUT149122a5c9c97e3923eb5223ab3c517a</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/SCNR_Engine-149122a5c9c97e3923eb5223ab3c517a</url>
+          <code>405</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0039</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:36 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="Allow" value="POST,OPTIONS,HEAD,GET"/>
+            <header name="Content-Length" value="300"/>
+            <header name="Content-Type" value="text/html; charset=iso-8859-1"/>
+          </headers>
+          <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for this URL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 405 Method Not Allowed&#xD;
+Date: Wed, 25 May 2022 07:33:36 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+Allow: POST,OPTIONS,HEAD,GET&#xD;
+Content-Length: 300&#xD;
+Content-Type: text/html; charset=iso-8859-1&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/SCNR_Engine-149122a5c9c97e3923eb5223ab3c517a</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>GET / HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/</url>
+          <code>200</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0016</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:35 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="X-Powered-By" value="PHP/7.4.29"/>
+            <header name="Vary" value="Accept-Encoding"/>
+            <header name="Content-Encoding" value="gzip"/>
+            <header name="Content-Length" value="1197"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 200 OK&#xD;
+Date: Wed, 25 May 2022 07:33:35 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+X-Powered-By: PHP/7.4.29&#xD;
+Vary: Accept-Encoding&#xD;
+Content-Encoding: gzip&#xD;
+Content-Length: 1197&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 405 Method Not Allowed</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+    <issue>
+      <name>Interesting response</name>
+      <description>
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+</description>
+      <remedy_guidance/>
+      <remedy_code/>
+      <severity>informational</severity>
+      <check>
+        <name>Interesting responses</name>
+        <description>Logs all non 200 (OK) server responses.</description>
+        <author>Tasos "Zapotek" Laskos &lt;tasos.laskos@gmail.com&gt;</author>
+        <version>0.2.1</version>
+        <shortname>interesting_responses</shortname>
+      </check>
+      <digest>2217262411</digest>
+      <references>
+        <reference title="w3.org" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+      </references>
+      <vector>
+        <class>SCNR::Engine::Element::Server</class>
+        <type>server</type>
+        <url>http://172.31.3.192:8081/server-status</url>
+        <action>http://172.31.3.192:8081/server-status</action>
+      </vector>
+      <remarks/>
+      <page>
+        <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access this resource.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/server-status</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>GET /server-status HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/server-status</url>
+          <code>403</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0061</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:36 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="Content-Length" value="279"/>
+            <header name="Content-Type" value="text/html; charset=iso-8859-1"/>
+          </headers>
+          <body>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access this resource.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 403 Forbidden&#xD;
+Date: Wed, 25 May 2022 07:33:36 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+Content-Length: 279&#xD;
+Content-Type: text/html; charset=iso-8859-1&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/server-status</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </page>
+      <referring_page>
+        <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+        <request>
+          <url>http://172.31.3.192:8081/</url>
+          <method>get</method>
+          <parameters/>
+          <headers>
+            <header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+            <header name="User-Agent" value="Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev"/>
+            <header name="Accept-Language" value="en-US,en;q=0.8,he;q=0.6"/>
+            <header name="X-Scnr-Engine-Scan-Seed" value="149122a5c9c97e3923eb5223ab3c517a"/>
+          </headers>
+          <body/>
+          <raw>GET / HTTP/1.1&#xD;
+Host: 172.31.3.192:8081&#xD;
+Accept-Encoding: gzip, deflate&#xD;
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev&#xD;
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;
+Accept-Language: en-US,en;q=0.8,he;q=0.6&#xD;
+X-Scnr-Engine-Scan-Seed: 149122a5c9c97e3923eb5223ab3c517a&#xD;
+&#xD;
+</raw>
+        </request>
+        <response>
+          <url>http://172.31.3.192:8081/</url>
+          <code>200</code>
+          <ip_address>172.31.3.192</ip_address>
+          <time>0.0016</time>
+          <return_code>ok</return_code>
+          <return_message>No error</return_message>
+          <headers>
+            <header name="Date" value="Wed, 25 May 2022 07:33:35 GMT"/>
+            <header name="Server" value="Apache/2.4.53 (Debian)"/>
+            <header name="X-Powered-By" value="PHP/7.4.29"/>
+            <header name="Vary" value="Accept-Encoding"/>
+            <header name="Content-Encoding" value="gzip"/>
+            <header name="Content-Length" value="1197"/>
+            <header name="Content-Type" value="text/html; charset=UTF-8"/>
+          </headers>
+          <body>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+	&lt;style&gt;
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+&lt;/style&gt;
+    &lt;!-- Required meta tags --&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+
+    &lt;!-- Bootstrap CSS --&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"&gt;
+
+    &lt;title&gt;CTF&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;a class="navbar-brand" href="#"&gt;CTF&lt;/a&gt;
+  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="collapse navbar-collapse" id="navbarNavDropdown"&gt;
+  &lt;ul class="navbar-nav"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a class="nav-link" href="index.php"&gt;Home &lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a hidden class="nav-link" href="encrypt.php"&gt;Encrypt&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="login.php"&gt;Login&lt;/a&gt;
+      &lt;/li&gt;
+     
+
+      
+     
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class="container mt-4"&gt;
+&lt;h3&gt;All the Best&lt;/h3&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="regisFrm"&gt;
+        &lt;form action="c.php" method="post"&gt;
+            &lt;input type='cipher' name='cipher' placeholder="" required=""&gt;
+            &lt;div class="send-button"&gt;
+                &lt;input type="submit" name="forgotSubmit" value="CONTINUE"&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;/div&gt;
+&lt;footer&gt;
+  &lt;p&gt;ftp:ftp&lt;/p&gt;
+&lt;/footer&gt;
+    &lt;!-- Optional JavaScript --&gt;
+    &lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;
+    &lt;script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"&gt;&lt;/script&gt;
+    &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+          <raw_headers>HTTP/1.1 200 OK&#xD;
+Date: Wed, 25 May 2022 07:33:35 GMT&#xD;
+Server: Apache/2.4.53 (Debian)&#xD;
+X-Powered-By: PHP/7.4.29&#xD;
+Vary: Accept-Encoding&#xD;
+Content-Encoding: gzip&#xD;
+Content-Length: 1197&#xD;
+Content-Type: text/html; charset=UTF-8&#xD;
+&#xD;
+</raw_headers>
+        </response>
+        <dom>
+          <url>http://172.31.3.192:8081/</url>
+          <transitions/>
+          <data_flow_sinks/>
+          <execution_flow_sinks/>
+        </dom>
+      </referring_page>
+      <signature/>
+      <proof>HTTP/1.1 403 Forbidden</proof>
+      <trusted>true</trusted>
+      <platform_type/>
+      <platform_name/>
+    </issue>
+  </issues>
+  <plugins/>
+</report>

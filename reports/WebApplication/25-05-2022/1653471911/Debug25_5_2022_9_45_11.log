@@ -1,0 +1,27 @@
+SCNR::UI::CLI v1.0dev - SCNR::Engine v1.0dev
+
+
+[~] No checks were specified, loading all.
+[~] No element audit options were specified, will audit links, forms, cookies, UI inputs, UI forms, JSONs and XMLs.
+
+[-] Cannot perform the scan, the system has no available slots.
+
+[-] Scans that can be run in parallel: 0
+
+-------------------------------------------
+
+[+] CPU:   4 slots
+[~]   Required:  1
+[~]   Available: N/A
+
+[+] RAM:   2 slots
+[~]   Required:  4.0 GB
+[~]   Available: 8.2 GB
+
+[-] Disk:  0 slots
+[~]   Location:  /tmp
+[~]   Required:  4.0 GB
+[~]   Available: 3.9 GB
+[~]   Hint:      Try changing the 'tmpdir' location in: /home/ubuntu/Tools/SCNR/scnr-1.0dev-1.0dev-1.0dev/.system/gems/gems/scnr-engine-1.0dev/config/paths.yml
+
+[~] Set '--system-slots-override' to override this safeguard.

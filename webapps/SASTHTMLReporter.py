@@ -9,6 +9,7 @@ from urllib3.util import url
 from MasterConfig import *
 from shutil import copyfile
 from shutil import copytree
+from lib.commons import *
 
 htmlTable = ""
 projectKey = ''
@@ -19,11 +20,15 @@ projectKey = ''
 pluginsPath = '//home//ubuntu//Tools//sonarqube-8.9.8.54436//extensions//plugins'
 sonarProperties = '//home//ubuntu//Orchestration//sonar-project.properties'
 
+time = get_timenow()
+myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
+    time.minute) + '_' + str(time.second)
+
 def not_xlsx(path, names):
     return {name for name in names if os.path.isfile(name) and not name.endswith('.xlsx')}
 
-def generateReport(inputfile, reportPath):
-    outNewPath = reportPath + '//SAST-Analysis-Report.html'
+def generateSASTReport(inputfile, reportPath):
+    outNewPath = reportPath + "//SAST-Analysis-Report-" + myFileName + ".html"
     htmlfile = open(outNewPath, "w")
     htmlfile.write(
         '<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.4/components/reporters/xml/schema.xsd">')

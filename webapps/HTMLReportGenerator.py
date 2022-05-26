@@ -1,15 +1,16 @@
 import csv
 import pandas as pd
 from datetime import datetime
-
+from urllib.request import urlopen
 from urllib3.util import url
-
+import urllib
 from CustomReporting import *
 from MasterConfig import *
 from shutil import copyfile
 from shutil import copytree
 import os
 import shutil
+from bs4 import BeautifulSoup
 # from WebAutomation import log
 #
 # inputfile = "C:\\security_automation\\reports\\WebApplication\\19-02-2018\\1519014892\\Report_19_2_2018_4_34_52.csv"
@@ -23,11 +24,13 @@ import shutil
 #htmlTable = ""
 # END - Adding the below piece of code for OWASP Dependency Check
 
+webContent = ''
+
 def main(inputfile=None, appname=None):
-    generateHtml(inputfile,appname, url)
+    generateHtml(inputfile,appname, url, reportPathZAP, dir)
 
 
-def generateHtml(inputfile, appname, url):
+def generateHtml(inputfile, appname, url,reportPathZAP, dir):
     outputfile = inputfile
     outputfile = outputfile.replace('csv', 'html')
     # outputfile = r"{}".format(outputfile)
@@ -157,9 +160,20 @@ def generateHtml(inputfile, appname, url):
     #htmlTable = dataFrame.to_html(index = False, na_rep = 'NA', classes = 'table table-stripped')
     #htmlfile.write(htmlTable)
     # END - Adding the below piece of code for OWASP Dependency Check
+    
+    
+    #Added for mering ZAP RESULTS
+    f = open(reportPathZAP+dir+".html", encoding="utf8")
+    webContent = str(BeautifulSoup(f))
+    #webContent = html.tostring(tree)
+    #response =urlopen(reportPathZAP+"//"+dir+".html").read()
+    #webContent = response.decode('UTF-8')
+    htmlfile.write(webContent)
+    f.close()
     htmlfile.close()
+    #Added for merging zap results
 
-    reportname = outputfile.split('\\')
+    reportname = outputfile.split('//')
     try:
         reportname = str(reportname[-1])
 

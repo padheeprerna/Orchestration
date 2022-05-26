@@ -1,0 +1,17 @@
+2022-05-25 04:58:42,092 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-25 04:58:42,093 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-05-25 04:58:42,093 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-05-25 04:58:42,093 - security_automation - DEBUG - Web Application Scan Started at: 2022-05-25 04:58:42.093256
+2022-05-25 04:58:42,093 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722
+2022-05-25 04:58:42,093 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722/Debug
+2022-05-25 04:58:42,093 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-05-25 04:58:42,093 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-05-25 04:58:42,093 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-05-25 04:58:42,093 - security_automation - DEBUG - Initiating Non-Authenticated Scan
+2022-05-25 04:58:42,093 - security_automation - DEBUG - Ecsypno SCNR Command Triggered is: scnr http://172.31.3.192:8081/ --platform=linux --http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png --scope-include-pattern=172.31.3.192 --output-debug 1> /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722/Debug25_5_2022_4_58_42.log --report-save-path=/home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722//Report_25_5_2022_4_58_42.ser
+2022-05-25 05:17:13,630 - security_automation - DEBUG - Value of csvfilepath: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722/Report_25_5_2022_4_58_42.csv
+2022-05-25 05:17:13,630 - security_automation - DEBUG - CSV_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722/Report_25_5_2022_4_58_42.csv
+2022-05-25 05:17:13,630 - security_automation - DEBUG - HTML_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/25-05-2022/1653454722/Report_25_5_2022_4_58_42.html
+2022-05-25 05:17:13,630 - security_automation - DEBUG - PDF_REPORT: NA
+2022-05-25 05:17:13,644 - security_automation - DEBUG - generateHtml() missing 2 required positional arguments: 'reportPathZAP' and 'dir'
+2022-05-25 05:17:13,685 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
