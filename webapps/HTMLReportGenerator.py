@@ -11,6 +11,8 @@ from shutil import copytree
 import os
 import shutil
 from bs4 import BeautifulSoup
+from CreateJiraTicket import *
+
 # from WebAutomation import log
 #
 # inputfile = "C:\\security_automation\\reports\\WebApplication\\19-02-2018\\1519014892\\Report_19_2_2018_4_34_52.csv"
@@ -31,6 +33,7 @@ def main(inputfile=None, appname=None):
 
 
 def generateHtml(inputfile, appname, url,reportPathZAP, dir):
+    
     outputfile = inputfile
     outputfile = outputfile.replace('csv', 'html')
     # outputfile = r"{}".format(outputfile)
@@ -91,6 +94,9 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
         else:
 
             for row in reader:
+                summary = ""
+                description = ""
+                severity = ""
                 htmlfile.write('<tr>')
                 columnnum = 0
                 i = 1
@@ -107,21 +113,32 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
                             #     htmlfile.writable('<td>' + "No Issues reported" + '</td>')
                             # else:
                                 htmlfile.write('<td>' + column + '</td>')
+                                summary = str(column)
+                            elif columnnum == 1:
+                                description = str(column.replace("\n", ""))
                             elif columnnum == 4:
                                 htmlfile.write('<td>''<center>' + column + '</center>''</td>')
+                                severity = str(column)
                             elif columnnum == 15:
                                 htmlfile.write('<td style="overflow-x:auto; overflow-y:auto; max-width:420px;">' + column + '</td>')
+                                if ((len(summary) !=0) & (len(description) !=0) & (len(severity) !=0)):
+                                    if (severity in ['low', 'medium', 'high', 'critical']):
+                                        htmlfile.write('<td>''<center>' + formulateData(summary, description, severity) + '</center>''</td>')
+                                        summary = ""
+                                        description = ""
+                                        severity = ""
+                                    else:
+                                        htmlfile.write('<td>''<center>' + '-' + '</center>''</td>')
                             elif columnnum >= 40:
                                 value = str(row[-1:])
-                                print( value)
                                 htmlfile.write('<td>''<center>' + str(row[-1]) + '</center>''</td>')
                                 break;
 
                             columnnum += 1
 
-                while i < 1:
-                    htmlfile.write('<td></td>')
-                    i += 1
+                #while i < 1:
+                 #  htmlfile.write('<td></td>')
+                  # i += 1
 
     htmlfile.write('</table>')
 

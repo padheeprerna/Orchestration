@@ -2,20 +2,21 @@ import getopt
 import traceback
 import time
 import subprocess
+import datetime
 from HTMLReportGenerator import *
 from CustomReporting import *
-from JiraBugCreation import *
+#from JiraBugCreation import *
 #from jira_api import *
 import stat
 from mail import *
-from lib.commons import get_report_path
+from lib.commons import get_report_path, get_timenow
 from lib.commons import get_debugger
 from lib.logger import Logger
 
 hostname = ''
 xmlreportname = ''
 csvfilepath = ''
-time = datetime.now()
+time = get_timenow()
 dir = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
 # START - Adding the below piece of code for OWASP Dependency Check
@@ -42,7 +43,7 @@ report_path = get_report_path(REPORT_PATH, app_type)
 #print("My REPORT PATH==========>>>>>>>"+report_path)
 
 log = Logger(get_debugger(report_path))
-time2 = datetime.now()
+time2 = get_timenow()
 log.record('debug', "Web Application Scan Started at: " + str(time2))
 log.record('debug', "Value of report_path is: " + report_path)
 log_path = os.path.join(report_path, "Debug")
@@ -230,11 +231,11 @@ def startscan(argv):
                 #'dependency-check.bat --enableExperimental --scan ' + scanPath + ' --out ' + reportPath + ' --format ALL')
             # END - Adding the below piece of code for OWASP Dependency Check
 
-            if jiraflag:
-                csvfilepath = r"{}".format(csvfilepath)
+            #if jiraflag:
+               # csvfilepath = r"{}".format(csvfilepath)
                 #os.system('python ' + '//home//ubuntu//Orchestration//webapps//jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
-            else:
-                log.record('debug', 'JIRA flag is set to 0')
+            #else:
+               # log.record('debug', 'JIRA flag is set to 0')
 
 
             if csvfilepath:
@@ -388,11 +389,11 @@ def normalscan(argv):
 
 
 
-        if jiraflag:
-            csvfilepath = r"{}".format(csvfilepath)
+       # if jiraflag:
+        #    csvfilepath = r"{}".format(csvfilepath)
             #os.system('Python ' + 'C:\\Users\\Public\\Desktop\\code\\Orchestration\\webapps\\jira_api.py' + ' ' + csvfilepath) #creating bug in JIRA
-        else:
-            log.record('debug', "JIRA Flag is set to 0")
+        #else:
+         #   log.record('debug', "JIRA Flag is set to 0")
 
 
         if csvfilepath:
