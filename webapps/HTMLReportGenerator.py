@@ -10,7 +10,8 @@ from shutil import copyfile
 from shutil import copytree
 import os
 import shutil
-from bs4 import BeautifulSoup
+import codecs
+#from bs4 import BeautifulSoup
 from CreateJiraTicket import *
 
 # from WebAutomation import log
@@ -180,8 +181,9 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
     
     
     #Added for mering ZAP RESULTS
-    f = open(reportPathZAP+dir+".html", encoding="utf8")
-    webContent = str(BeautifulSoup(f))
+    f = codecs.open(reportPathZAP+dir+".html", "r", "utf-8")
+    #f = open(reportPathZAP+dir+".html", encoding="utf8")
+    webContent = str(f.read())
     #webContent = html.tostring(tree)
     #response =urlopen(reportPathZAP+"//"+dir+".html").read()
     #webContent = response.decode('UTF-8')

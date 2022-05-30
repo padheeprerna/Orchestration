@@ -5,6 +5,7 @@ import subprocess
 import datetime
 from HTMLReportGenerator import *
 from CustomReporting import *
+from Email import *
 #from JiraBugCreation import *
 #from jira_api import *
 import stat
@@ -251,7 +252,7 @@ def startscan(argv):
                 log.record('debug', "Issue copying Third party files to working directory")
 
             copycss()
-
+            sendEmail(csvfilepath)
 
             # SATT = [Successattachments];
             #
@@ -410,6 +411,7 @@ def normalscan(argv):
             log.record('debug', "Issue copying Third party files to working directory")
 
         copycss()
+        sendEmail(csvfilepath)
 
         # SATT = [Successattachments];
         #
