@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import shutil
 import glob
+import html
 from jproperties import Properties
 from datetime import datetime
 from urllib3.util import url
@@ -18,7 +19,7 @@ projectKey = ''
 #sonarProperties = 'C:\\Users\\Public\\\Desktop\\code\\Orchestration\\sonar-project.properties'
 #pluginsPath = "C:\\Program Files\\SonarQube\\sonarqube-9.3.0.51899\\extensions\\plugins"
 pluginsPath = '//home//ubuntu//Tools//sonarqube-8.9.8.54436//extensions//plugins'
-sonarProperties = '//home//ubuntu//Orchestration//sonar-project.properties'
+sonarProperties = '/home/ubuntu/Tools/ClientScans/sonar-project.properties'
 
 time = get_timenow()
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
@@ -64,7 +65,8 @@ def generateSASTReport(inputfile, reportPath):
     # START - Write results of OWASP Dependency Check scan
     htmlfile.write('<br><p style="font-weight:bold;color:blue;"><left><b> i) OWASP Dependency Check Results</b></left></p>')
     dataFrame = pd.read_csv(inputfile, usecols=[3, 10, 11, 17, 20])
-    htmlTable = dataFrame.to_html(index = False, na_rep = 'NA', classes = 'table table-stripped')
+    dataFrame1 = dataFrame.style.set_table_styles([dict(selector='table', props=[('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse')]), dict(selector='th', props=[('background-color', '#9FA68F'), ('text-align', 'center'), ('weight', 'bold'), ('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse')]), dict(selector='td', props=[('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse'), ('width', '100%')]), dict(selector='tr:nth-child(even)', props=[('background-color', ' #E8E6E5')])]).hide(axis = 'index')
+    htmlTable = dataFrame1.to_html()
     htmlfile.write(htmlTable)
     # END - Write results of OWASP Dependency Check scan
 
@@ -81,7 +83,13 @@ def generateSASTReport(inputfile, reportPath):
     df = pd.read_excel(str(excelReport[0]), sheet_name ='Issues', usecols = [1, 2, 3, 5, 6])
     #df = df[df['Severity'] == 'CRITICAL' | df['Severity'] == 'MAJOR']
     df = df[(df['Severity'] == 'CRITICAL') | (df['Severity'] == 'MAJOR')]
-    htmlTable = df.to_html(index=False)
+    for i in range(df.shape[0]): #iterate over rows
+        for j in range(df.shape[1]): #iterate over columns
+            df.iloc[i, j] = html.escape(str(df.iloc[i, j])) #get cell value
+            #print(str(value) + ":" + str(type(value)))
+    df1 = df.style.set_table_styles([dict(selector='table', props=[('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse'), ('width', '100%')]), dict(selector='th', props=[('background-color', '#9FA68F'), ('text-align', 'center'), ('weight', 'bold'), ('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse')]), dict(selector='td', props=[('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse')]), dict(selector='tr:nth-child(even)', props=[('background-color', ' #E8E6E5')])]).hide(axis = 'index')
+    #htmlTable = df.style.set_properties(**{'font-size': '11pt', 'font-family': 'Calibri','border-collapse': 'collapse','border': '1px solid black'}).render()
+    htmlTable = df1.to_html()
     htmlfile.write(htmlTable)
     # END - Write results of SonarQube scan
 

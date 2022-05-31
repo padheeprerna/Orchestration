@@ -18,11 +18,10 @@ import requests
 JIRA_URL = "https://devsecopscollab.atlassian.net"
 
 JIRA_USERNAME = "devsecopscollab@gmail.com"
-JIRA_PASSWORD = "429G8xlqjAia0VwqRkJj44B5" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
+JIRA_PASSWORD = "rl46PMP1J5E8KcJuRM6vB53F" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
 
 JIRA_PROJECT_KEY = "DASTBUGS"
-JIRA_ISSUE_TYPE = "Bug"
-
+JIRA_ISSUE_TYPE = "Bug"    
 
 def jira_rest_call(data):
 

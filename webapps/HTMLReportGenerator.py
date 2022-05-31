@@ -118,13 +118,24 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
                             elif columnnum == 1:
                                 description = str(column.replace("\n", ""))
                             elif columnnum == 4:
-                                htmlfile.write('<td>''<center>' + column + '</center>''</td>')
+                                if (column == 'critical'):
+                                    htmlfile.write('<td style="background:#ff0000;color:white;weight:bold">''<center>' + column + '</center>''</td>')
+                                elif (column == 'high'):
+                                    htmlfile.write('<td style="background:#ff6600;color:white;weight:bold">''<center>' + column + '</center>''</td>')
+                                elif (column == 'medium'):
+                                    htmlfile.write('<td style="background:#ff9933;color:white;weight:bold">''<center>' + column + '</center>''</td>')
+                                elif (column == 'low'):
+                                    htmlfile.write('<td  style="background:#ffff00;color:black;weight:bold">''<center>' + column + '</center>''</td>')
+                                else:
+                                    htmlfile.write('<td  style="background:#0066ff;color:white;weight:bold">''<center>' + column + '</center>''</td>')
                                 severity = str(column)
                             elif columnnum == 15:
                                 htmlfile.write('<td style="overflow-x:auto; overflow-y:auto; max-width:420px;">' + column + '</td>')
                                 if ((len(summary) !=0) & (len(description) !=0) & (len(severity) !=0)):
                                     if (severity in ['low', 'medium', 'high', 'critical']):
-                                        htmlfile.write('<td>''<center>' + formulateData(summary, description, severity) + '</center>''</td>')
+                                        id = formulateData(summary, description, severity)
+                                        link = "https://devsecopscollab.atlassian.net/browse/" + id
+                                        htmlfile.write('<td> <a href = ' + link + '>''<center>' + id + '</center>''</a> </td>')
                                         summary = ""
                                         description = ""
                                         severity = ""
@@ -132,7 +143,7 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
                                         htmlfile.write('<td>''<center>' + '-' + '</center>''</td>')
                             elif columnnum >= 40:
                                 value = str(row[-1:])
-                                htmlfile.write('<td>''<center>' + str(row[-1]) + '</center>''</td>')
+                                #htmlfile.write('<td>''<center>' + str(row[-1]) + '</center>''</td>')
                                 break;
 
                             columnnum += 1

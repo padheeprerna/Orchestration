@@ -22,6 +22,7 @@ benchLog = benchPath + "/log/docker-bench-security.log.json"
 auditPath = get_report_path(REPORT_PATH, "Docker_Audit_Reports")
 inspecPath = auditPath + "/InSpecReport.json"
 log = Logger(get_debugger(auditPath))
+idList = []
 
 def main():
     runAudit()   
@@ -110,15 +111,14 @@ def generateAuditReport():
         for j in i['controls']:
             for k in j['results']:
                 if (k['status'] == 'failed'):
-                    htmlfile.write('<tr>')
-                    htmlfile.write('<td>' + j['id'] + '</td>')
-                    htmlfile.write('<td>' + j['title'] + '</td>')
-                    htmlfile.write('<td>''<center>' + k['status'] + '</center>''</td>')
-                    if (('Hashie' not in str(k['code_desc']))):
-                        htmlfile.write('<td>' + k['code_desc'] + '</td>')
-                    else:
-                        htmlfile.write('<td>''<center>' + '-' + '</center>''</td>')
-                    htmlfile.write('</tr>')
+                    if (j['id'] not in idList):
+                        htmlfile.write('<tr>')
+                        idList.append(j['id'])
+                        htmlfile.write('<td>' + j['id'] + '</td>')
+                        htmlfile.write('<td>' + j['title'] + '</td>')
+                        htmlfile.write('<td>''<center>' + k['status'] + '</center>''</td>')
+                        htmlfile.write('<td>' + j['desc'] + '</td>')
+                        htmlfile.write('</tr>')
     htmlfile.write('</table>')
     # Closing file
     htmlfile.close()

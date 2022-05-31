@@ -62,7 +62,7 @@ def startSAST(argv):
                     version = arg
                 elif opt in ("-u"):
                     gitURL = arg
-            
+            repoName = gitURL.split('.git')[0].split('/')[-1]
             if(len(os.listdir(scanPath)) != 0):
                 cleanDir()
                 #os.system("rm -rf " + scanPath + "//{*,.*}")
@@ -86,8 +86,8 @@ def startSAST(argv):
             f.write("sonar.projectName=" + projectname + "\n")
             f.write("sonar.projectVersion=" + version + "\n")
             modScanPath = scanPath.replace('/', '//')
-            #f.write("sonar.projectBaseDir=" + modScanPath + "\n")
-            #f.write("sonar.sources=.\n")
+            f.write("sonar.projectBaseDir=" + repoName + "\n")
+            f.write("sonar.sources=.\n")
             f.close()
             #configs = Properties()
            # with open("sonar-project.properties", 'rb') as config_file:
