@@ -13,6 +13,8 @@ from MasterConfig import *
 from lib.commons import *
 from lib.commons import get_debugger
 from lib.logger import Logger
+from CreateJiraTicket import *
+from Email import*
 
 time = get_timenow()
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
@@ -23,11 +25,12 @@ auditPath = get_report_path(REPORT_PATH, "Docker_Audit_Reports")
 inspecPath = auditPath + "/InSpecReport.json"
 log = Logger(get_debugger(auditPath))
 idList = []
+idURLPart = "https://devsecopscollab.atlassian.net/browse/"
 
 def main():
     runAudit()   
-    generateAuditReport()
     copycssForReport()
+    generateAuditReport()
     
 def runAudit():
     log.record("***Starting INSPEC Scan**")
@@ -78,7 +81,7 @@ def generateAuditReport():
     htmlfile.write('<tr bgcolor="#9FA68F">')  # write <tr> tag
     htmlfile.write('<th>ID</th>')
     htmlfile.write('<th>Description</th>')
-    htmlfile.write('<th>Notif Type</th>')
+    htmlfile.write('<th>Jira Bug ID</th>')
     htmlfile.write('</tr>') 
     # Iterating through the json
     # list
@@ -86,11 +89,19 @@ def generateAuditReport():
     data1 = json.load(f1)
     for i in data1['tests']:
         for j in i['results']:
+            summary1 = ''
+            desc1 = ''
+            sev1 = ''
             if (j['result'] == 'WARN'):
+                summary1 = "BENCH_" + str(i['id']) + "_" + str(j['id']) + "_" + i['desc']
+                desc1 = j['result'] + "_" + j['desc']
+                sev1 = 'Medium'
+                id1 = formulateData(summary1, desc1, sev1, "AUDBUGS")
+                idURL1 = idURLPart + id1
                 htmlfile.write('<tr>')
                 htmlfile.write('<td>''<center>' + j['id'] + '</center>''</td>')
                 htmlfile.write('<td>' + j['desc'] + '</center>''</td>')
-                htmlfile.write('<td>''<center>' + j['result'] + '</center>''</td>')
+                htmlfile.write('<td>''<center>''<a href = ' + idURL1 + '>' + id1 + '</a>''</center>''</td>')
                 htmlfile.write('</tr>')
     htmlfile.write('</table>') 
 
@@ -103,26 +114,35 @@ def generateAuditReport():
     htmlfile.write('<th>ID</th>')
     htmlfile.write('<th>Title</th>')
     htmlfile.write('<th>Test Status</th>')
-    htmlfile.write('<th>Description</th>')
+    htmlfile.write('<th>Jira Bug ID</th>')
     htmlfile.write('</tr>') 
     f2 = open(inspecPath)
     data2 = json.load(f2)
     for i in data2['profiles']:
         for j in i['controls']:
             for k in j['results']:
+                summary2 = ''
+                desc2 = ''
+                sev2 = ''
                 if (k['status'] == 'failed'):
                     if (j['id'] not in idList):
+                        summary2 = "INSPEC_" + j['id'] + "_" + j['title']
+                        desc2 = j['desc']
+                        sev2 = 'Medium'
+                        id2 = formulateData(summary2, desc2, sev2, "AUDBUGS")
+                        idURL2 = idURLPart + id2
                         htmlfile.write('<tr>')
                         idList.append(j['id'])
                         htmlfile.write('<td>' + j['id'] + '</td>')
                         htmlfile.write('<td>' + j['title'] + '</td>')
                         htmlfile.write('<td>''<center>' + k['status'] + '</center>''</td>')
-                        htmlfile.write('<td>' + j['desc'] + '</td>')
+                        htmlfile.write('<td>''<center>''<a href = ' + idURL2 + '>' + id2 + '</a>''</center>''</td>')
                         htmlfile.write('</tr>')
     htmlfile.write('</table>')
     # Closing file
     htmlfile.close()
     f1.close()
+    sendEmail(auditPath + "/Dummy", "AUDIT")
     
 def copycssForReport():
     try:

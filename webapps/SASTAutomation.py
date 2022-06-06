@@ -10,6 +10,7 @@ from SASTHTMLReporter import *
 from lib.commons import get_report_path
 from lib.commons import get_debugger
 from lib.logger import Logger
+from Email import *
 
 #dir = str(uuid.uuid4().hex)
 
@@ -103,6 +104,7 @@ def startSAST(argv):
             if os.path.exists(odcCSVPath):
                 copycssForReport()
                 generateSASTReport(odcCSVPath, reportPath)
+                sendEmail(reportPath + "/Dummy", "SAST")
             else:
                 log.record('debug', 'SAST Scan might not have run properly! Please check.')
 

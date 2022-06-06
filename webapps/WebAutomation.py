@@ -36,7 +36,7 @@ thirdpartypath = os.path.join(APP_DIR, 'ThirdParty.txt')
 # Modified for Arachni -> Ecsypno SCNR Migration - START
 #customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --browser-cluster-pool-size=10 --browser-cluster-ignore-images --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
 #--system-slots-override 
-customoptions = "--http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
+customoptions = "--system-slots-override --http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png "
 # Modified for Arachni -> Ecsypno SCNR Migration - END
 
 report_path = get_report_path(REPORT_PATH, app_type)
@@ -52,7 +52,7 @@ log.record('debug', "Value of log_path is: " + log_path)
 
 # Modified for Arachni -> Ecsypno SCNR Migration - START
 #afrreportname = report_path + "//" + 'Report_' + dir + '.afr'
-scnrreportname = report_path + "//" + 'Report_' + dir + '.ser'
+scnrreportname = report_path + "/" + 'Report_' + dir + '.ser'
 # Modified for Arachni -> Ecsypno SCNR Migration - END
 logfilename = log_path + dir + '.log'
 
@@ -252,7 +252,7 @@ def startscan(argv):
                 log.record('debug', "Issue copying Third party files to working directory")
 
             copycss()
-            sendEmail(csvfilepath)
+            sendEmail(csvfilepath, "DAST")
 
             # SATT = [Successattachments];
             #
@@ -411,7 +411,7 @@ def normalscan(argv):
             log.record('debug', "Issue copying Third party files to working directory")
 
         copycss()
-        sendEmail(csvfilepath)
+        sendEmail(csvfilepath, "DAST")
 
         # SATT = [Successattachments];
         #

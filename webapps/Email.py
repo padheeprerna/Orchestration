@@ -14,6 +14,7 @@ import glob
 import json
 import requests
 import json
+import httplib2
 from lib.commons import *
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -21,6 +22,9 @@ from email.mime.base import MIMEBase
 from email import encoders
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
+from apiclient import errors
+from googleapiclient.discovery import build
+from oauth2client import file
 
 secFile = "/home/ubuntu/Orchestration/webapps/client_secrets.json"
 credFile = "/home/ubuntu/Orchestration/webapps/mycreds.txt"
@@ -49,6 +53,27 @@ def zipDir(reportPath):
 def copyReqFiles(reportPath):
     shutil.copy2(secFile, reportPath)
     shutil.copy2(credFile, reportPath)
+    
+#def retrieve_permissions(service, file_id):
+#    try:
+#        permissions = service.permissions().list(fileId=file_id).execute()
+#        print(str(permissions.get('items', [])[0]['id']))
+#        return str(permissions.get('items', [])[0]['id'])
+#    except Exception as e:
+#        print ('An error occurred: ' + str(e))
+#        return None
+    
+def insert_permission(service, file_id, perm_type, role):
+  new_permission = {
+      'type': perm_type,
+      'role': role
+  }
+  try:
+    return service.permissions().insert(
+        fileId=file_id, body=new_permission).execute()
+  except errors.HttpError:
+    print ('An error occurred: ' + errors.HttpError)
+  return None
     
 def uploadToDrive(reportPath):
     #Following code needs token revision every 1 hour
@@ -79,9 +104,19 @@ def uploadToDrive(reportPath):
     file1 = drive.CreateFile()
     file1.SetContentFile(reportPath + "/Report-" + name + ".zip")
     file1.Upload()
+    
+    http = httplib2.Http()
+    store = file.Storage('mycreds.txt')
+    creds = store.get()
+    http = creds.authorize(http)
+    service = build('drive', 'v2', http=http)
+    #print(str(file1))
+    #permission_id = retrieve_permissions(service, file1['id'])
+    #print("PERM ID-----------" + permission_id)
+    insert_permission(service, file1['id'], 'anyone', 'reader')
     return file1['id']
     
-def sendEmail(reportPath):
+def sendEmail(reportPath, subject):
     reportPath = reportPath[:reportPath.rfind('/')]
     zipDir(reportPath)
     copyReqFiles(reportPath)
@@ -103,7 +138,7 @@ def sendEmail(reportPath):
     message = MIMEMultipart()
     message['From'] = sender_address
     message['To'] = receiver_address
-    message['Subject'] = 'A Security Report mail sent by Python'
+    message['Subject'] = subject + ' Security Report'
     message.attach(MIMEText(mail_content, 'plain'))
     #attach_file_name = reportPath + "/Report-" + name + ".zip"
     #attach_file = open(attach_file_name, 'rb') # Open the file as binary mode
@@ -119,5 +154,6 @@ def sendEmail(reportPath):
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
     print('Mail Sent')
+    
 
     

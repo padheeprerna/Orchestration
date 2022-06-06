@@ -116,7 +116,7 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
                                 htmlfile.write('<td>' + column + '</td>')
                                 summary = str(column)
                             elif columnnum == 1:
-                                description = str(column.replace("\n", ""))
+                                description = str(column)
                             elif columnnum == 4:
                                 if (column == 'critical'):
                                     htmlfile.write('<td style="background:#ff0000;color:white;weight:bold">''<center>' + column + '</center>''</td>')
@@ -133,7 +133,7 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
                                 htmlfile.write('<td style="overflow-x:auto; overflow-y:auto; max-width:420px;">' + column + '</td>')
                                 if ((len(summary) !=0) & (len(description) !=0) & (len(severity) !=0)):
                                     if (severity in ['low', 'medium', 'high', 'critical']):
-                                        id = formulateData(summary, description, severity)
+                                        id = formulateData(summary, description, severity, "DASTBUGS")
                                         link = "https://devsecopscollab.atlassian.net/browse/" + id
                                         htmlfile.write('<td> <a href = ' + link + '>''<center>' + id + '</center>''</a> </td>')
                                         summary = ""

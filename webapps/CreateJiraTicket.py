@@ -13,14 +13,16 @@ import base64
 import os
 import datetime
 import requests
+import traceback
+import re
 
 # Jira settings
 JIRA_URL = "https://devsecopscollab.atlassian.net"
 
 JIRA_USERNAME = "devsecopscollab@gmail.com"
-JIRA_PASSWORD = "rl46PMP1J5E8KcJuRM6vB53F" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
+JIRA_PASSWORD = "tjqaYr6zbdtrG0wo2wdn73E3" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
 
-JIRA_PROJECT_KEY = "DASTBUGS"
+#JIRA_PROJECT_KEY = "DASTBUGS"
 JIRA_ISSUE_TYPE = "Bug"    
 
 def jira_rest_call(data):
@@ -54,7 +56,7 @@ def jira_rest_call(data):
     return response.json()
 
 
-def generate_issue_data(summary, description, priority):
+def generate_issue_data(summary, description, priority, pkey):
     # Build the JSON to post to JIRA
     json_data = '''
         {
@@ -71,10 +73,22 @@ def generate_issue_data(summary, description, priority):
                     "name":"%s"
                 }
             } 
-        } ''' % (JIRA_PROJECT_KEY, summary, JIRA_ISSUE_TYPE, description, priority.title())
+        } ''' % (pkey, summary, JIRA_ISSUE_TYPE, description, priority.title())
     return json_data
 
-def formulateData(summary, desc, priority):
-    json_response = jira_rest_call(generate_issue_data(summary, desc, priority))
-    issue_key = json_response['key']
-    return issue_key
+def formulateData(summary, desc, priority, pkey):
+    try:
+        summary = re.sub('\W+',' ', summary)
+        desc = re.sub('\W+',' ', desc)
+        priority = re.sub('\W+',' ', priority)
+        json_response = jira_rest_call(generate_issue_data(summary, desc, priority, pkey))
+        issue_key = json_response['key']
+        return issue_key
+    except Exception as e:
+        print(summary)
+        print(desc)
+        print(priority)
+        print(pkey)
+        print(e)
+        traceback.print_exc()
+

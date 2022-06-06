@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['webapps/WebAutomation.py', 'webapps/Email.py', 'webapps/ContainerSecurityAudit.py', 'webapps/CreateJiraTicket.py']
+recent_files = ['webapps/SASTAutomation.py', 'webapps/SASTHTMLReporter.py', '../Tools/sonarqube-8.9.8.54436/logs/es.log']
 
 [main]
 version = 0.2.0
