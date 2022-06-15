@@ -1,0 +1,76 @@
+SCNR::UI::CLI v1.0dev - SCNR::Engine v1.0dev
+
+
+[~] No checks were specified, loading all.
+[~] No element audit options were specified, will audit links, forms, cookies, UI inputs, UI forms, JSONs and XMLs.
+
+[*] Initializing...
+[*] Preparing plugins...
+[*] ... done.
+[*] BrowserPool: Initializing 2 Chrome browsers...
+[*] BrowserPool: Spawned with PID 1134758 [lifeline at PID 1134754].
+[*] BrowserPool: Spawned with PID 1134759 [lifeline at PID 1134756].
+[*] BrowserPool: Initialization completed with 2 browsers in the pool.
+[-] Retrying for: http://172.31.3.192:8081/ [Couldn't connect to server]
+[-] Retrying for: http://172.31.3.192:8081/ [Couldn't connect to server]
+[-] Retrying for: http://172.31.3.192:8081/ [Couldn't connect to server]
+[-] Retrying for: http://172.31.3.192:8081/ [Couldn't connect to server]
+[-] Retrying for: http://172.31.3.192:8081/ [Couldn't connect to server]
+
+
+================================================================================
+
+
+[+] Web Application Security Report - SCNR::Engine Framework
+
+[~] Report generated on: 2022-06-15 07:36:23 +0000
+
+[+] System settings:
+[~] ---------------
+[~] Version:           1.0dev
+[~] Seed:              060e39631b31aa2bafee641b0e56887a
+[~] Audit started on:  2022-06-15 07:36:23 +0000
+[~] Audit finished on: 2022-06-15 07:36:23 +0000
+[~] Runtime:           00:00:00
+
+[~] URL:        http://172.31.3.192:8081/
+[~] User agent: 
+
+[*] Audited elements: 
+[~] * Links
+[~] * Forms
+[~] * Cookies
+[~] * XMLs
+[~] * JSONs
+[~] * UI inputs
+[~] * UI forms
+
+[*] Checks: *
+
+[*] Filters: 
+[~]   Include:
+[~]     (?i-mx:172.31.3.192)
+
+[~] ===========================
+
+[+] 0 issues were detected.
+
+
+[~] Report saved at: /home/ubuntu/Orchestration/reports/WebApplication/15-06-2022/1655278581/Report_15_6_2022_7_36_21.ser [0.0MB]
+[~] The scan has logged errors: /home/ubuntu/Tools/SCNR/scnr-1.0dev-1.0dev-1.0dev/bin/../.system/../logs/engine/error-1134720.log
+
+[~] Audited 0 page snapshots.
+
+[~] Duration: 00:00:00
+[~] Processed 12/12 HTTP requests -- timed-out: 0
+[~] -- 602.122 requests/second.
+[~] Processed 0/0 browser jobs -- timed-out: 0
+[~] -- 0 second/job.
+
+[~] Burst response time sum     0.0 seconds
+[~] Burst response count        2
+[~] Burst average response time 0.0 seconds
+[~] Burst average               12.583 requests/second
+[~] Original max concurrency    10
+[~] Throttled max concurrency   10
+

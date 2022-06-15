@@ -1,0 +1,10 @@
+2022-06-09 07:36:33,716 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-06-09 07:36:33,716 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-06-09 07:36:33,716 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-06-09 07:36:33,717 - security_automation - DEBUG - Web Application Scan Started at: 2022-06-09 07:36:33.717032
+2022-06-09 07:36:33,717 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/09-06-2022/1654760193
+2022-06-09 07:36:33,717 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/09-06-2022/1654760193/Debug
+2022-06-09 07:36:33,717 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-06-09 07:36:33,717 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-06-09 07:36:33,717 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-06-09 07:36:33,773 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

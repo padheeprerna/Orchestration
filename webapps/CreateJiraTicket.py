@@ -20,7 +20,7 @@ import re
 JIRA_URL = "https://devsecopscollab.atlassian.net"
 
 JIRA_USERNAME = "devsecopscollab@gmail.com"
-JIRA_PASSWORD = "tjqaYr6zbdtrG0wo2wdn73E3" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
+JIRA_PASSWORD = "NTLZipusKBsXsTIYJRQL8D7D" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
 
 #JIRA_PROJECT_KEY = "DASTBUGS"
 JIRA_ISSUE_TYPE = "Bug"    
@@ -91,4 +91,9 @@ def formulateData(summary, desc, priority, pkey):
         print(pkey)
         print(e)
         traceback.print_exc()
+        
+#def main():
+#    formulateData("summary", "desc", "High", "DASTBUGS")
+    
+#main()
 

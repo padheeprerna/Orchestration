@@ -26,8 +26,9 @@ from apiclient import errors
 from googleapiclient.discovery import build
 from oauth2client import file
 
-secFile = "/home/ubuntu/Orchestration/webapps/client_secrets.json"
-credFile = "/home/ubuntu/Orchestration/webapps/mycreds.txt"
+#secFile = "/home/ubuntu/Orchestration/webapps/client_secrets.json"
+credFile = "/home/ubuntu/Orchestration/webapps/credentials.json"
+driveFolderID = "1Bj1fUP_9IqxQcpnDBs4WGijxx98JF7Uf"
 
 time = get_timenow()
 name = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
@@ -50,9 +51,9 @@ def zipDir(reportPath):
             shutil.copy2(file, reportPath + "/" + mailDir)
     shutil.make_archive("Report-" + name, "zip", reportPath + "/" + mailDir)
     
-def copyReqFiles(reportPath):
-    shutil.copy2(secFile, reportPath)
-    shutil.copy2(credFile, reportPath)
+#def copyReqFiles(reportPath):
+#    shutil.copy2(secFile, reportPath)
+#    shutil.copy2(credFile, reportPath)
     
 #def retrieve_permissions(service, file_id):
 #    try:
@@ -75,7 +76,7 @@ def insert_permission(service, file_id, perm_type, role):
     print ('An error occurred: ' + errors.HttpError)
   return None
     
-def uploadToDrive(reportPath):
+def uploadToDrive(reportPath, subject):
     #Following code needs token revision every 1 hour
     #headers = {"Authorization": "Bearer ya29.a0ARrdaM8Tkzj7sPpiJgIfYSyj4PWFLHi-XXeXUlto34ndkxUnPOBoXQbzNLWcm66Y9AoBTHB5uVR1UhG2ljs8K-2cehOhxzfLvfxnI1AnUAYcaU7NYHNc9k66UO6DyH8pdxIz6EEzR2Pb6S3uMPdUspSYlB68"}
     #para = {
@@ -91,22 +92,23 @@ def uploadToDrive(reportPath):
     #    files=files
     #)
     gauth = GoogleAuth()
-    gauth.LoadCredentialsFile("mycreds.txt")
+    drive = GoogleDrive(gauth)
+    
+    gauth.LoadCredentialsFile(credFile)
     if gauth.credentials is None:
         gauth.LocalWebserverAuth()
     elif gauth.access_token_expired:
         gauth.Refresh()
     else:
         gauth.Authorize()
-    gauth.SaveCredentialsFile("mycreds.txt")
-
-    drive = GoogleDrive(gauth)
-    file1 = drive.CreateFile()
+    gauth.SaveCredentialsFile(credFile)
+    
+    file1 = drive.CreateFile({'parents' : [{'id' : driveFolderID}], 'title' : subject + ' Analysis Report.zip'})
     file1.SetContentFile(reportPath + "/Report-" + name + ".zip")
     file1.Upload()
     
     http = httplib2.Http()
-    store = file.Storage('mycreds.txt')
+    store = file.Storage(credFile)
     creds = store.get()
     http = creds.authorize(http)
     service = build('drive', 'v2', http=http)
@@ -119,8 +121,8 @@ def uploadToDrive(reportPath):
 def sendEmail(reportPath, subject):
     reportPath = reportPath[:reportPath.rfind('/')]
     zipDir(reportPath)
-    copyReqFiles(reportPath)
-    did = uploadToDrive(reportPath)
+    #copyReqFiles(reportPath)
+    did = uploadToDrive(reportPath, subject)
     driveLink = "https://drive.google.com/open?id="+did
     mail_content = '''
     Hi there,
@@ -132,9 +134,9 @@ def sendEmail(reportPath, subject):
     DevSecOps Team
     
     ''' % driveLink
-    sender_address = 'devsecopscollab@gmail.com'
-    sender_pass = 'L1l2l3l4l5!'
-    receiver_address = 'devsecopscollab@gmail.com'
+    sender_address = 'emailsenderservice0@gmail.com'
+    sender_pass = 'vdksomrvbopigymj'
+    receiver_address = 'emailsenderservice0@gmail.com'
     message = MIMEMultipart()
     message['From'] = sender_address
     message['To'] = receiver_address
@@ -154,6 +156,3 @@ def sendEmail(reportPath, subject):
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
     print('Mail Sent')
-    
-
-    
