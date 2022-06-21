@@ -1,0 +1,17 @@
+2022-06-17 05:52:07,546 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-06-17 05:52:07,546 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-06-17 05:52:07,546 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-06-17 05:52:07,546 - security_automation - DEBUG - Web Application Scan Started at: 2022-06-17 05:52:07.546798
+2022-06-17 05:52:07,546 - security_automation - DEBUG - Value of report_path is: /home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127
+2022-06-17 05:52:07,546 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127/Debug
+2022-06-17 05:52:07,547 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip'
+2022-06-17 05:52:07,547 - security_automation - DEBUG - [Errno 2] No such file or directory: '/home/ubuntu/Orchestration/webapps/WebApplicationSecurityResults.zip.txt'
+2022-06-17 05:52:07,547 - security_automation - DEBUG - WebApplicationSecurityResults does not exist
+2022-06-17 05:52:07,547 - security_automation - DEBUG - Initiating Non-Authenticated Scan
+2022-06-17 05:52:07,547 - security_automation - DEBUG - Ecsypno SCNR Command Triggered is: scnr http://172.31.3.192:8081/ --platform=linux --system-slots-override --http-request-concurrency=10 --http-response-max-size=10000 --http-request-timeout=20000 --http-request-queue-size=200 --scope-auto-redundant=2 --scope-directory-depth-limit=4 --scope-dom-depth-limit=3 --scope-exclude-file-extensions=css,png --scope-include-pattern=172.31.3.192 --output-debug 1> /home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127/Debug17_6_2022_5_52_7.log --report-save-path=/home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127/Report_17_6_2022_5_52_7.ser
+2022-06-17 06:10:06,037 - security_automation - DEBUG - Value of csvfilepath: /home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127/Report_17_6_2022_5_52_7.csv
+2022-06-17 06:10:06,037 - security_automation - DEBUG - CSV_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127/Report_17_6_2022_5_52_7.csv
+2022-06-17 06:10:06,037 - security_automation - DEBUG - HTML_REPORT: /home/ubuntu/Orchestration/reports/WebApplication/17-06-2022/1655445127/Report_17_6_2022_5_52_7.html
+2022-06-17 06:10:06,037 - security_automation - DEBUG - PDF_REPORT: NA
+2022-06-17 06:10:06,052 - security_automation - DEBUG - name 'html' is not defined
+2022-06-17 06:10:06,103 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

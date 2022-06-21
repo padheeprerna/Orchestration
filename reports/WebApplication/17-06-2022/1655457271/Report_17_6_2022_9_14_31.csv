@@ -1,0 +1,653 @@
+name,description,remedy_guidance,remedy_code,severity,check_name_description_author,check_name_description_version,check_name_description_shortname,check_name_description,cwe,digest,references_reference,references_reference_reference_reference,vector_class,vector_type,vector_url,vector_action,vector_source,vector_seed,vector_method,vector_affected_input_name,vector_inputs_input,vector_inputs_input_input_input_input,vector_default_inputs_input_input_input_input_input,vector,remarks_remark_commenter,remarks_remark_text,remarks_remark,remarks_remark_commenter_text_remark_commenter_text_remark_commenter_text,page_body,page_request_url_method_parameters,page_request_url_method_headers_header,page_request_url_method_headers_header_header_header_header,page_request_url_method_body_raw,page_request_url_method_body,page_response_url_code,page_response_url_ip_address,page_response_url_time,page_response_url_return_code,page_response_url_return_message,page_response_url_headers_body_raw_headers,page_response_url_headers_body,page_dom_url_transitions,page_dom_url_data_flow_sinks,page_dom_url_execution_flow_sinks,page_dom_url,page,referring_page_body_request_url_method_parameters_headers_header_header_header_header_header_body_raw_response_url_code_ip_address_time_return_code_return_message_headers_header_header_header_header_header_header_header_header_header_header_body_raw_headers_dom_url_transitions_data_flow_sinks_execution_flow_sinks,signature,proof,trusted,platform_type,platform_name
+"Blind SQL Injection (timing attack)","Due to the requirement for dynamic content of today's web applications, many
+rely on a database backend to store data that will be called upon and processed
+by the web application (or other programs).
+Web applications retrieve data from the database by using Structured Query Language
+(SQL) queries.
+
+To meet demands of many developers, database servers (such as MSSQL, MySQL,
+Oracle etc.) have additional built-in functionality that can allow extensive
+control of the database and interaction with the host operating system itself.
+
+An SQL injection occurs when a value originating from the client's request is used
+within a SQL query without prior sanitisation. This could allow cyber-criminals
+to execute arbitrary SQL code and steal data or use the additional functionality
+of the database server to take control of more server components.
+
+The successful exploitation of a SQL injection can be devastating to an
+organisation and is one of the most commonly exploited web application vulnerabilities.
+
+This injection was detected as SCNR::Engine was able to inject specific SQL queries,
+that if vulnerable, result in the responses for each request being delayed before
+being sent by the server.
+This is known as a time-based blind SQL injection vulnerability.","The only proven method to prevent against SQL injection attacks while still
+maintaining full application functionality is to use parameterized queries
+(also known as prepared statements).
+When utilising this method of querying the database, any value supplied by the
+client will be handled as a string value rather than part of the SQL query.
+
+Additionally, when utilising parameterized queries, the database engine will
+automatically check to make sure the string being used matches that of the column.
+For example, the database engine will check that the user supplied input is an
+integer if the database column is configured to contain integers.","","high","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.3.3","sql_injection_timing","","89","2817509067","","","SCNR::Engine::Element::Form","form","http://172.31.3.192:8081/forgotPassword.php","http://172.31.3.192:8081/userAccount.php","<form action=""userAccount.php"" method=""post"">
+    <input type=""username"" name=""username"" placeholder=""Username"" required="""" />
+    <input type=""card"" name=""card"" placeholder=""Credit Card"" required="""" />
+    <input type=""newpass"" name=""newpass"" placeholder=""New Password"" required="""" />
+    <input type=""confpass"" name=""confpass"" placeholder=""Confirm Password"" required="""" />
+    <input type=""submit"" name=""forgotSubmit"" value=""CONTINUE"" />
+</form>","' or sleep(4) #","post","username","","","","","timing_attack","Delays (in seconds) used for each phase: 4.0, 24.0, 4.0, 12.0, 8.0, 16.0, 20.0, 4.0","","","","","","","POST /userAccount.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02
+Cookie: PHPSESSID=d5c76b4b8d802f3d503aeb1b9f0d911b
+Content-Length: 161
+Content-Type: application/x-www-form-urlencoded
+
+username=scnr_engine_name%27%20or%20sleep%284%29%20%23%20&card=1&newpass=5543%21%25scnr_engine_secret&confpass=5543%21%25scnr_engine_secret&forgotSubmit=CONTINUE","","0","172.31.3.192","4.0033","operation_timedout","Timeout was reached","","","","","","","","","","","false","db","mysql"
+"Blind SQL Injection (timing attack)","Due to the requirement for dynamic content of today's web applications, many
+rely on a database backend to store data that will be called upon and processed
+by the web application (or other programs).
+Web applications retrieve data from the database by using Structured Query Language
+(SQL) queries.
+
+To meet demands of many developers, database servers (such as MSSQL, MySQL,
+Oracle etc.) have additional built-in functionality that can allow extensive
+control of the database and interaction with the host operating system itself.
+
+An SQL injection occurs when a value originating from the client's request is used
+within a SQL query without prior sanitisation. This could allow cyber-criminals
+to execute arbitrary SQL code and steal data or use the additional functionality
+of the database server to take control of more server components.
+
+The successful exploitation of a SQL injection can be devastating to an
+organisation and is one of the most commonly exploited web application vulnerabilities.
+
+This injection was detected as SCNR::Engine was able to inject specific SQL queries,
+that if vulnerable, result in the responses for each request being delayed before
+being sent by the server.
+This is known as a time-based blind SQL injection vulnerability.","The only proven method to prevent against SQL injection attacks while still
+maintaining full application functionality is to use parameterized queries
+(also known as prepared statements).
+When utilising this method of querying the database, any value supplied by the
+client will be handled as a string value rather than part of the SQL query.
+
+Additionally, when utilising parameterized queries, the database engine will
+automatically check to make sure the string being used matches that of the column.
+For example, the database engine will check that the user supplied input is an
+integer if the database column is configured to contain integers.","","high","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.3.3","sql_injection_timing","","89","3412320261","","","SCNR::Engine::Element::Form","form","http://172.31.3.192:8081/forgotPassword.php","http://172.31.3.192:8081/userAccount.php","<form action=""userAccount.php"" method=""post"">
+    <input type=""username"" name=""username"" placeholder=""Username"" required="""" />
+    <input type=""card"" name=""card"" placeholder=""Credit Card"" required="""" />
+    <input type=""newpass"" name=""newpass"" placeholder=""New Password"" required="""" />
+    <input type=""confpass"" name=""confpass"" placeholder=""Confirm Password"" required="""" />
+    <input type=""submit"" name=""forgotSubmit"" value=""CONTINUE"" />
+</form>","' or sleep(4) #","post","card","","","","","timing_attack","Delays (in seconds) used for each phase: 4.0, 24.0, 4.0, 12.0, 8.0, 16.0, 20.0, 4.0","","","","","","","POST /userAccount.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02
+Cookie: PHPSESSID=d5c76b4b8d802f3d503aeb1b9f0d911b
+Content-Length: 161
+Content-Type: application/x-www-form-urlencoded
+
+username=scnr_engine_name&card=1%27%20or%20sleep%284%29%20%23%20&newpass=5543%21%25scnr_engine_secret&confpass=5543%21%25scnr_engine_secret&forgotSubmit=CONTINUE","","0","172.31.3.192","4.0042","operation_timedout","Timeout was reached","","","","","","","","","","","false","db","mysql"
+"Unencrypted password form","The HTTP protocol by itself is clear text, meaning that any data that is
+transmitted via HTTP can be captured and the contents viewed.
+
+To keep data private, and prevent it from being intercepted, HTTP is often
+tunnelled through either Secure Sockets Layer (SSL), or Transport Layer Security
+(TLS).
+When either of these encryption standards are used it is referred to as HTTPS.
+
+Cyber-criminals will often attempt to compromise credentials passed from the
+client to the server using HTTP.
+This can be conducted via various different Man-in-The-Middle (MiTM) attacks or
+through network packet captures.
+
+SCNR::Engine discovered that the affected page contains a `password` input, however,
+the value of the field is not sent to the server utilising HTTPS. Therefore it
+is possible that any submitted credential may become compromised.","The affected site should be secured utilising the latest and most secure encryption
+protocols.
+These include SSL version 3.0 and TLS version 1.2. While TLS 1.2 is the latest
+and the most preferred protocol, not all browsers will support this encryption
+method. Therefore, the more common SSL is included. Older protocols such as SSL
+version 2, and weak ciphers (< 128 bit) should also be disabled.","","medium","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.2","unencrypted_password_forms","","319","2533841055","","","SCNR::Engine::Element::Form","form","http://172.31.3.192:8081/login.php","http://172.31.3.192:8081/login.php","<form action="""" method=""post"">
+    <input type=""text"" name=""username"" class=""form-control"" id=""exampleInputEmail1"" aria-describedby=""emailHelp"" placeholder=""Enter Username"" />
+    <input type=""password"" name=""password"" class=""form-control"" id=""exampleInputPassword1"" placeholder=""Enter Password"" />
+    <input type=""checkbox"" class=""form-check-input"" id=""exampleCheck1"" />
+</form>","","password","","","","","","<!doctype html>
+<html lang=""en"">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset=""utf-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1, shrink-to-fit=no"">
+
+    <!-- Bootstrap CSS -->
+    <link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"" integrity=""sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"" crossorigin=""anonymous"">
+
+    <title>CTF</title>
+  </head>
+  <body>
+  <nav class=""navbar navbar-expand-lg navbar-dark bg-dark"">
+  <a class=""navbar-brand"" href=""#"">CTF</a>
+  <button class=""navbar-toggler"" type=""button"" data-toggle=""collapse"" data-target=""#navbarNavDropdown"" aria-controls=""navbarNavDropdown"" aria-expanded=""false"" aria-label=""Toggle navigation"">
+    <span class=""navbar-toggler-icon""></span>
+  </button>
+  <div class=""collapse navbar-collapse"" id=""navbarNavDropdown"">
+  <ul class=""navbar-nav"">
+      <li class=""nav-item active"">
+        <a class=""nav-link"" href=""index.php"">Home <span class=""sr-only"">(current)</span></a>
+      </li>
+      <li class=""nav-item"">
+        <a class=""nav-link"" href=""login.php"">Login</a>
+      </li>
+      
+
+      
+     
+    </ul>
+  </div>
+</nav>
+
+<div class=""container mt-4"">
+<h3>Please Login Here:</h3>
+<hr>
+
+<form action="""" method=""post"">
+  <div class=""form-group"">
+    <label for=""exampleInputEmail1"">Username</label>
+    <input type=""text"" name=""username"" class=""form-control"" id=""exampleInputEmail1"" aria-describedby=""emailHelp"" placeholder=""Enter Username"">
+  </div>
+  <div class=""form-group"">
+    <label for=""exampleInputPassword1"">Password</label>
+    <input type=""password"" name=""password"" class=""form-control"" id=""exampleInputPassword1"" placeholder=""Enter Password"">
+  </div>
+  <div class=""form-group form-check"">
+    <input type=""checkbox"" class=""form-check-input"" id=""exampleCheck1"">
+    <label class=""form-check-label"" for=""exampleCheck1"">Check me out</label>
+  </div>
+  <button type=""submit"" class=""btn btn-primary"">Submit</button>
+  </div>
+        <a href=""forgotPassword.php"">Forgot password?</a>
+    </form>
+</div>
+</form>
+
+
+
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=""https://code.jquery.com/jquery-3.3.1.slim.min.js"" integrity=""sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"" crossorigin=""anonymous""></script>
+    <script src=""https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"" integrity=""sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"" crossorigin=""anonymous""></script>
+    <script src=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"" integrity=""sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"" crossorigin=""anonymous""></script>
+  </body>
+</html>","get","","","","GET /login.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02
+Cookie: PHPSESSID=7024e64850c8d9adacac6a660ee754b6","","200","172.31.3.192","0.0048","ok","No error","HTTP/1.1 200 OK
+Date: Fri, 17 Jun 2022 09:14:39 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.30
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1239
+Content-Type: text/html; charset=UTF-8","","","","","","","","","<form action="""" method=""post"">
+    <input type=""text"" name=""username"" class=""form-control"" id=""exampleInputEmail1"" aria-describedby=""emailHelp"" placeholder=""Enter Username"" />
+    <input type=""password"" name=""password"" class=""form-control"" id=""exampleInputPassword1"" placeholder=""Enter Password"" />
+    <input type=""checkbox"" class=""form-check-input"" id=""exampleCheck1"" />
+</form>","true","",""
+"Password field with auto-complete","In typical form-based web applications, it is common practice for developers to
+allow `autocomplete` within the HTML form to improve the usability of the page.
+With `autocomplete` enabled (default), the browser is allowed to cache previously
+entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data
+when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields,
+this could allow a cyber-criminal with access to the victim's computer the ability
+to have the victim's credentials automatically entered as the cyber-criminal
+visits the affected page.
+
+SCNR::Engine has discovered that the affected page contains a form containing a
+password field that has not disabled `autocomplete`.","The `autocomplete` value can be configured in two different locations.
+
+The first and most secure location is to disable the `autocomplete` attribute on
+the `<form>` HTML tag. This will disable `autocomplete` for all inputs within that form.
+An example of disabling `autocomplete` within the form tag is `<form autocomplete=off>`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute
+for a specific `<input>` HTML tag.
+While this may be the less desired solution from a security perspective, it may
+be preferred method for usability reasons, depending on size of the form.
+An example of disabling the `autocomplete` attribute within a password input tag
+is `<input type=password autocomplete=off>`.","","low","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.3.1","password_autocomplete","","1978937363","","SCNR::Engine::Element::Form","form","http://172.31.3.192:8081/login.php","http://172.31.3.192:8081/login.php","<form action="""" method=""post"">
+    <input type=""text"" name=""username"" class=""form-control"" id=""exampleInputEmail1"" aria-describedby=""emailHelp"" placeholder=""Enter Username"" />
+    <input type=""password"" name=""password"" class=""form-control"" id=""exampleInputPassword1"" placeholder=""Enter Password"" />
+    <input type=""checkbox"" class=""form-check-input"" id=""exampleCheck1"" />
+</form>","","","","","","","","<!doctype html>
+<html lang=""en"">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset=""utf-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1, shrink-to-fit=no"">
+
+    <!-- Bootstrap CSS -->
+    <link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"" integrity=""sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"" crossorigin=""anonymous"">
+
+    <title>CTF</title>
+  </head>
+  <body>
+  <nav class=""navbar navbar-expand-lg navbar-dark bg-dark"">
+  <a class=""navbar-brand"" href=""#"">CTF</a>
+  <button class=""navbar-toggler"" type=""button"" data-toggle=""collapse"" data-target=""#navbarNavDropdown"" aria-controls=""navbarNavDropdown"" aria-expanded=""false"" aria-label=""Toggle navigation"">
+    <span class=""navbar-toggler-icon""></span>
+  </button>
+  <div class=""collapse navbar-collapse"" id=""navbarNavDropdown"">
+  <ul class=""navbar-nav"">
+      <li class=""nav-item active"">
+        <a class=""nav-link"" href=""index.php"">Home <span class=""sr-only"">(current)</span></a>
+      </li>
+      <li class=""nav-item"">
+        <a class=""nav-link"" href=""login.php"">Login</a>
+      </li>
+      
+
+      
+     
+    </ul>
+  </div>
+</nav>
+
+<div class=""container mt-4"">
+<h3>Please Login Here:</h3>
+<hr>
+
+<form action="""" method=""post"">
+  <div class=""form-group"">
+    <label for=""exampleInputEmail1"">Username</label>
+    <input type=""text"" name=""username"" class=""form-control"" id=""exampleInputEmail1"" aria-describedby=""emailHelp"" placeholder=""Enter Username"">
+  </div>
+  <div class=""form-group"">
+    <label for=""exampleInputPassword1"">Password</label>
+    <input type=""password"" name=""password"" class=""form-control"" id=""exampleInputPassword1"" placeholder=""Enter Password"">
+  </div>
+  <div class=""form-group form-check"">
+    <input type=""checkbox"" class=""form-check-input"" id=""exampleCheck1"">
+    <label class=""form-check-label"" for=""exampleCheck1"">Check me out</label>
+  </div>
+  <button type=""submit"" class=""btn btn-primary"">Submit</button>
+  </div>
+        <a href=""forgotPassword.php"">Forgot password?</a>
+    </form>
+</div>
+</form>
+
+
+
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=""https://code.jquery.com/jquery-3.3.1.slim.min.js"" integrity=""sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"" crossorigin=""anonymous""></script>
+    <script src=""https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"" integrity=""sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"" crossorigin=""anonymous""></script>
+    <script src=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"" integrity=""sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"" crossorigin=""anonymous""></script>
+  </body>
+</html>","get","","","","GET /login.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02
+Cookie: PHPSESSID=7024e64850c8d9adacac6a660ee754b6","","200","172.31.3.192","0.0048","ok","No error","HTTP/1.1 200 OK
+Date: Fri, 17 Jun 2022 09:14:39 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.30
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1239
+Content-Type: text/html; charset=UTF-8","","","","","","","","","","true","",""
+"Common sensitive file","Web applications are often made up of multiple files and directories.
+
+It is possible that over time some files may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+files that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced files in the hope that the file will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common filenames.
+The response headers from the server will then indicate if the file exists.
+
+SCNR::Engine also contains a list of common file names which it will attempt to access.","If files are unreferenced then they should be removed from the web root
+and/or the application directory.
+
+Preventing access without authentication may also be an option and can stop a
+client from being able to view the contents of a file, however it is still likely
+that the directory structure will be able to be discovered.
+
+Using obscure file names is implementing security through obscurity and is
+not a recommended option.","","low","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.4","common_files","","3006415440","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/config.php","http://172.31.3.192:8081/config.php","","","","get","","","","GET /config.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02","","200","172.31.3.192","0.0031","ok","No error","HTTP/1.1 200 OK
+Date: Fri, 17 Jun 2022 09:14:34 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.30
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8","","","","","","","","","HTTP/1.1 200 OK","true","",""
+"Missing 'X-Frame-Options' header","Clickjacking (User Interface redress attack, UI redress attack, UI redressing)
+is a malicious technique of tricking a Web user into clicking on something different
+from what the user perceives they are clicking on, thus potentially revealing
+confidential information or taking control of their computer while clicking on
+seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website
+could be at risk of a clickjacking attack.
+
+The `X-Frame-Options` HTTP response header can be used to indicate whether or not
+a browser should be allowed to render a page inside a frame or iframe. Sites can
+use this to avoid clickjacking attacks, by ensuring that their content is not
+embedded into other sites.","Configure your web server to include an `X-Frame-Options` header.","","low","Tasos Laskos <tasos.laskos@gmail.com>","0.1.3","x_frame_options","","693","1173186050","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/","http://172.31.3.192:8081/","","","<!doctype html>
+<html lang=""en"">
+  <head>
+	<style>
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+</style>
+    <!-- Required meta tags -->
+    <meta charset=""utf-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1, shrink-to-fit=no"">
+
+    <!-- Bootstrap CSS -->
+    <link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"" integrity=""sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"" crossorigin=""anonymous"">
+
+    <title>CTF</title>
+  </head>
+  <body>
+  <nav class=""navbar navbar-expand-lg navbar-dark bg-dark"">
+  <a class=""navbar-brand"" href=""#"">CTF</a>
+  <button class=""navbar-toggler"" type=""button"" data-toggle=""collapse"" data-target=""#navbarNavDropdown"" aria-controls=""navbarNavDropdown"" aria-expanded=""false"" aria-label=""Toggle navigation"">
+    <span class=""navbar-toggler-icon""></span>
+  </button>
+  <div class=""collapse navbar-collapse"" id=""navbarNavDropdown"">
+  <ul class=""navbar-nav"">
+      <li class=""nav-item active"">
+        <a class=""nav-link"" href=""index.php"">Home <span class=""sr-only"">(current)</span></a>
+      </li>
+      <li class=""nav-item"">
+        <a hidden class=""nav-link"" href=""encrypt.php"">Encrypt</a>
+      </li>
+      <li class=""nav-item"">
+        <a class=""nav-link"" href=""login.php"">Login</a>
+      </li>
+     
+
+      
+     
+    </ul>
+  </div>
+</nav>
+
+<div class=""container mt-4"">
+<h3>All the Best</h3>
+
+<div class=""container"">
+    <div class=""regisFrm"">
+        <form action=""c.php"" method=""post"">
+            <input type='cipher' name='cipher' placeholder="""" required="""">
+            <div class=""send-button"">
+                <input type=""submit"" name=""forgotSubmit"" value=""CONTINUE"">
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr>
+</div>
+<footer>
+  <p>ftp:ftp</p>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=""https://code.jquery.com/jquery-3.3.1.slim.min.js"" integrity=""sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"" crossorigin=""anonymous""></script>
+    <script src=""https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"" integrity=""sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"" crossorigin=""anonymous""></script>
+    <script src=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"" integrity=""sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"" crossorigin=""anonymous""></script>
+  </body>
+</html>","get","","","","GET / HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02","","200","172.31.3.192","0.0025","ok","No error","HTTP/1.1 200 OK
+Date: Fri, 17 Jun 2022 09:14:33 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.30
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1197
+Content-Type: text/html; charset=UTF-8","","","","","","","","","HTTP/1.1 200 OK","true","",""
+"'Server' header","The `Server` header describes the software used by the origin server that handled
+the request — that is, the server that generated the response.
+
+Avoid overly-detailed `Server` values, as they can reveal information that may make
+it (slightly) easier for attackers to exploit known security holes.","Configure your web server to not send a `Server` header.","","low","Tasos Laskos <tasos.laskos@gmail.com>","0.1","server_header","","200","2691964481","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/","http://172.31.3.192:8081/","","","<!doctype html>
+<html lang=""en"">
+  <head>
+	<style>
+	footer {
+	  text-align: right;
+	  background-color: white;
+	  color: white;
+}
+</style>
+    <!-- Required meta tags -->
+    <meta charset=""utf-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1, shrink-to-fit=no"">
+
+    <!-- Bootstrap CSS -->
+    <link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"" integrity=""sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"" crossorigin=""anonymous"">
+
+    <title>CTF</title>
+  </head>
+  <body>
+  <nav class=""navbar navbar-expand-lg navbar-dark bg-dark"">
+  <a class=""navbar-brand"" href=""#"">CTF</a>
+  <button class=""navbar-toggler"" type=""button"" data-toggle=""collapse"" data-target=""#navbarNavDropdown"" aria-controls=""navbarNavDropdown"" aria-expanded=""false"" aria-label=""Toggle navigation"">
+    <span class=""navbar-toggler-icon""></span>
+  </button>
+  <div class=""collapse navbar-collapse"" id=""navbarNavDropdown"">
+  <ul class=""navbar-nav"">
+      <li class=""nav-item active"">
+        <a class=""nav-link"" href=""index.php"">Home <span class=""sr-only"">(current)</span></a>
+      </li>
+      <li class=""nav-item"">
+        <a hidden class=""nav-link"" href=""encrypt.php"">Encrypt</a>
+      </li>
+      <li class=""nav-item"">
+        <a class=""nav-link"" href=""login.php"">Login</a>
+      </li>
+     
+
+      
+     
+    </ul>
+  </div>
+</nav>
+
+<div class=""container mt-4"">
+<h3>All the Best</h3>
+
+<div class=""container"">
+    <div class=""regisFrm"">
+        <form action=""c.php"" method=""post"">
+            <input type='cipher' name='cipher' placeholder="""" required="""">
+            <div class=""send-button"">
+                <input type=""submit"" name=""forgotSubmit"" value=""CONTINUE"">
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr>
+</div>
+<footer>
+  <p>ftp:ftp</p>
+</footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=""https://code.jquery.com/jquery-3.3.1.slim.min.js"" integrity=""sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"" crossorigin=""anonymous""></script>
+    <script src=""https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"" integrity=""sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"" crossorigin=""anonymous""></script>
+    <script src=""https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"" integrity=""sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"" crossorigin=""anonymous""></script>
+  </body>
+</html>","get","","","","GET / HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02","","200","172.31.3.192","0.0025","ok","No error","HTTP/1.1 200 OK
+Date: Fri, 17 Jun 2022 09:14:33 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.30
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 1197
+Content-Type: text/html; charset=UTF-8","","","","","","","","","Apache/2.4.53 (Debian)","true","",""
+"HttpOnly cookie","HTTP by itself is a stateless protocol. Therefore the server is unable to determine
+which requests are performed by which client, and which clients are authenticated
+or unauthenticated.
+
+The use of HTTP cookies within the headers, allows a web server to identify each
+individual client and can therefore determine which clients hold valid
+authentication, from those that do not. These are known as session cookies.
+
+When a cookie is set by the server (sent the header of an HTTP response) there
+are several flags that can be set to configure the properties of the cookie and
+how it is to be handled by the browser.
+
+The `HttpOnly` flag assists in the prevention of client side-scripts (such as
+JavaScript) accessing and using the cookie.
+
+This can help prevent XSS attacks targeting the cookies holding the client's
+session token (setting the `HttpOnly` flag does not prevent, nor safeguard against
+XSS vulnerabilities themselves).","The initial step to remedy this would be to determine whether any client-side
+scripts (such as JavaScript) need to access the cookie and if not, set the
+`HttpOnly` flag.
+
+Additionally, it should be noted that some older browsers are not compatible with
+the `HttpOnly` flag, and therefore setting this flag will not protect those clients
+against this form of attack.","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.1.5","http_only_cookies","","200","4206811426","","","SCNR::Engine::Element::Cookie","cookie","http://172.31.3.192:8081/c.php","http://172.31.3.192:8081/c.php","PHPSESSID=d5c76b4b8d802f3d503aeb1b9f0d911b; path=/","","","","","","","","<br/>","post","","","","POST /c.php HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02
+Content-Length: 29
+Content-Type: application/x-www-form-urlencoded
+
+cipher=&forgotSubmit=CONTINUE","","200","172.31.3.192","0.0048","ok","No error","HTTP/1.1 200 OK
+Date: Fri, 17 Jun 2022 09:14:33 GMT
+Server: Apache/2.4.53 (Debian)
+X-Powered-By: PHP/7.4.30
+Set-Cookie: PHPSESSID=d5c76b4b8d802f3d503aeb1b9f0d911b; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Length: 5
+Content-Type: text/html; charset=UTF-8","","","","","","","","","","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","1795391917","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/","http://172.31.3.192:8081/","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method TRACE is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","trace","","","","TRACE / HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02","","405","172.31.3.192","0.0055","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Fri, 17 Jun 2022 09:14:34 GMT
+Server: Apache/2.4.53 (Debian)
+Allow: 
+Content-Length: 302
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","351943712","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/SCNR_Engine-be2967d78e28449c1d0a7d11c521dd02","http://172.31.3.192:8081/SCNR_Engine-be2967d78e28449c1d0a7d11c521dd02","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method PUT is not allowed for this URL.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","put","","","","PUT /SCNR_Engine-be2967d78e28449c1d0a7d11c521dd02 HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02
+Content-Length: 60
+
+Created by SCNR::Engine. PUTbe2967d78e28449c1d0a7d11c521dd02","","405","172.31.3.192","0.0019","ok","No error","HTTP/1.1 405 Method Not Allowed
+Date: Fri, 17 Jun 2022 09:14:34 GMT
+Server: Apache/2.4.53 (Debian)
+Allow: POST,OPTIONS,HEAD,GET
+Content-Length: 300
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 405 Method Not Allowed","true","",""
+"Interesting response","The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.","","","informational","Tasos ""Zapotek"" Laskos <tasos.laskos@gmail.com>","0.2.1","interesting_responses","","2217262411","","","SCNR::Engine::Element::Server","server","http://172.31.3.192:8081/server-status","http://172.31.3.192:8081/server-status","","","<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML 2.0//EN"">
+<html><head>
+<title>403 Forbidden</title>
+</head><body>
+<h1>Forbidden</h1>
+<p>You don't have permission to access this resource.</p>
+<hr>
+<address>Apache/2.4.53 (Debian) Server at 172.31.3.192 Port 8081</address>
+</body></html>","get","","","","GET /server-status HTTP/1.1
+Host: 172.31.3.192:8081
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (Gecko) SCNR::Engine/v1.0dev
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+X-Scnr-Engine-Scan-Seed: be2967d78e28449c1d0a7d11c521dd02","","403","172.31.3.192","0.0007","ok","No error","HTTP/1.1 403 Forbidden
+Date: Fri, 17 Jun 2022 09:14:34 GMT
+Server: Apache/2.4.53 (Debian)
+Content-Length: 279
+Content-Type: text/html; charset=iso-8859-1","","","","","","","","","HTTP/1.1 403 Forbidden","true","",""

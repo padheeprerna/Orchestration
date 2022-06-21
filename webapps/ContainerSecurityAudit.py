@@ -142,7 +142,7 @@ def generateAuditReport():
     # Closing file
     htmlfile.close()
     f1.close()
-    sendEmail(auditPath + "/Dummy", "AUDIT")
+    sendEmail(auditPath + "/Dummy", "AUDIT", "devsecopscollab@gmail.com")
     
 def copycssForReport():
     try:

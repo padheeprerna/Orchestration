@@ -50,7 +50,8 @@ def startSAST(argv):
         projectname = ''
         version = ''
         gitURL = ''
-        opts, args = getopt.getopt(argv, "k:p:v:u:", ["key=", "projectname=", "version=", "gitURL="])
+        rEmail = ''
+        opts, args = getopt.getopt(argv, "k:p:v:u:e:", ["key=", "projectname=", "version=", "gitURL=", "rEmail="])
         if len(opts) < 4:
             print("Please pass 4 arguments in the same order: Project Ney (-k), Project Name (-p), Project Version (-v) & Git URL to be scanned(-u) ")
         else:
@@ -63,6 +64,8 @@ def startSAST(argv):
                     version = arg
                 elif opt in ("-u"):
                     gitURL = arg
+                elif opt in ("-e"):
+                    rEmail = arg
             repoName = gitURL.split('.git')[0].split('/')[-1]
             if(len(os.listdir(scanPath)) != 0):
                 cleanDir()
@@ -104,7 +107,7 @@ def startSAST(argv):
             if os.path.exists(odcCSVPath):
                 copycssForReport()
                 generateSASTReport(odcCSVPath, reportPath)
-                sendEmail(reportPath + "/Dummy", "SAST")
+                sendEmail(reportPath + "/Dummy", "SAST", rEmail)
             else:
                 log.record('debug', 'SAST Scan might not have run properly! Please check.')
 

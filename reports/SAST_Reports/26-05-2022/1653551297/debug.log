@@ -1,8 +1,0 @@
-2022-05-26 07:48:17,804 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
-2022-05-26 07:48:17,804 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
-2022-05-26 07:48:17,804 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
-2022-05-26 07:48:17,804 - security_automation - DEBUG - SAST Scan Started at: 2022-05-26 07:48:17.803517
-2022-05-26 07:48:17,804 - security_automation - DEBUG - Value of report path is: /home/ubuntu/Orchestration/reports/SAST_Reports/26-05-2022/1653551297
-2022-05-26 07:48:17,804 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/SAST_Reports/26-05-2022/1653551297/Debug
-2022-05-26 07:48:17,805 - security_automation - DEBUG - [Errno 13] Permission denied: 'exclude'
-2022-05-26 07:48:17,839 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

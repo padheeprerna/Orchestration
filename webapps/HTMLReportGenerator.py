@@ -11,6 +11,7 @@ from shutil import copytree
 import os
 import shutil
 import codecs
+import html
 #from bs4 import BeautifulSoup
 from CreateJiraTicket import *
 
@@ -130,7 +131,7 @@ def generateHtml(inputfile, appname, url,reportPathZAP, dir):
                                     htmlfile.write('<td  style="background:#0066ff;color:white;weight:bold">''<center>' + column + '</center>''</td>')
                                 severity = str(column)
                             elif columnnum == 15:
-                                htmlfile.write('<td style="overflow-x:auto; overflow-y:auto; max-width:420px;">' + column + '</td>')
+                                htmlfile.write('<td style="overflow-x:auto; overflow-y:auto; max-width:420px;">' + str(html.escape(column)) + '</td>')
                                 if ((len(summary) !=0) & (len(description) !=0) & (len(severity) !=0)):
                                     if (severity in ['low', 'medium', 'high', 'critical']):
                                         id = formulateData(summary, description, severity, "DASTBUGS")

@@ -40,8 +40,9 @@ def formURL(argv):
     username = ''
     password = ''
     platform = ''
+    rEmail = ''
 
-    opts, args = getopt.getopt(argv, "n:p:l:", ["username=", "password=", "platform="])
+    opts, args = getopt.getopt(argv, "n:p:l:e:", ["username=", "password=", "platform=", "rEmail="])
     for opt, arg in opts:
         if opt in ("-n"):
             username = arg
@@ -49,12 +50,16 @@ def formURL(argv):
             password = arg
         elif opt in ("-l"):
             platform = arg
+        elif opt in ("-e"):
+            rEmail = arg
     
     if (platform):
         cmd = cmd + " -l " + platform
     if (username):
         if (password):
             cmd = cmd + " -n " + username + " -p " + password
+    if (rEmail):
+        cmd = cmd + " -e " + rEmail
     cmd = cmd + "'"
     os.system(cmd)
     

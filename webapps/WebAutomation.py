@@ -109,9 +109,10 @@ def startscan(argv):
     username = ''
     password = ''
     platform = ''
+    rEmail = ''
 
     try:
-        opts, args = getopt.getopt(argv, "hu:n:p:l:", ["lurl=", "username=", "password=", "platform="])
+        opts, args = getopt.getopt(argv, "hu:n:p:l:e:", ["lurl=", "username=", "password=", "platform=", "rEmail="])
         if len(opts) == 0:
             print( 'Please check usage:')
             usage()
@@ -134,6 +135,8 @@ def startscan(argv):
             password = arg
         elif opt in ("-l"):
             platform = arg
+        elif opt in ("-e"):
+            rEmail = arg
 
     try:
         if lurl != '' and username == '' or password == '':
@@ -252,7 +255,7 @@ def startscan(argv):
                 log.record('debug', "Issue copying Third party files to working directory")
 
             copycss()
-            sendEmail(csvfilepath, "DAST")
+            sendEmail(csvfilepath, "DAST", rEmail)
 
             # SATT = [Successattachments];
             #
@@ -278,8 +281,9 @@ def startscan(argv):
 def normalscan(argv):
     lurl = ''
     platform = ''
+    rEmail = ''
     try:
-        opts, args = getopt.getopt(argv, "hu:l:", ["lurl=", "platform="])
+        opts, args = getopt.getopt(argv, "hu:l:e:", ["lurl=", "platform=", "rEmail="])
 
         if len(opts) == 0:
             usage()
@@ -300,6 +304,8 @@ def normalscan(argv):
                 hostname = splitedURL[0]
         elif opt in ("-l"):
             platform = arg
+        elif opt in ("-e"):
+            rEmail = arg
         else:
             print( "Please provide mandatory values")
             usage()
@@ -411,7 +417,7 @@ def normalscan(argv):
             log.record('debug', "Issue copying Third party files to working directory")
 
         copycss()
-        sendEmail(csvfilepath, "DAST")
+        sendEmail(csvfilepath, "DAST", rEmail)
 
         # SATT = [Successattachments];
         #

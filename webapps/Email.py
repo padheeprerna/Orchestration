@@ -118,7 +118,7 @@ def uploadToDrive(reportPath, subject):
     insert_permission(service, file1['id'], 'anyone', 'reader')
     return file1['id']
     
-def sendEmail(reportPath, subject):
+def sendEmail(reportPath, subject, recEmail):
     reportPath = reportPath[:reportPath.rfind('/')]
     zipDir(reportPath)
     #copyReqFiles(reportPath)
@@ -136,7 +136,7 @@ def sendEmail(reportPath, subject):
     ''' % driveLink
     sender_address = 'emailsenderservice0@gmail.com'
     sender_pass = 'vdksomrvbopigymj'
-    receiver_address = 'emailsenderservice0@gmail.com'
+    receiver_address = recEmail
     message = MIMEMultipart()
     message['From'] = sender_address
     message['To'] = receiver_address
