@@ -15,6 +15,7 @@ from CreateJiraTicket import *
 
 htmlTable = ""
 projectKey = ''
+flag = False
 
 #xlSrc = "C:\\Program Files\\SonarQube\\sonarqube-9.3.0.51899\\extensions\\plugins"
 #sonarProperties = 'C:\\Users\\Public\\\Desktop\\code\\Orchestration\\sonar-project.properties'
@@ -82,6 +83,8 @@ def generateSASTReport(inputfile, reportPath):
                     summary1 = "OWASP_" + str(dataFrame.iloc[i, j])
                 elif(dataFrame.columns[j] == 'CVSSv2_Severity'):
                     severity1 = str(dataFrame.iloc[i, j])
+                    if severity1 == 'CRITICAL':
+                        flag = True
                 elif(dataFrame.columns[j] == 'CVE'):
                     cveid = str(dataFrame.iloc[i, j])
                 elif(dataFrame.columns[j] == 'DependencyPath'):
@@ -135,6 +138,8 @@ def generateSASTReport(inputfile, reportPath):
                         severity2 = "HIGH"
                     else:
                         severity2 = str(df.iloc[i, j])
+                    if severity2 == 'CRITICAL':
+                        flag = True
                 elif(df.columns[j] == 'Type'):
                     type2 = str(df.iloc[i, j])
                 elif(df.columns[j] == 'File'):
@@ -158,3 +163,4 @@ def generateSASTReport(inputfile, reportPath):
         
     htmlfile.write('</div>')
     htmlfile.close()
+    return flag

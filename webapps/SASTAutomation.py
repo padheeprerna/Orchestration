@@ -19,7 +19,7 @@ scanPath = "//home//ubuntu//Tools//ClientScans"
 reportPath = get_report_path(REPORT_PATH, "SAST_Reports")
 odcCSVPath = reportPath + "//dependency-check-report.csv"
 OWASPBinPath = '//home//ubuntu//Tools//dependency-check//bin'
-
+flag = False
 
 log = Logger(get_debugger(reportPath))
 #time = datetime.now()
@@ -30,7 +30,8 @@ log.record('debug', "Value of log_path is: " + log_path)
 
 def main():
     try:
-        startSAST(sys.argv[1:])
+       flag = startSAST(sys.argv[1:])
+       return flag
     except Exception as e:
         log.record('debug', str(e))
 
@@ -106,10 +107,12 @@ def startSAST(argv):
 
             if os.path.exists(odcCSVPath):
                 copycssForReport()
-                generateSASTReport(odcCSVPath, reportPath)
+                flag = generateSASTReport(odcCSVPath, reportPath)
                 sendEmail(reportPath + "/Dummy", "SAST", rEmail)
             else:
                 log.record('debug', 'SAST Scan might not have run properly! Please check.')
+                
+            return flag
 
     except Exception as e:
         log.record('debug', str(e))
