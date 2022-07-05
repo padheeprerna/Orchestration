@@ -30,8 +30,7 @@ log.record('debug', "Value of log_path is: " + log_path)
 
 def main():
     try:
-       flag = startSAST(sys.argv[1:])
-       return flag
+       startSAST(sys.argv[1:])
     except Exception as e:
         log.record('debug', str(e))
 
@@ -53,7 +52,7 @@ def startSAST(argv):
         gitURL = ''
         rEmail = ''
         opts, args = getopt.getopt(argv, "k:p:v:u:e:", ["key=", "projectname=", "version=", "gitURL=", "rEmail="])
-        if len(opts) < 4:
+        if len(opts) < 5:
             print("Please pass 4 arguments in the same order: Project Ney (-k), Project Name (-p), Project Version (-v) & Git URL to be scanned(-u) ")
         else:
             for opt, arg in opts:
