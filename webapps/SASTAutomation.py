@@ -51,9 +51,12 @@ def startSAST(argv):
         version = ''
         gitURL = ''
         rEmail = ''
+        print("ARGV IS-------->>>>" + str(argv))
         opts, args = getopt.getopt(argv, "k:p:v:u:e:", ["key=", "projectname=", "version=", "gitURL=", "rEmail="])
+        print("OPTS IS-------->>>>" + str(opts))
+        print("ARGS IS-------->>>>" + str(args))
         if len(opts) < 5:
-            print("Please pass 4 arguments in the same order: Project Ney (-k), Project Name (-p), Project Version (-v) & Git URL to be scanned(-u) ")
+            print("Please pass 5 arguments in the same order: Project Ney (-k), Project Name (-p), Project Version (-v) & Git URL to be scanned(-u) ")
         else:
             for opt, arg in opts:
                 if opt in ("-k"):
