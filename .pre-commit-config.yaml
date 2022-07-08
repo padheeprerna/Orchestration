@@ -1,8 +1,0 @@
-repos:
--   repo: local
-    hooks:
-    -   id: SAST
-        name: SASTAutomation
-        entry: python3.10 -m webapps/SASTAutomation -k JenkinsTrial4 -p JenkinsTrial4 -v 1.0 -u https://github.com/CollabDSO/CTF.git -e devsecopscollab@gmail.com
-        language: system
-        verbose: true
