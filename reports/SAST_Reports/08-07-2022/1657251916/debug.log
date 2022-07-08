@@ -1,0 +1,15 @@
+2022-07-08 03:45:16,156 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-07-08 03:45:16,157 - security_automation - DEBUG -                                    Security Analysis Execution Log                                   
+2022-07-08 03:45:16,157 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------
+2022-07-08 03:45:16,157 - security_automation - DEBUG - SAST Scan Started at: 2022-07-08 03:45:16.153675
+2022-07-08 03:45:16,157 - security_automation - DEBUG - Value of report path is: /home/ubuntu/Orchestration/reports/SAST_Reports/08-07-2022/1657251916
+2022-07-08 03:45:16,157 - security_automation - DEBUG - Value of log_path is: /home/ubuntu/Orchestration/reports/SAST_Reports/08-07-2022/1657251916/Debug
+2022-07-08 03:45:17,387 - security_automation - DEBUG - Initiating SAST Scan
+2022-07-08 03:45:17,387 - security_automation - DEBUG - Starting OWASP Dependency Scan
+2022-07-08 03:49:58,650 - security_automation - DEBUG - OWASP Dependency Scan Complete
+2022-07-08 03:49:58,656 - security_automation - DEBUG - Starting SonarQube Scan
+2022-07-08 03:50:27,006 - security_automation - DEBUG - SonarQube Complete
+2022-07-08 03:50:27,006 - security_automation - DEBUG - SAST Scan Ended
+2022-07-08 03:50:27,052 - security_automation - DEBUG - Successfully copied CSS to target location
+2022-07-08 03:50:35,623 - security_automation - DEBUG - can only concatenate str (not "NoneType") to str
+2022-07-08 03:50:35,703 - security_automation - DEBUG - -----------------------------------------------------------------------------------------------------

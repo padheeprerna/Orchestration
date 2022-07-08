@@ -84,7 +84,7 @@ def startSAST(key, projectname, version, gitURL, rEmail):
              sendEmail(reportPath + "/Dummy", "SAST", rEmail)
          else:
              log.record('debug', 'SAST Scan might not have run properly! Please check.')
-             
+         print("FLAG IS====>>>>>>>" + flag)
          return flag
 
     except Exception as e:
