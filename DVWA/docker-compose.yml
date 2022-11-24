@@ -1,0 +1,11 @@
+version: '3.6'
+services:
+  dvwa:
+    build: .
+    image: "${dockerImage}"
+    container_name: dvwa
+    ports:
+       - "8083:80"
+    volumes: 
+       - ./app:/var/lib/mysql
+       - ./app:/var/log/apache2
