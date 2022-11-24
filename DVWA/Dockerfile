@@ -32,7 +32,7 @@ RUN service mysql start && \
     sleep 3 && \
     mysql -uroot -pvulnerables -e "CREATE USER app@localhost IDENTIFIED BY 'vulnerables';CREATE DATABASE dvwa;GRANT ALL privileges ON dvwa.* TO 'app'@localhost;"
 
-EXPOSE 80
+EXPOSE 8081
 
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
