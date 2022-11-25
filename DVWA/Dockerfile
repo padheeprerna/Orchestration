@@ -2,6 +2,8 @@ FROM debian:9.2
 
 LABEL maintainer "opsxcq@strm.sh"
 
+RUN adduser --disabled-password --gecos "" debian
+
 RUN apt-get update && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -28,6 +30,9 @@ COPY config.inc.php /var/www/html/config/
 RUN chown www-data:www-data -R /var/www/html && \
     rm /var/www/html/index.html
 
+RUN chown -R debian /var/www/html
+RUN chown -R debian /etc/php5/apache2/php.ini
+
 RUN service mysql start && \
     sleep 3 && \
     mysql -uroot -pvulnerables -e "CREATE USER app@localhost IDENTIFIED BY 'vulnerables';CREATE DATABASE dvwa;GRANT ALL privileges ON dvwa.* TO 'app'@localhost;"
@@ -35,4 +40,6 @@ RUN service mysql start && \
 EXPOSE 80
 
 COPY main.sh /
-ENTRYPOINT ["/main.sh"]
+RUN chmod 777 main.sh
+RUN chown -R debian /main.sh
+CMD ["/main.sh"]
