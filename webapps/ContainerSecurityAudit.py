@@ -14,7 +14,7 @@ from lib.commons import *
 from lib.commons import get_debugger
 from lib.logger import Logger
 from CreateJiraTicket import *
-from Email import*
+from Email import *
 
 time = get_timenow()
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
@@ -27,11 +27,13 @@ log = Logger(get_debugger(auditPath))
 idList = []
 idURLPart = "https://devsecopscollab.atlassian.net/browse/"
 
+
 def main():
-    runAudit()   
+    runAudit()
     copycssForReport()
     generateAuditReport()
-    
+
+
 def runAudit():
     log.record("***Starting INSPEC Scan**")
     os.system("inspec exec /home/ubuntu/Tools/InSpecProfile/cis-docker-benchmark --reporter=json:" + inspecPath)
@@ -41,7 +43,8 @@ def runAudit():
     os.system("./docker-bench-security.sh")
     copyfile(benchLog, auditPath + '/docker-bench-security.log.json')
     log.record("***DOCKER BENCH Scan Finished***")
-    
+
+
 def generateAuditReport():
     htmlfile = open(auditPath + "/Docker-Audit-Report-" + myFileName + ".html", "w")
     htmlfile.write(
@@ -73,16 +76,17 @@ def generateAuditReport():
     htmlfile.write(
         '<div class="art-post-inner art-article"><h2 class="art-postheader">  </h2><div class="cleared"></div><div class="art-postcontent">')
 
-#REPORT FOR DOCKER BENCH
+    # REPORT FOR DOCKER BENCH
     htmlfile.write(
         '<p styple=fon-weight:1000;"><left><b><h3 style="color:blue;"> 1. Docker Bench Report </h3></b></left></p>')
-    htmlfile.write("<style>table, th, td {font-family: arial, sans-serif;border: 1px solid black;border-collapse: collapse;}tr:nth-child(even) {background-color: #E8E6E5;}</style>")
+    htmlfile.write(
+        "<style>table, th, td {font-family: arial, sans-serif;border: 1px solid black;border-collapse: collapse;}tr:nth-child(even) {background-color: #E8E6E5;}</style>")
     htmlfile.write('<table>')
     htmlfile.write('<tr bgcolor="#9FA68F">')  # write <tr> tag
     htmlfile.write('<th>ID</th>')
     htmlfile.write('<th>Description</th>')
     htmlfile.write('<th>Jira Bug ID</th>')
-    htmlfile.write('</tr>') 
+    htmlfile.write('</tr>')
     # Iterating through the json
     # list
     f1 = open(benchLog)
@@ -103,19 +107,20 @@ def generateAuditReport():
                 htmlfile.write('<td>' + j['desc'] + '</center>''</td>')
                 htmlfile.write('<td>''<center>''<a href = ' + idURL1 + '>' + id1 + '</a>''</center>''</td>')
                 htmlfile.write('</tr>')
-    htmlfile.write('</table>') 
+    htmlfile.write('</table>')
 
-#REPORT FOR INSPEC
+    # REPORT FOR INSPEC
     htmlfile.write(
         '<p styple=fon-weight:1000;"><left><b><h3 style="color:blue;"> 2. InSpec Host+Container Profile Report </h3></b></left></p>')
-    htmlfile.write("<style>table, th, td {font-family: arial, sans-serif;border: 1px solid black;border-collapse: collapse;}tr:nth-child(even) {background-color: #E8E6E5;}</style>")
+    htmlfile.write(
+        "<style>table, th, td {font-family: arial, sans-serif;border: 1px solid black;border-collapse: collapse;}tr:nth-child(even) {background-color: #E8E6E5;}</style>")
     htmlfile.write('<table>')
     htmlfile.write('<tr bgcolor="#9FA68F">')  # write <tr> tag
     htmlfile.write('<th>ID</th>')
     htmlfile.write('<th>Title</th>')
     htmlfile.write('<th>Test Status</th>')
     htmlfile.write('<th>Jira Bug ID</th>')
-    htmlfile.write('</tr>') 
+    htmlfile.write('</tr>')
     f2 = open(inspecPath)
     data2 = json.load(f2)
     for i in data2['profiles']:
@@ -143,15 +148,17 @@ def generateAuditReport():
     htmlfile.close()
     f1.close()
     sendEmail(auditPath + "/Dummy", "AUDIT", "devsecopscollab@gmail.com")
-    
+
+
 def copycssForReport():
     try:
         if CSSFilePath:
-            copytree(CSSFilePath, auditPath+'//css')
+            copytree(CSSFilePath, auditPath + '//css')
             log.record('debug', "Successfully copied CSS to target location")
         else:
             log.record('debug', "Issue copying CSS file to target location")
     except Exception as e:
         log.record('debug', str(e))
-        
+
+
 main()
