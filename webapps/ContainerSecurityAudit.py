@@ -26,8 +26,6 @@ inspecPath = auditPath + "/InSpecReport.json"
 log = Logger(get_debugger(auditPath))
 idList = []
 idURLPart = "https://devsecopscollab.atlassian.net/browse/"
-
-
 def main():
     runAudit()
     copycssForReport()
@@ -100,12 +98,12 @@ def generateAuditReport():
                 summary1 = "BENCH_" + str(i['id']) + "_" + str(j['id']) + "_" + i['desc']
                 desc1 = j['result'] + "_" + j['desc']
                 sev1 = 'Medium'
-                id1 = formulateData(summary1, desc1, sev1, "AUDBUGS")
-                idURL1 = idURLPart + id1
+                # id1 = formulateData(summary1, desc1, sev1, "AUDBUGS")
+                # idURL1 = idURLPart + id1
                 htmlfile.write('<tr>')
                 htmlfile.write('<td>''<center>' + j['id'] + '</center>''</td>')
                 htmlfile.write('<td>' + j['desc'] + '</center>''</td>')
-                htmlfile.write('<td>''<center>''<a href = ' + idURL1 + '>' + id1 + '</a>''</center>''</td>')
+                # htmlfile.write('<td>''<center>''<a href = ' + idURL1 + '>' + id1 + '</a>''</center>''</td>')
                 htmlfile.write('</tr>')
     htmlfile.write('</table>')
 
@@ -122,7 +120,7 @@ def generateAuditReport():
     htmlfile.write('<th>Jira Bug ID</th>')
     htmlfile.write('</tr>')
     f2 = open(inspecPath)
-    data2 = json.load(f2)
+    data2 = json.load(f2).decode("utf_8")
     for i in data2['profiles']:
         for j in i['controls']:
             for k in j['results']:
@@ -134,20 +132,20 @@ def generateAuditReport():
                         summary2 = "INSPEC_" + j['id'] + "_" + j['title']
                         desc2 = j['desc']
                         sev2 = 'Medium'
-                        id2 = formulateData(summary2, desc2, sev2, "AUDBUGS")
-                        idURL2 = idURLPart + id2
+                        # id2 = formulateData(summary2, desc2, sev2, "AUDBUGS")
+                        # idURL2 = idURLPart + id2
                         htmlfile.write('<tr>')
                         idList.append(j['id'])
                         htmlfile.write('<td>' + j['id'] + '</td>')
                         htmlfile.write('<td>' + j['title'] + '</td>')
                         htmlfile.write('<td>''<center>' + k['status'] + '</center>''</td>')
-                        htmlfile.write('<td>''<center>''<a href = ' + idURL2 + '>' + id2 + '</a>''</center>''</td>')
+                        # htmlfile.write('<td>''<center>''<a href = ' + idURL2 + '>' + id2 + '</a>''</center>''</td>')
                         htmlfile.write('</tr>')
     htmlfile.write('</table>')
     # Closing file
     htmlfile.close()
     f1.close()
-    sendEmail(auditPath + "/Dummy", "AUDIT", "devsecopscollab@gmail.com")
+    # sendEmail(auditPath + "/Dummy", "AUDIT", "devsecopscollab@gmail.com")
 
 
 def copycssForReport():
