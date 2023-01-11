@@ -116,9 +116,9 @@ def generateSASTReport(inputfile, reportPath):
             if ((len(cveid) != 0) & (len(depath) != 0) & (len(summary1) != 0) & (len(vul) != 0) & (
                     severity1 in ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'])):
                 desc1 = "CVE ID: " + cveid + ". File where the bug was found: " + depath + ". Vulnerability Desc: " + vul
-                id1 = formulateData(summary1, desc1, severity1, "SASTBUGS")
-                idURL1 = idURLPart + id1
-                bugIdList1.append(idURL1)
+                # id1 = formulateData(summary1, desc1, severity1, "SASTBUGS")
+                # idURL1 = idURLPart + id1
+                # bugIdList1.append(idURL1)
         dataFrame['Jira Bug ID'] = bugIdList1
         bugIdList1.clear()
         dataFrame = dataFrame.drop('Vulnerability', axis=1)
