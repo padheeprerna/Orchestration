@@ -41,17 +41,17 @@ def startSAST(argv):
     try:
         if os.path.exists(odcCSVPath):
             copycssForReport()
-            flag = generateSASTReport(odcCSVPath, reportPath)
+            result = generateSASTReport(odcCSVPath, reportPath, flag)
             sendEmail(reportPath + "/Dummy", "SAST", rEmail)
         else:
             log.record('debug', 'SAST Scan might not have run properly! Please check.')
 
-        return flag
+        return result
 
     except Exception as e:
         log.record('debug', str(e))
 
-def generateSASTReport(inputfile, reportPath):
+def generateSASTReport(inputfile, reportPath, flag):
     outNewPath = reportPath + "//SAST-Analysis-Report-" + myFileName + ".html"
     htmlfile = open(outNewPath, "w")
     htmlfile.write(
@@ -119,7 +119,7 @@ def generateSASTReport(inputfile, reportPath):
                 # id1 = formulateData(summary1, desc1, severity1, "SASTBUGS")
                 # idURL1 = idURLPart + id1
                 # bugIdList1.append(idURL1)
-        dataFrame['Jira Bug ID'] = bugIdList1
+        # dataFrame['Jira Bug ID'] = bugIdList1
         bugIdList1.clear()
         dataFrame = dataFrame.drop('Vulnerability', axis=1)
         dataFrame = dataFrame.drop('DependencyPath', axis=1)
