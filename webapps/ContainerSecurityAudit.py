@@ -119,8 +119,8 @@ def generateAuditReport():
     htmlfile.write('<th>Test Status</th>')
     htmlfile.write('<th>Jira Bug ID</th>')
     htmlfile.write('</tr>')
-    f2 = open(inspecPath)
-    data2 = json.load(f2).decode("utf_8")
+    f2 = open(inspecPath, encoding='utf-8')
+    data2 = json.load(f2)
     for i in data2['profiles']:
         for j in i['controls']:
             for k in j['results']:
