@@ -3,16 +3,15 @@ from lib.logger import Logger
 from Email import *
 
 # Get environment variables
-# reportPath = os.getenv('reportPath')
-odcCSVPath = os.environ.get('odcCSVPath')
+odcCSVPath = os.environ.get('odcCSVPath') + "//dependency-check-report.csv"
 rEmail = os.environ.get('rEmail')
-# orchPath = str(os.path.dirname(os.path.realpath(sys.argv[0])))
-# scanPath = "//home//ubuntu//Tools//ClientScans"
 reportPath = get_report_path(REPORT_PATH, "SAST_Reports")
-# odcCSVPath = reportPath + "//dependency-check-report.csv"
-# OWASPBinPath = '//home//ubuntu//Tools//dependency-check//bin'
 flag = False
 log = Logger(get_debugger(reportPath))
+# orchPath = str(os.path.dirname(os.path.realpath(sys.argv[0])))
+# scanPath = "//home//ubuntu//Tools//ClientScans"
+# odcCSVPath = reportPath + "//dependency-check-report.csv"
+# OWASPBinPath = '//home//ubuntu//Tools//dependeny-check//bin'
 # # time = datetime.now()
 # log.record('debug', "SAST Scan Started at: " + str(time))
 # log.record('debug', "Value of report path is: " + reportPath)
@@ -40,9 +39,9 @@ def copycssForReport():
 
 def startSAST(argv):
     try:
-        if os.path.exists("odcCSVPath"):
+        if os.path.exists(odcCSVPath):
             copycssForReport()
-            flag = generateSASTReport("odcCSVPath", reportPath)
+            flag = generateSASTReport(odcCSVPath, reportPath)
             sendEmail(reportPath + "/Dummy", "SAST", rEmail)
         else:
             log.record('debug', 'SAST Scan might not have run properly! Please check.')
