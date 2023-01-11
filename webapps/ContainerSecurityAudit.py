@@ -49,7 +49,7 @@ def generateAuditReport():
         '<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Arachni/arachni/v1.4/components/reporters/xml/schema.xsd">')
     htmlfile.write('<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />')
     htmlfile.write('<title>Security Assessment Report</title>')
-    htmlfile.write('<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />')
+    htmlfile.write('<link rel="stylesheet" href="/'+auditPath+'/css/style.css" type="text/css" media="screen" />')
     htmlfile.write('</head>')
     htmlfile.write('<body>')
     htmlfile.write(
@@ -57,7 +57,7 @@ def generateAuditReport():
     htmlfile.write('<div class="art-header-jpeg"></div></div></div>')
     htmlfile.write('<div class="art-header-wrapper"><div class="art-header-inner"><div class="art-logo">')
     htmlfile.write(
-        '<center><img src="css/images/ey-white-logo.png" width = "75" height = "75"></center><h1 class="art-logo-name">Container Security Assessment Report</h1></div>')
+        '<center><img src="/'+auditPath+'/css/images/ey-white-logo.png" width = "75" height = "75"></center><h1 class="art-logo-name">Container Security Assessment Report</h1></div>')
     htmlfile.write('</div></div></div><div class="cleared reset-box"></div>')
     htmlfile.write('<div class="art-nav"><div class="art-nav-outer"><div class="art-nav-wrapper"></div></div></div>')
     htmlfile.write('<div class="cleared reset-box"></div>')
