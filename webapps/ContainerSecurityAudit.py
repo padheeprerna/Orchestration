@@ -40,7 +40,7 @@ def runAudit():
     log.record("***INSPEC Scan Finished***")
     log.record("***Starting DOCKER BENCH Scan***")
     os.chdir(benchPath)
-    os.system("./docker-bench-security.sh")
+    os.system("sudo sh ./docker-bench-security.sh")
     copyfile(benchLog, auditPath + '/docker-bench-security.log.json')
     log.record("***DOCKER BENCH Scan Finished***")
 
