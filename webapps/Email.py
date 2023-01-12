@@ -7,27 +7,19 @@ Created on Mon May 30 04:44:14 2022
 """
 from __future__ import print_function
 
-import os
 import shutil
 import smtplib
 import glob
-import json
-import requests
-import json
 import httplib2
 from lib.commons import *
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 from apiclient import errors
 from googleapiclient.discovery import build
 from oauth2client import file
 
-#secFile = "/home/ubuntu/Orchestration/webapps/client_secrets.json"
-# credFile = "/home/ubuntu/Orchestration/webapps/credentials.json"
 driveFolderID = "1Bj1fUP_9IqxQcpnDBs4WGijxx98JF7Uf"
 
 time = get_timenow()
