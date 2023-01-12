@@ -20,7 +20,7 @@ import re
 JIRA_URL = "https://devsecopscollab.atlassian.net"
 
 JIRA_USERNAME = "devsecopscollab@gmail.com"
-JIRA_PASSWORD = "mk5b531hi6sO3hTlzVrj3443"  # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
+JIRA_PASSWORD = "g35rQ5XFhZhBvRL8gpIF75A0"  # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
 
 # JIRA_PROJECT_KEY = "DASTBUGS"
 JIRA_ISSUE_TYPE = "Bug"
