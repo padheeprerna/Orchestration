@@ -4,14 +4,13 @@ from Email import *
 from mail import *
 from lib.logger import Logger
 
-report_path = get_report_path(REPORT_PATH, app_type)
 reportPath = get_report_path(REPORT_PATH, "WebApplication")  # path on the server to save the EY reports
 reportPathZAP = os.environ.get('reportPathZAP')
 rEmail = os.environ.get('rEmail')  # email id to forward the report to
 credFile = os.environ.get('credFile')
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
-log = Logger(get_debugger(report_path))
+log = Logger(get_debugger(reportPath))
 
 
 def generateHtml(reportPathZAP):
@@ -71,14 +70,14 @@ def main():
     try:
         copycss()
         generateHtml(reportPathZAP)
-        sendEmail(credFile, reportPath + "/Dummy", "SAST", rEmail)
+        sendEmail(credFile, reportPath + "/Dummy", "DAST", rEmail)
     except Exception as e:
         log.record('debug', str(e))
 
 
 def copycss():
     try:
-        csstargetloaction = os.path.join(report_path, 'css')
+        csstargetloaction = os.path.join(reportPath, 'css')
         if CSSFilePath:
             copytree(CSSFilePath, csstargetloaction)
             log.record('debug', "Successfully copied CSS to target location")
