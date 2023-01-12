@@ -27,7 +27,7 @@ from googleapiclient.discovery import build
 from oauth2client import file
 
 #secFile = "/home/ubuntu/Orchestration/webapps/client_secrets.json"
-credFile = "/home/ubuntu/Orchestration/webapps/credentials.json"
+# credFile = "/home/ubuntu/Orchestration/webapps/credentials.json"
 driveFolderID = "1Bj1fUP_9IqxQcpnDBs4WGijxx98JF7Uf"
 
 time = get_timenow()
@@ -76,7 +76,7 @@ def insert_permission(service, file_id, perm_type, role):
     print ('An error occurred: ' + errors.HttpError)
   return None
     
-def uploadToDrive(reportPath, subject):
+def uploadToDrive(credFile, reportPath, subject):
     #Following code needs token revision every 1 hour
     #headers = {"Authorization": "Bearer ya29.a0ARrdaM8Tkzj7sPpiJgIfYSyj4PWFLHi-XXeXUlto34ndkxUnPOBoXQbzNLWcm66Y9AoBTHB5uVR1UhG2ljs8K-2cehOhxzfLvfxnI1AnUAYcaU7NYHNc9k66UO6DyH8pdxIz6EEzR2Pb6S3uMPdUspSYlB68"}
     #para = {
@@ -118,11 +118,11 @@ def uploadToDrive(reportPath, subject):
     insert_permission(service, file1['id'], 'anyone', 'reader')
     return file1['id']
     
-def sendEmail(reportPath, subject, recEmail):
+def sendEmail(credFile, reportPath, subject, recEmail):
     reportPath = reportPath[:reportPath.rfind('/')]
     zipDir(reportPath)
     #copyReqFiles(reportPath)
-    did = uploadToDrive(reportPath, subject)
+    did = uploadToDrive(credFile, reportPath, subject)
     driveLink = "https://drive.google.com/open?id="+did
     mail_content = '''
     Hi there,

@@ -15,6 +15,10 @@ from Email import *
 time = get_timenow()
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
+rEmail = os.environ.get('rEmail')  # email id to forward the report to
+JIRA_USERNAME = os.environ.get('JIRA_USERNAME')
+JIRA_PASSWORD = os.environ.get('JIRA_PASSWORD')
+credFile = os.environ.get('credFile')
 benchPath = "/home/ubuntu/Tools/DockerBench/docker-bench-security"
 benchLog = benchPath + "/log/docker-bench-security.log.json"
 auditPath = get_report_path(REPORT_PATH, "Docker_Audit_Reports")
@@ -104,7 +108,7 @@ def generateAuditReport():
                 summary1 = "BENCH_" + str(i['id']) + "_" + str(j['id']) + "_" + i['desc']
                 desc1 = j['result'] + "_" + j['desc']
                 sev1 = 'Medium'
-                id1 = formulateData(summary1, desc1, sev1, "AUDBUGS")
+                id1 = formulateData(JIRA_USERNAME, JIRA_PASSWORD,summary1, desc1, sev1, "AUDBUGS")
                 idURL1 = idURLPart + id1
                 htmlfile.write('<tr>')
                 htmlfile.write('<td>''<center>' + j['id'] + '</center>''</td>')
@@ -137,7 +141,7 @@ def generateAuditReport():
                         summary2 = "INSPEC_" + j['id'] + "_" + j['title']
                         desc2 = j['desc']
                         sev2 = 'Medium'
-                        id2 = formulateData(summary2, desc2, sev2, "AUDBUGS")
+                        id2 = formulateData(JIRA_USERNAME, JIRA_PASSWORD, summary2, desc2, sev2, "AUDBUGS")
                         idURL2 = idURLPart + id2
                         htmlfile.write('<tr>')
                         idList.append(j['id'])
@@ -150,7 +154,7 @@ def generateAuditReport():
     # Closing file
     htmlfile.close()
     f1.close()
-    # sendEmail(auditPath + "/Dummy", "AUDIT", "devsecopscollab@gmail.com")
+    sendEmail(credFile, auditPath + "/Dummy", "AUDIT", rEmail)
 
 
 def copycssForReport():

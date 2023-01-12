@@ -19,14 +19,14 @@ import re
 # Jira settings
 JIRA_URL = "https://devsecopscollab.atlassian.net"
 
-JIRA_USERNAME = "devsecopscollab@gmail.com"
-JIRA_PASSWORD = "bTRJqW1WHujsnx6RiKsHD85E"  # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
+# JIRA_USERNAME = "devsecopscollab@gmail.com"
+# JIRA_PASSWORD = "PAwmo2mBLbj0rMc5RNzcA81B"  # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
 
 # JIRA_PROJECT_KEY = "DASTBUGS"
 JIRA_ISSUE_TYPE = "Bug"
 
 
-def jira_rest_call(data):
+def jira_rest_call(JIRA_USERNAME, JIRA_PASSWORD,data):
     # Set the root JIRA URL, and encode the username and password
     url = JIRA_URL + '/rest/api/2/issue'
     userpass = JIRA_USERNAME + ':' + JIRA_PASSWORD
@@ -77,12 +77,12 @@ def generate_issue_data(summary, description, priority, pkey):
     return json_data
 
 
-def formulateData(summary, desc, priority, pkey):
+def formulateData(JIRA_USERNAME, JIRA_PASSWORD,summary, desc, priority, pkey):
     try:
         summary = re.sub('\W+', ' ', summary)
         desc = re.sub('\W+', ' ', desc)
         priority = re.sub('\W+', ' ', priority)
-        json_response = jira_rest_call(generate_issue_data(summary, desc, priority, pkey))
+        json_response = jira_rest_call(JIRA_USERNAME, JIRA_PASSWORD, generate_issue_data(summary, desc, priority, pkey))
         issue_key = json_response['key']
         return issue_key
     except Exception as e:

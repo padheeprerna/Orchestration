@@ -5,6 +5,9 @@ from Email import *
 # Get environment variables
 odcCSVPath = os.environ.get('odcCSVPath') + "//dependency-check-report.csv"  # path for owasp dependency check result
 rEmail = os.environ.get('rEmail')  # email id to forward the report to
+JIRA_USERNAME = os.environ.get('JIRA_USERNAME')
+JIRA_PASSWORD = os.environ.get('JIRA_PASSWORD')
+credFile = os.environ.get('credFile')
 reportPath = get_report_path(REPORT_PATH, "SAST_Reports")  # path on the server to save the EY reports
 flag = False
 log = Logger(get_debugger(reportPath))
@@ -34,7 +37,7 @@ def startSAST(argv):
         if os.path.exists(odcCSVPath):
             copycssForReport()
             result = generateSASTReport(odcCSVPath, reportPath, flag)
-            sendEmail(reportPath + "/Dummy", "SAST", rEmail)
+            sendEmail(credFile, reportPath + "/Dummy", "SAST", rEmail)
         else:
             log.record('debug', 'SAST Scan might not have run properly! Please check.')
 
@@ -119,7 +122,7 @@ def generateSASTReport(inputfile, reportPath, flag):
             if ((len(cveid) != 0) & (len(depath) != 0) & (len(summary1) != 0) & (len(vul) != 0) & (
                     severity1 in ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'])):
                 desc1 = "CVE ID: " + cveid + ". File where the bug was found: " + depath + ". Vulnerability Desc: " + vul
-                id1 = formulateData(summary1, desc1, severity1, "SASTBUGS")
+                id1 = formulateData(JIRA_USERNAME, JIRA_PASSWORD, summary1, desc1, severity1, "SASTBUGS")
                 idURL1 = idURLPart + id1
                 bugIdList1.append(idURL1)
         dataFrame['Jira Bug ID'] = bugIdList1
@@ -200,7 +203,7 @@ def generateSASTReport(inputfile, reportPath, flag):
     #         if ((len(type2) != 0) & (len(file2) != 0) & (len(summary2) != 0) & (len(line2) != 0) & (
     #                 severity2 in ['HIGH', 'CRITICAL', 'BLOCKER'])):
     #             desc2 = "Type of bug is: " + type2 + ". File where the bug was found: " + file2 + ". Line no. in file: " + line2
-    #             id2 = formulateData(summary2, desc2, severity2, "SASTBUGS")
+    #             id2 = formulateData(JIRA_USERNAME, JIRA_PASSWORD, summary2, desc2, severity2, "SASTBUGS")
     #             idURL2 = idURLPart + id2
     #             bugIdList2.append(idURL2)
     #     df['Jira Bug ID'] = bugIdList2
@@ -228,7 +231,7 @@ def generateSASTReport(inputfile, reportPath, flag):
         # htmlTable = df.style.set_properties(**{'font-size': '11pt', 'font-family': 'Calibri','border-collapse':
         # 'collapse','border': '1px solid black'}).render()
         # htmlTable = df1.to_html()
-        htmlfile.write(htmlTable)
+        # htmlfile.write(htmlTable)
         # END - Write results of SonarQube scan
 
     htmlfile.write('</div>')
