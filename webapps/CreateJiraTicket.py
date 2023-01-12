@@ -20,39 +20,39 @@ import re
 JIRA_URL = "https://devsecopscollab.atlassian.net"
 
 JIRA_USERNAME = "devsecopscollab@gmail.com"
-JIRA_PASSWORD = "lrVrhnhdKO0GbgnAXSAj710B" # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
+JIRA_PASSWORD = "mk5b531hi6sO3hTlzVrj3443"  # For Jira Cloud use a token generated here: https://id.atlassian.com/manage/api-tokens
 
-#JIRA_PROJECT_KEY = "DASTBUGS"
-JIRA_ISSUE_TYPE = "Bug"    
+# JIRA_PROJECT_KEY = "DASTBUGS"
+JIRA_ISSUE_TYPE = "Bug"
+
 
 def jira_rest_call(data):
-
     # Set the root JIRA URL, and encode the username and password
     url = JIRA_URL + '/rest/api/2/issue'
     userpass = JIRA_USERNAME + ':' + JIRA_PASSWORD
     userpass = userpass.encode("ascii")
     encUserPass = base64.b64encode(userpass)
     encUserPassStr = encUserPass.decode("ascii")
-    #base64string = str(base64.b64encode(userpass.encode('UTF-8')))
+    # base64string = str(base64.b64encode(userpass.encode('UTF-8')))
 
     # Build the request
-    #restreq = urllib3.request(url)
-    #restreq.add_header('Content-Type', 'application/json')
-   # restreq.add_header("Authorization", "Basic %s" % base64string)
-    headers={
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "Authorization": "Basic " + encUserPassStr
+    # restreq = urllib3.request(url)
+    # restreq.add_header('Content-Type', 'application/json')
+    # restreq.add_header("Authorization", "Basic %s" % base64string)
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Basic " + encUserPassStr
     }
 
     # Send the request and grab JSON response
-    #response = urllib3.request.urlopen(restreq, data)
-    
-    #response = requests.post(url, data, headers = "{Content-Type:application/json}", auth = base64string)
-    response=requests.post(url,headers=headers,data=data)
+    # response = urllib3.request.urlopen(restreq, data)
+
+    # response = requests.post(url, data, headers = "{Content-Type:application/json}", auth = base64string)
+    response = requests.post(url, headers=headers, data=data)
 
     # Load into a JSON object and return that to the calling function
-    #return json.loads(response.read())
+    # return json.loads(response.read())
     return response.json()
 
 
@@ -76,11 +76,12 @@ def generate_issue_data(summary, description, priority, pkey):
         } ''' % (pkey, summary, JIRA_ISSUE_TYPE, description, priority.title())
     return json_data
 
+
 def formulateData(summary, desc, priority, pkey):
     try:
-        summary = re.sub('\W+',' ', summary)
-        desc = re.sub('\W+',' ', desc)
-        priority = re.sub('\W+',' ', priority)
+        summary = re.sub('\W+', ' ', summary)
+        desc = re.sub('\W+', ' ', desc)
+        priority = re.sub('\W+', ' ', priority)
         json_response = jira_rest_call(generate_issue_data(summary, desc, priority, pkey))
         issue_key = json_response['key']
         return issue_key
@@ -91,9 +92,8 @@ def formulateData(summary, desc, priority, pkey):
         print(pkey)
         print(e)
         traceback.print_exc()
-        
-#def main():
-#    formulateData("summary", "desc", "High", "DASTBUGS")
-    
-#main()
 
+# def main():
+#    formulateData("summary", "desc", "High", "DASTBUGS")
+
+# main()
