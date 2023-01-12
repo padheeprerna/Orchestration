@@ -6,10 +6,13 @@ from lib.logger import Logger
 
 report_path = get_report_path(REPORT_PATH, app_type)
 reportPath = get_report_path(REPORT_PATH, "WebApplication")  # path on the server to save the EY reports
-reportPathZAP = 'C:/Users/MS156TY/OneDrive - EY/Documents/DevSecOps/'
+reportPathZAP = os.environ.get('reportPathZAP')
+rEmail = os.environ.get('rEmail')  # email id to forward the report to
+credFile = os.environ.get('credFile')
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
 log = Logger(get_debugger(report_path))
+
 
 def generateHtml(reportPathZAP):
     out_new_path = reportPath + "/DAST-Analysis-Report-" + myFileName + ".html"
@@ -57,24 +60,19 @@ def generateHtml(reportPathZAP):
     htmlfile.write('<col width = "80" />')
     htmlfile.write('<col width = "420" />')
     htmlfile.write('<col width = "120" />')
-    f = codecs.open(reportPathZAP + "/dvwa.html", "r", "utf-8")
-    # f = open(reportPathZAP+dir+".html", encoding="utf8")
+    f = codecs.open(reportPathZAP, "r", "utf-8")
     webContent = str(f.read())
-    # webContent = html.tostring(tree)
-    # response =urlopen(reportPathZAP+"//"+dir+".html").read()
-    # webContent = response.decode('UTF-8')
     htmlfile.write(webContent)
     f.close()
     htmlfile.close()
-    # Added for merging zap results
+
 
 def main():
     try:
         copycss()
         generateHtml(reportPathZAP)
+        sendEmail(credFile, reportPath + "/Dummy", "SAST", rEmail)
     except Exception as e:
-        # print("MY ERROR --->>>>>" + str(e))
-        # print("MY ERROR 2--->>>>>" + str(traceback.print_exc()))
         log.record('debug', str(e))
 
 
@@ -89,6 +87,8 @@ def copycss():
 
     except Exception as e:
         log.record('debug', str(e))
+
+
 # --------------------------------------------------------------------------
 # Program Starts
 # --------------------------------------------------------------------------
