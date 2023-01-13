@@ -7,6 +7,7 @@ from lib.logger import Logger
 reportPath = get_report_path(REPORT_PATH, "WebApplication")  # path on the server to save the EY reports
 reportPathZAP = os.environ.get('reportPathZAP')
 rEmail = os.environ.get('rEmail')  # email id to forward the report to
+nmap_report = os.environ.get('nmap_report')
 credFile = os.environ.get('credFile')
 myFileName = str(time.day) + '_' + str(time.month) + '_' + str(time.year) + '_' + str(time.hour) + '_' + str(
     time.minute) + '_' + str(time.second)
@@ -63,6 +64,12 @@ def generateHtml(reportPathZAP):
     webContent = str(f.read())
     htmlfile.write(webContent)
     f.close()
+    htmlfile.write(
+        '<p styple=fon-weight:2000;"><left><b><h3 style="color:blue;"> Third Party Tools Security Assessment Results </h3></b></left></p>')
+    htmlfile.write('<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> i) Nmap </h4></b></left></p>')
+    htmlfile.write(
+        '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> ii) SSLScan </h4></b></left></p>')
+    htmlfile.write('<iframe src="'+nmap_report+'"' + '" width="842" height="300"> </iframe>')
     htmlfile.close()
 
 
