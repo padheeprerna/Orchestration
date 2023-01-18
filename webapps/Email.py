@@ -6,7 +6,11 @@ Created on Mon May 30 04:44:14 2022
 @author: ubuntu
 """
 from __future__ import print_function
-
+from HTMLReportGenerator import *
+from CustomReporting import *
+from Email import *
+from mail import *
+from lib.logger import Logger
 import shutil
 import smtplib
 import glob
@@ -30,17 +34,17 @@ mailDir = "ForEmail-" + name
 
 def zipDir(reportPath):
     os.chdir(reportPath)
-    if (not os.path.isdir(mailDir)):
-        os.mkdir(mailDir)
-    shutil.copytree(reportPath + "/css", reportPath + "/" + mailDir + "/css")
-    files = glob.iglob(os.path.join(reportPath, "*.html"))
-    for file in files:
-        if os.path.isfile(file):
-            shutil.copy2(file, reportPath + "/" + mailDir)
-    files = glob.iglob(os.path.join(reportPath, "*.zip"))
-    for file in files:
-        if os.path.isfile(file):
-            shutil.copy2(file, reportPath + "/" + mailDir)
+    # if (not os.path.isdir(mailDir)):
+    #     os.mkdir(mailDir)
+    copytree(reportPath, reportPath + "/" + mailDir)
+    # files = glob.iglob(os.path.join(reportPath, "*.html"))
+    # for file in files:
+    #     if os.path.isfile(file):
+    #         shutil.copy2(file, reportPath + "/" + mailDir)
+    # files = glob.iglob(os.path.join(reportPath, "*.zip"))
+    # for file in files:
+    #     if os.path.isfile(file):
+    #         shutil.copy2(file, reportPath + "/" + mailDir)
     shutil.make_archive("Report-" + name, "zip", reportPath + "/" + mailDir)
     
 #def copyReqFiles(reportPath):
@@ -111,7 +115,7 @@ def uploadToDrive(credFile, reportPath, subject):
     return file1['id']
     
 def sendEmail(credFile, reportPath, subject, recEmail):
-    # reportPath = reportPath[:reportPath.rfind('/')]
+    reportPath = reportPath[:reportPath.rfind('/')]
     zipDir(reportPath)
     #copyReqFiles(reportPath)
     did = uploadToDrive(credFile, reportPath, subject)
