@@ -111,7 +111,7 @@ def uploadToDrive(credFile, reportPath, subject):
     return file1['id']
     
 def sendEmail(credFile, reportPath, subject, recEmail):
-    reportPath = reportPath[:reportPath.rfind('/')]
+    # reportPath = reportPath[:reportPath.rfind('/')]
     zipDir(reportPath)
     #copyReqFiles(reportPath)
     did = uploadToDrive(credFile, reportPath, subject)
