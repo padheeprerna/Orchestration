@@ -69,8 +69,8 @@ def generateHtml(reportPathZAP):
     htmlfile.write('<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> i) Nmap </h4></b></left></p>')
     htmlfile.write(
         '<p styple=fon-weight:2000;"><left><b><h4 style="color:blue;"> ii) SSLScan </h4></b></left></p>')
-    htmlfile.write('<iframe src="'+nmap_report+'"' + '" width="842" height="300"> </iframe>')
     shutil.copy(nmap_report, reportPath)
+    htmlfile.write('<iframe src="'+reportPath+nmap_report[nmap_report.rfind('/'):]+'"' + '" width="842" height="300"> </iframe>')
     htmlfile.close()
 
 
