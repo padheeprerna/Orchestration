@@ -171,7 +171,7 @@ def generateSASTReport(inputfile, reportPath, flag):
     projectKey = configs.get('sonar.projectKey')
     os.chdir(pluginsPath)
     os.system("java -jar sonar-cnes-report-4.1.1.jar -p " + str(
-        projectKey.data) + " -o " + reportPath + " -t " + userToken)
+        projectKey.data) + " -o " + reportPath + " -t " + userToken + "-s http://localhost:9002/")
     excelReport = list(glob.glob(os.path.join(reportPath, '*.xlsx')))
     df = pd.read_excel(str(excelReport[0]), sheet_name='Issues', usecols=[1, 2, 3, 5, 6])
     if df.empty:
