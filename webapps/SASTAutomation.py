@@ -5,8 +5,11 @@ from Email import *
 # Get environment variables
 odcCSVPath = os.environ.get('odcCSVPath') + "//dependency-check-report.csv"  # path for owasp dependency check result
 rEmail = os.environ.get('rEmail')  # email id to forward the report to
+sonarProperties = "./sonar-project.properties"
+pluginsPath = "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/extensions/plugins"
 JIRA_USERNAME = os.environ.get('JIRA_USERNAME')
 JIRA_PASSWORD = os.environ.get('JIRA_PASSWORD')
+userToken = os.environ.get('userToken')
 credFile = os.environ.get('credFile')
 reportPath = get_report_path(REPORT_PATH, "SAST_Reports")  # path on the server to save the EY reports
 flag = False
@@ -159,79 +162,79 @@ def generateSASTReport(inputfile, reportPath, flag):
         htmlfile.write(htmlTable)
     # END - Write results of OWASP Dependency Check scan
 
-    # # START - Write results of SonarQube scan
-    # htmlfile.write(
-    #     '<br><p style="font-weight:bold;color:blue;font-size:20px"><left><b> ii) Sonar Scan Results </b></left></p><br>')
-    # configs = Properties()
-    # with open(sonarProperties, 'rb') as config_file:
-    #     configs.load(config_file)
-    # projectKey = configs.get('sonar.projectKey')
-    # os.chdir(pluginsPath)
-    # os.system("java -jar sonar-cnes-report-4.1.1.jar -p " + str(
-    #     projectKey.data) + " -o " + reportPath + " -t 5206d2a5c6ff32de4a9052e5881651beb160505f")
-    # excelReport = list(glob.glob(os.path.join(reportPath, '*.xlsx')))
-    # df = pd.read_excel(str(excelReport[0]), sheet_name='Issues', usecols=[1, 2, 3, 5, 6])
-    # if df.empty:
-    #     htmlfile.write('<br><p style="font-size:18px"><left><b> No vulnerabilities found in code! </left></p>')
-    # else:
-    #     # df = df[df['Severity'] == 'CRITICAL' | df['Severity'] == 'MAJOR']
-    #     df = df[(df['Severity'] == 'CRITICAL') | (df['Severity'] == 'MAJOR') | (df['Severity'] == 'BLOCKER')]
-    #     for i in range(df.shape[0]):
-    #         summary2 = ''
-    #         desc2 = ''
-    #         severity2 = ''
-    #         type2 = ''
-    #         file2 = ''
-    #         line2 = ''
-    #         for j in range(df.shape[1]):
-    #             df.iloc[i, j] = html.escape(str(df.iloc[i, j]))
-    #             if df.columns[j] == 'Message':
-    #                 summary2 = "SONAR_" + str(df.iloc[i, j])
-    #             elif df.columns[j] == 'Severity':
-    #                 if df.iloc[i, j] == "MAJOR":
-    #                     severity2 = "HIGH"
-    #                 else:
-    #                     severity2 = str(df.iloc[i, j])
-    #                 if severity2 == 'CRITICAL':
-    #                     flag = True
-    #             elif df.columns[j] == 'Type':
-    #                 type2 = str(df.iloc[i, j])
-    #             elif df.columns[j] == 'File':
-    #                 file2 = str(df.iloc[i, j])
-    #             elif df.columns[j] == 'Line':
-    #                 line2 = str(df.iloc[i, j])
-    #         if ((len(type2) != 0) & (len(file2) != 0) & (len(summary2) != 0) & (len(line2) != 0) & (
-    #                 severity2 in ['HIGH', 'CRITICAL', 'BLOCKER'])):
-    #             desc2 = "Type of bug is: " + type2 + ". File where the bug was found: " + file2 + ". Line no. in file: " + line2
-    #             id2 = formulateData(JIRA_USERNAME, JIRA_PASSWORD, summary2, desc2, severity2, "SASTBUGS")
-    #             idURL2 = idURLPart + id2
-    #             bugIdList2.append(idURL2)
-    #     df['Jira Bug ID'] = bugIdList2
-    #     bugIdList2.clear()
-    #     df = df.drop('File', axis=1)
-    #     df = df.drop('Line', axis=1)
-    #     df1 = df.style.set_table_styles([dict(selector='table', props=[('table-layout', 'fixed'), ('font-size', '15px'),
-    #                                                                    ('font-family', 'arial, sans-serif'),
-    #                                                                    ('border', '1px solid black'),
-    #                                                                    ('border-collapse', 'collapse'),
-    #                                                                    ('width', '100%')]), dict(selector='th', props=[
-    #         ('font-size', '15px'), ('background-color', '#9FA68F'), ('text-align', 'center'), ('weight', 'bold'),
-    #         ('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse')]),
-    #                                      dict(selector='tr', props=[('font-family', 'arial, sans-serif'),
-    #                                                                 ('border', '1px solid black'),
-    #                                                                 ('border-collapse', 'collapse')]),
-    #                                      dict(selector='td',
-    #                                           props=[('overflow', 'hidden'), ('text-overflow', 'ellipsis'),
-    #                                                  ('word-wrap', 'break-word'), ('font-family', 'arial, sans-serif'),
-    #                                                  ('border', '1px solid black'), ('border-collapse', 'collapse'),
-    #                                                  ('font-size', '15px')]), dict(selector='tr:nth-child(even)',
-    #                                                                                props=[('background-color',
-    #                                                                                        ' #E8E6E5')])]).hide(
-    #         axis='index')
-        # htmlTable = df.style.set_properties(**{'font-size': '11pt', 'font-family': 'Calibri','border-collapse':
-        # 'collapse','border': '1px solid black'}).render()
-        # htmlTable = df1.to_html()
-        # htmlfile.write(htmlTable)
+    # START - Write results of SonarQube scan
+    htmlfile.write(
+        '<br><p style="font-weight:bold;color:blue;font-size:20px"><left><b> ii) Sonar Scan Results </b></left></p><br>')
+    configs = Properties()
+    with open(sonarProperties, 'rb') as config_file:
+        configs.load(config_file)
+    projectKey = configs.get('sonar.projectKey')
+    os.chdir(pluginsPath)
+    os.system("java -jar sonar-cnes-report-4.1.1.jar -p " + str(
+        projectKey.data) + " -o " + reportPath + " -t " + userToken)
+    excelReport = list(glob.glob(os.path.join(reportPath, '*.xlsx')))
+    df = pd.read_excel(str(excelReport[0]), sheet_name='Issues', usecols=[1, 2, 3, 5, 6])
+    if df.empty:
+        htmlfile.write('<br><p style="font-size:18px"><left><b> No vulnerabilities found in code! </left></p>')
+    else:
+        # df = df[df['Severity'] == 'CRITICAL' | df['Severity'] == 'MAJOR']
+        df = df[(df['Severity'] == 'CRITICAL') | (df['Severity'] == 'MAJOR') | (df['Severity'] == 'BLOCKER')]
+        for i in range(df.shape[0]):
+            summary2 = ''
+            desc2 = ''
+            severity2 = ''
+            type2 = ''
+            file2 = ''
+            line2 = ''
+            for j in range(df.shape[1]):
+                df.iloc[i, j] = html.escape(str(df.iloc[i, j]))
+                if df.columns[j] == 'Message':
+                    summary2 = "SONAR_" + str(df.iloc[i, j])
+                elif df.columns[j] == 'Severity':
+                    if df.iloc[i, j] == "MAJOR":
+                        severity2 = "HIGH"
+                    else:
+                        severity2 = str(df.iloc[i, j])
+                    if severity2 == 'CRITICAL':
+                        flag = True
+                elif df.columns[j] == 'Type':
+                    type2 = str(df.iloc[i, j])
+                elif df.columns[j] == 'File':
+                    file2 = str(df.iloc[i, j])
+                elif df.columns[j] == 'Line':
+                    line2 = str(df.iloc[i, j])
+            if ((len(type2) != 0) & (len(file2) != 0) & (len(summary2) != 0) & (len(line2) != 0) & (
+                    severity2 in ['HIGH', 'CRITICAL', 'BLOCKER'])):
+                desc2 = "Type of bug is: " + type2 + ". File where the bug was found: " + file2 + ". Line no. in file: " + line2
+                id2 = formulateData(JIRA_USERNAME, JIRA_PASSWORD, summary2, desc2, severity2, "SASTBUGS")
+                idURL2 = idURLPart + id2
+                bugIdList2.append(idURL2)
+        df['Jira Bug ID'] = bugIdList2
+        bugIdList2.clear()
+        df = df.drop('File', axis=1)
+        df = df.drop('Line', axis=1)
+        df1 = df.style.set_table_styles([dict(selector='table', props=[('table-layout', 'fixed'), ('font-size', '15px'),
+                                                                       ('font-family', 'arial, sans-serif'),
+                                                                       ('border', '1px solid black'),
+                                                                       ('border-collapse', 'collapse'),
+                                                                       ('width', '100%')]), dict(selector='th', props=[
+            ('font-size', '15px'), ('background-color', '#9FA68F'), ('text-align', 'center'), ('weight', 'bold'),
+            ('font-family', 'arial, sans-serif'), ('border', '1px solid black'), ('border-collapse', 'collapse')]),
+                                         dict(selector='tr', props=[('font-family', 'arial, sans-serif'),
+                                                                    ('border', '1px solid black'),
+                                                                    ('border-collapse', 'collapse')]),
+                                         dict(selector='td',
+                                              props=[('overflow', 'hidden'), ('text-overflow', 'ellipsis'),
+                                                     ('word-wrap', 'break-word'), ('font-family', 'arial, sans-serif'),
+                                                     ('border', '1px solid black'), ('border-collapse', 'collapse'),
+                                                     ('font-size', '15px')]), dict(selector='tr:nth-child(even)',
+                                                                                   props=[('background-color',
+                                                                                           ' #E8E6E5')])]).hide(
+            axis='index')
+        htmlTable = df.style.set_properties(**{'font-size': '11pt', 'font-family': 'Calibri','border-collapse':
+        'collapse','border': '1px solid black'}).render()
+        htmlTable = df1.to_html()
+        htmlfile.write(htmlTable)
         # END - Write results of SonarQube scan
 
     htmlfile.write('</div>')
