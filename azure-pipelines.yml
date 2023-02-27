@@ -17,7 +17,7 @@ stages:
         displayName: Install and run inspec
         steps:
           - script: |
-              sudo dpkg -i ./inspec.deb
+              curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
               inspec exec https://github.com/dev-sec/cis-docker-benchmark
   # - stage: SCA & SAST
   # - stage: Deploy
