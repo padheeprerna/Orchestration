@@ -58,7 +58,7 @@ stages:
               Dockerfile: '**/Dockerfile'
           - task: DockerCompose@0
             inputs:
-              dockerComposeFile: '*/DVWA/docker-compose.yml'
+              dockerComposeFile: 'Orchestration/DVWA/docker-compose.yml'
               dockerComposeFileArgs: 'dockerImage= $(imageName):$(Build.BuildId)'
               action: 'Run a Docker Compose command'
               dockerComposeCommand: 'up -d'
