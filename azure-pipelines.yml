@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+   imageName: 'dvwa-docker'
+
 stages:
   - stage: Host_Audit
     displayName: Scan host for configuration
@@ -51,6 +54,7 @@ stages:
           - task: Docker@2
             inputs:
               command: 'build'
+              repository: $(imageName)
               Dockerfile: '**/Dockerfile'
   # - stage: DAST
 
