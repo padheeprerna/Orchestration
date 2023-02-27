@@ -51,6 +51,9 @@ stages:
       - job: Docker_image
         displayName: Create Docker image
         steps:
+          - script: |
+              cd Orchestration
+              dir
           - task: Docker@2
             inputs:
               command: 'build'
