@@ -19,6 +19,14 @@ stages:
           - script: |
               curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
               inspec --chef-license=accept exec https://github.com/dev-sec/cis-docker-benchmark
+      - job: Docker_Bench
+        displayName: Install and run Docker Bench scan
+        steps:
+          - script: |
+              cd ~
+              git clone https://github.com/docker/docker-bench-security.git
+              cd docker-bench-security
+              ./docker-bench-security.sh
   # - stage: SCA & SAST
   # - stage: Deploy
   # - stage: DAST
