@@ -27,21 +27,30 @@ stages:
               git clone https://github.com/docker/docker-bench-security.git
               cd docker-bench-security
               ./docker-bench-security.sh
-  - stage: SCA_and_SAST
-    displayName: run static analysis
+  # - stage: SCA_and_SAST
+  #   displayName: run static analysis
+  #   jobs:
+  #     - job: SAST
+  #       displayName: run SAST scan
+  #       steps:
+  #         - task: SonarQubePrepare@5
+  #           inputs:
+  #             SonarQube: 'sonarqube'
+  #             scannerMode: 'CLI'
+  #             configMode: 'file'
+  #         - task: SonarQubeAnalyze@5
+  #         - task: SonarQubePublish@5
+  #           inputs:
+  #             pollingTimeoutSec: '300'
+  - stage: Deploy
+    displayName: deploy containerized application
     jobs:
-      - job: SAST
-        displayName: run SAST scan
+      - job: Docker_image
+        displayName: Create Docker image
         steps:
-          - task: SonarQubePrepare@5
+          - task: Docker@2
             inputs:
-              SonarQube: 'sonarqube'
-              scannerMode: 'CLI'
-              configMode: 'file'
-          - task: SonarQubeAnalyze@5
-          - task: SonarQubePublish@5
-            inputs:
-              pollingTimeoutSec: '300'
-  # - stage: Deploy
+              command: 'build'
+              Dockerfile: '**/Dockerfile'
   # - stage: DAST
 
