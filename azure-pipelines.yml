@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Host Audit
+  - stage: Host_Audit
     displayName: Scan host for configuration
     jobs:
       - job: Inspec
