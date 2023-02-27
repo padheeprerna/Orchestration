@@ -71,5 +71,5 @@ stages:
     jobs:
       - job: Zap
         steps:
-          - script: sudo docker run --rm -v $(Build.SourcesDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-full-scan.py -U root -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -g gen.conf -r dvwa.html -I
+          - script: docker run --rm -v $(Build.SourcesDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -r dvwa.html -I
 
