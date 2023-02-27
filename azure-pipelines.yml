@@ -58,10 +58,11 @@ stages:
               Dockerfile: '**/Dockerfile'
           - task: DockerCompose@0
             inputs:
-              dockerComposeFile: 'Orchestration/DVWA/docker-compose.yml'
+              dockerComposeFile: '$(Build.SourcesDirectory)/Orchestration/DVWA/docker-compose.yml'
               dockerComposeFileArgs: 'dockerImage= $(imageName):$(Build.BuildId)'
               action: 'Run a Docker Compose command'
               dockerComposeCommand: 'up -d'
+            
   - stage: DAST
     displayName: run DAST scan
     jobs:
