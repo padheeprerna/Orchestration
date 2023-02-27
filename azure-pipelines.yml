@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: Host_Audit
+    displayName: Scan host for configuration
+    jobs:
+      - job: Inspec
+        displayName: Install and run inspec
+        steps:
+          - script: |
+              curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+              inspec --chef-license=accept exec https://github.com/dev-sec/cis-docker-benchmark
+      - job: Docker_Bench
+        displayName: Install and run Docker Bench scan
+        steps:
+          - script: |
+              cd ~
+              git clone https://github.com/docker/docker-bench-security.git
+              cd docker-bench-security
+              ./docker-bench-security.sh
+  - stage: SCA_and_SAST
+    displayName: run static analysis
+    jobs:
+      - job: SAST
+        displayName: run SAST scan
+        steps:
+          - task: SonarQubePrepare@5
+            inputs:
+              SonarQube: 'sonarqube'
+              scannerMode: 'CLI'
+              configMode: 'file'
+          - task: SonarQubeAnalyze@5
+          - task: SonarQubePublish@5
+            inputs:
+              pollingTimeoutSec: '300'
+  # - stage: Deploy
+  # - stage: DAST
+
