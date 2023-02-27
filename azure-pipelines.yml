@@ -62,7 +62,8 @@ stages:
               dockerComposeFileArgs: 'dockerImage= $(imageName):$(Build.BuildId)'
               action: 'Run a Docker Compose command'
               dockerComposeCommand: 'up -d'
-            
+              detached: true
+              abortOnContainerExit: false
   - stage: DAST
     displayName: run DAST scan
     jobs:
