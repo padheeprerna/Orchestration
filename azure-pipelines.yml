@@ -9,11 +9,17 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Host Audit
+    displayName: Scan host for configuration
+    jobs:
+      - job: Inspec
+        displayName: Install and run inspec
+        steps:
+          - script: |
+              sudo dpkg -i ./inspec.deb
+              inspec exec https://github.com/dev-sec/cis-docker-benchmark
+  # - stage: SCA & SAST
+  # - stage: Deploy
+  # - stage: DAST
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
