@@ -56,5 +56,10 @@ stages:
               command: 'build'
               repository: $(imageName)
               Dockerfile: '**/Dockerfile'
+          - task: DockerCompose@0
+            inputs:
+              dockerComposeFile: '**/docker-compose.yml'
+              dockerComposeFileArgs: 'dockerImage= $(imageName): $(Build.BuildId)'
+              action: 'Run a Docker Compose command'
   # - stage: DAST
 
