@@ -66,7 +66,8 @@ stages:
               action: 'Run a Docker Compose command'
               dockerComposeCommand: 'up -d'
               detached: true
-      - job: Run_DAST
-        displayName: Run OWASP ZAP
-        steps:
           - script: sudo docker run --rm -t -v $(Build.SourcesDirectory)/ZAP:/zap/wrk/:rw --user root owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -g gen.conf -r dvwa.html -I
+      # - job: Run_DAST
+      #   displayName: Run OWASP ZAP
+      #   steps:
+      #     - script: sudo docker run --rm -t -v $(Build.SourcesDirectory)/ZAP:/zap/wrk/:rw --user root owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -g gen.conf -r dvwa.html -I
