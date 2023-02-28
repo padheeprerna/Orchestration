@@ -66,7 +66,8 @@ stages:
               abortOnContainerExit: false
           - script: |
               docker ps
-              docker run --rm -v $(Build.SourcesDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -r dvwa.html -I
+              # docker run --rm -v $(Build.SourcesDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -r dvwa.html -I
+              sudo docker run --rm -t -v $(Build.SourcesDirectory)/ZAP:/zap/wrk/:rw --user root owasp/zap2docker-stable zap-full-scan.py -t http://\$(ip -f inet -o addr show docker0 | awk '{print \$4}' | cut -d '/' -f 1):8083 -g gen.conf -r dvwa.html -I
   # - stage: DAST
   #   displayName: run DAST scan
   #   jobs:
