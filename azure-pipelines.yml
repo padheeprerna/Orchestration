@@ -48,7 +48,7 @@ stages:
   - stage: Deploy
     displayName: deploy containerized application
     jobs:
-      - job: Docker_image
+      - job: Create_docker_image
         displayName: Create Docker image
         steps:
           - task: Docker@2
@@ -56,6 +56,9 @@ stages:
               command: 'build'
               repository: $(imageName)
               Dockerfile: '**/Dockerfile'
+      - job: Setup_docker_container
+        displayName: Run Docker container
+        steps:
           - task: DockerCompose@0
             inputs:
               dockerComposeFile: '$(Build.SourcesDirectory)/DVWA/docker-compose.yml'
@@ -63,16 +66,7 @@ stages:
               action: 'Run a Docker Compose command'
               dockerComposeCommand: 'up -d'
               detached: true
-              abortOnContainerExit: false
-          - script: |
-              docker ps
-              # docker run --rm -v $(Build.SourcesDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -r dvwa.html -I
-              sudo docker run --rm -t -v $(Build.SourcesDirectory)/ZAP:/zap/wrk/:rw --user root owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -g gen.conf -r dvwa.html -I
-  # - stage: DAST
-  #   displayName: run DAST scan
-  #   jobs:
-  #     - job: Zap
-  #       steps:
-  #         - script: |
-  #             docker ps
-  #             docker run --rm -v $(Build.SourcesDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -r dvwa.html -I
+      - job: Run_DAST
+        displayName: Run OWASP ZAP
+        steps:
+          - script: sudo docker run --rm -t -v $(Build.SourcesDirectory)/ZAP:/zap/wrk/:rw --user root owasp/zap2docker-stable zap-full-scan.py -t http://$(ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1):8083 -g gen.conf -r dvwa.html -I
